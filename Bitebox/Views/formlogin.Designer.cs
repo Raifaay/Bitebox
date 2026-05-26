@@ -38,9 +38,10 @@
             // 
             // txtemail
             // 
+            txtemail.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtemail.Location = new Point(392, 200);
             txtemail.Name = "txtemail";
-            txtemail.Size = new Size(488, 31);
+            txtemail.Size = new Size(488, 29);
             txtemail.TabIndex = 0;
             txtemail.TextChanged += txtemail_TextChanged;
             // 
@@ -98,7 +99,10 @@
             Controls.Add(btnlogin);
             Controls.Add(chckremember);
             Controls.Add(txtemail);
+            DoubleBuffered = true;
+            FormBorderStyle = FormBorderStyle.None;
             Name = "formlogin";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "formlogin";
             Load += formlogin_Load;
             ResumeLayout(false);
