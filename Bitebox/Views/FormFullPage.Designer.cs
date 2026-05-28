@@ -48,6 +48,7 @@
             Controls.Add(label1);
             Name = "FormFullPage";
             Text = "FormFullPage";
+            Load += FormFullPage_Load;
             ResumeLayout(false);
             PerformLayout();
         }

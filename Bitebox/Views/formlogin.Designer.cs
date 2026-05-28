@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formlogin));
             txtemail = new TextBox();
-            chckremember = new CheckBox();
             btnlogin = new Button();
             btndaftarakun = new Button();
             txtpassword = new TextBox();
@@ -45,23 +44,12 @@
             txtemail.TabIndex = 0;
             txtemail.TextChanged += txtemail_TextChanged;
             // 
-            // chckremember
-            // 
-            chckremember.AutoSize = true;
-            chckremember.Location = new Point(392, 293);
-            chckremember.Name = "chckremember";
-            chckremember.Size = new Size(154, 29);
-            chckremember.TabIndex = 1;
-            chckremember.Text = "Remember me";
-            chckremember.UseVisualStyleBackColor = true;
-            chckremember.CheckedChanged += checkBox1_CheckedChanged;
-            // 
             // btnlogin
             // 
             btnlogin.BackgroundImage = (Image)resources.GetObject("btnlogin.BackgroundImage");
-            btnlogin.Location = new Point(392, 328);
+            btnlogin.Location = new Point(597, 613);
             btnlogin.Name = "btnlogin";
-            btnlogin.Size = new Size(488, 53);
+            btnlogin.Size = new Size(741, 53);
             btnlogin.TabIndex = 2;
             btnlogin.UseVisualStyleBackColor = true;
             btnlogin.Click += button1_Click;
@@ -93,11 +81,10 @@
             BackColor = Color.FromArgb(255, 249, 243);
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1256, 619);
+            ClientSize = new Size(1920, 1080);
             Controls.Add(txtpassword);
             Controls.Add(btndaftarakun);
             Controls.Add(btnlogin);
-            Controls.Add(chckremember);
             Controls.Add(txtemail);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
@@ -112,7 +99,6 @@
         #endregion
 
         private TextBox txtemail;
-        private CheckBox chckremember;
         private Button btnlogin;
         private Button btndaftarakun;
         private TextBox txtpassword;

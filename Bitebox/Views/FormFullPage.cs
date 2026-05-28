@@ -14,5 +14,10 @@ namespace Bitebox.Views
         {
             InitializeComponent();
         }
+
+        private void FormFullPage_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

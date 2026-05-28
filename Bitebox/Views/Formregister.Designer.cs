@@ -102,7 +102,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 249, 243);
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1256, 619);
+            ClientSize = new Size(1920, 1080);
             Controls.Add(btndaftarakun);
             Controls.Add(btndaftar);
             Controls.Add(textBox5);

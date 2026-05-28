@@ -121,7 +121,7 @@
   <data name="btndaftar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAe0AAAAzCAYAAAC691AQAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EgAACxIB0t1+/AAAAA50RVh0U29mdHdhcmUARmlnbWGesZZjAAAD0klEQVR4Xu3cMY8bRRgGYP+E/LTp
+        EQAACxEBf2RfkQAAAA50RVh0U29mdHdhcmUARmlnbWGesZZjAAAD0klEQVR4Xu3cMY8bRRgGYP+E/LTp
         UyQVbY4aJKiSMoE6KBLxOQiKO1GkiShCARRBJ4WGhriggYZr0kAz6Isz3Hh2LZ/CnXcnej7p0dkzs2Nd
         9Xp2Zr1YjFR+lG7k43Qnr9JJXqV1Pk4ZALhWZ29z91abyzsrr1LKy3Q+MhkAcBjrveGdV+n+yIUAwBSe
         pE/arH5T0TEYDABMa5Xubwf2cbo9GAQAzMMqpTq0HTYDgPk6j0PiVtkA0INlOorQPhl0AABzc7rIy3Q2
@@ -144,7 +144,7 @@
   <data name="btndaftarakun.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIwAAAAzCAYAAABFXOCeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EgAACxIB0t1+/AAAAA50RVh0U29mdHdhcmUARmlnbWGesZZjAAADXklEQVR4Xu2Z4XHbMAyFM0JG6AgZ
+        EQAACxEBf2RfkQAAAA50RVh0U29mdHdhcmUARmlnbWGesZZjAAADXklEQVR4Xu2Z4XHbMAyFM0JG6AgZ
         IRsUnaDewNkg3iDeQDnbcvov3SAjZISMkBHYAwmSAETbam21tf2+O97FBAWK4CNBMTc3AAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAul9DTPPT0Frb05G1TEl7oMfT0HrZE3jaW4uOFHr3tEKGnuzhuLh198fazIHR0
         G9Z0H0tHt94+BaGnoMqdt5+C0NNr2NIHl/ibx1f7/PTtx3CsDxFLen5DD95+FoSeZmUQa7r39ilQgfuY
@@ -165,7 +165,7 @@
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABP4AAAKjCAYAAACNwMHTAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAAA50RVh0U29mdHdhcmUARmlnbWGesZZjAABpyklEQVR4Xu3dz68k5Zkn+v6bvO9Z
+        DQAACw0B7QfALAAAAA50RVh0U29mdHdhcmUARmlnbWGesZZjAABpyklEQVR4Xu3dz68k5Zkn+v6bvO9Z
         eGW15JWtlmeF1EwvLgtub1jgvr4qt8C2BC0QbQGDG8MtNZi2jSnu0KYkI1VNV3fVeDzmgG1c1RhMtxko
         igJK4EOV7yqunjx+D+95IjJPZkZmnsjIz+KjqozfERnn1BPfet94/6T5/37fAAAAAADj8id5AgAAAACw
         /QR/AAAAADBCgj8AAAAAGCHBHwAAAACMkOAPAAAAAEZI8AcAAAAAIyT4AwAAAIAREvwBAAAAwAgJ/gAA
