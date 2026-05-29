@@ -55,5 +55,10 @@ namespace Bitebox.Models
             this.gambarMenu = gambarMenu;
             this.idKategoriMenu = idKategoriMenu;
         }
+
+        public string InfoMenu()
+        {
+            return $"{namaMenu} - Rp {hargaMenu:N0}";
+        }
     }
 }
