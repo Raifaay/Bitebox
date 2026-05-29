@@ -1,42 +1,19 @@
 ﻿using Npgsql;
 
-public class Database
+namespace Bitebox.Helpers
 {
-    private string _connString;
+    internal class DatabaseConnection
+    {
+        private static readonly string _connectionString =
+            "Host=localhost;" +
+            "Port=5432;" +
+            "Database=bitebox;" +
+            "Username=postgres;" +
+            "Password=2007";
 
-    public Database(string connString)
-    {
-        _connString = connString;
-    }
-
-    public NpgsqlConnection GetConnection()
-    {
-        return new NpgsqlConnection(_connString);
-    }
-}
-public static class Config
-{
-    public static string ConnString =
-        "Host=localhost;" +
-        "Port=5432;" +
-        "Database=praktikum-pbo;" +
-        "Username=postgres;" +
-        "Password=Password";
-}
-class Program
-{
-    static void Main(string[] args)
-    {
-        try
+        public static NpgsqlConnection GetConnection()
         {
-            using (var conn = new Database().GetConnection())
-            {
-                conn.Open();
-                Console.WriteLine("Koneksi berhasil!");
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error: {ex.Message}");
+            return new NpgsqlConnection(_connectionString);
         }
     }
+}

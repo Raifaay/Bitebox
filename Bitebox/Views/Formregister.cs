@@ -6,21 +6,16 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Bitebox
+namespace Bitebox.Views
 {
-    public partial class Formregister : Form
+    public partial class FormRegister : Form
     {
-        public Formregister()
+        public FormRegister()
         {
             InitializeComponent();
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btndaftarakun_Click(object sender, EventArgs e)
+        private void FormRegister_Load(object sender, EventArgs e)
         {
 
         }

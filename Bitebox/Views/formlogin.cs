@@ -1,40 +1,18 @@
-namespace Bitebox
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+
+namespace Bitebox.Views
 {
-    public partial class formlogin : Form
+    public partial class FormLogin : Form
     {
-        public formlogin()
+        public FormLogin()
         {
             InitializeComponent();
-        }
-
-        private void formlogin_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtemail_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtpassword_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
