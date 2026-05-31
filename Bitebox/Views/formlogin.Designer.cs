@@ -2,15 +2,8 @@
 {
     partial class FormLogin
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,149 +15,160 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
-            pictureBox1 = new PictureBox();
-            panel1 = new Panel();
+            pcblogo = new PictureBox();
+            lblemail = new Label();
+            lblpassword = new Label();
+            lblatau = new Label();
+            txtemail = new TextBox();
+            txtpassword = new TextBox();
+            btnlogin = new Button();
+            btndaftarakun = new Button();
             btnClose = new Button();
-            BtnLogin = new Button();
-            TbPassword = new TextBox();
-            TbUsername = new TextBox();
-            label3 = new Label();
-            label2 = new Label();
-            label1 = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pcblogo).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox1
+            // pcblogo
             // 
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(89, 224);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(423, 422);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            pcblogo.BackColor = Color.Transparent;
+            pcblogo.BackgroundImage = (Image)resources.GetObject("pcblogo.BackgroundImage");
+            pcblogo.BackgroundImageLayout = ImageLayout.Stretch;
+            pcblogo.Location = new Point(811, 12);
+            pcblogo.Name = "pcblogo";
+            pcblogo.Size = new Size(308, 287);
+            pcblogo.TabIndex = 0;
+            pcblogo.TabStop = false;
             // 
-            // panel1
+            // lblemail
             // 
-            panel1.Controls.Add(btnClose);
-            panel1.Controls.Add(BtnLogin);
-            panel1.Controls.Add(TbPassword);
-            panel1.Controls.Add(TbUsername);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(pictureBox1);
-            panel1.Location = new Point(53, 13);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1837, 1042);
-            panel1.TabIndex = 1;
+            lblemail.AutoSize = true;
+            lblemail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblemail.ForeColor = Color.FromArgb(128, 66, 50);
+            lblemail.Location = new Point(567, 320);
+            lblemail.Name = "lblemail";
+            lblemail.Size = new Size(187, 32);
+            lblemail.TabIndex = 1;
+            lblemail.Text = "Email/Username";
+            lblemail.Click += lblemail_Click;
+            // 
+            // lblpassword
+            // 
+            lblpassword.AutoSize = true;
+            lblpassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblpassword.ForeColor = Color.FromArgb(128, 66, 50);
+            lblpassword.Location = new Point(567, 427);
+            lblpassword.Name = "lblpassword";
+            lblpassword.Size = new Size(111, 32);
+            lblpassword.TabIndex = 2;
+            lblpassword.Text = "Password";
+            // 
+            // lblatau
+            // 
+            lblatau.AutoSize = true;
+            lblatau.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblatau.ForeColor = Color.FromArgb(128, 66, 50);
+            lblatau.Location = new Point(567, 634);
+            lblatau.Name = "lblatau";
+            lblatau.Size = new Size(794, 32);
+            lblatau.TabIndex = 3;
+            lblatau.Text = "────────────────────────────── atau ──────────────────────────────";
+            // 
+            // txtemail
+            // 
+            txtemail.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtemail.Location = new Point(567, 365);
+            txtemail.Name = "txtemail";
+            txtemail.Size = new Size(806, 50);
+            txtemail.TabIndex = 4;
+            // 
+            // txtpassword
+            // 
+            txtpassword.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtpassword.Location = new Point(567, 462);
+            txtpassword.Name = "txtpassword";
+            txtpassword.PasswordChar = '•';
+            txtpassword.Size = new Size(806, 50);
+            txtpassword.TabIndex = 5;
+            // 
+            // btnlogin
+            // 
+            btnlogin.BackColor = Color.FromArgb(255, 165, 81);
+            btnlogin.BackgroundImageLayout = ImageLayout.Stretch;
+            btnlogin.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnlogin.ForeColor = SystemColors.ButtonHighlight;
+            btnlogin.Location = new Point(567, 545);
+            btnlogin.Name = "btnlogin";
+            btnlogin.Size = new Size(806, 72);
+            btnlogin.TabIndex = 6;
+            btnlogin.Text = "LOGIN";
+            btnlogin.UseVisualStyleBackColor = false;
+            btnlogin.Click += btnlogin_Click;
+            // 
+            // btndaftarakun
+            // 
+            btndaftarakun.BackColor = Color.FromArgb(255, 249, 243);
+            btndaftarakun.BackgroundImageLayout = ImageLayout.Stretch;
+            btndaftarakun.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btndaftarakun.ForeColor = Color.FromArgb(255, 165, 81);
+            btndaftarakun.Location = new Point(567, 685);
+            btndaftarakun.Name = "btndaftarakun";
+            btndaftarakun.Size = new Size(806, 66);
+            btndaftarakun.TabIndex = 7;
+            btndaftarakun.Text = "Daftar Akun Baru";
+            btndaftarakun.UseVisualStyleBackColor = false;
+            btndaftarakun.Click += btndaftarakun_Click;
             // 
             // btnClose
             // 
-            btnClose.Font = new Font("Gill Sans Ultra Bold", 22F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnClose.ForeColor = Color.FromArgb(128, 64, 64);
-            btnClose.Location = new Point(1498, 130);
+            btnClose.BackColor = Color.FromArgb(255, 249, 243);
+            btnClose.BackgroundImage = (Image)resources.GetObject("btnClose.BackgroundImage");
+            btnClose.BackgroundImageLayout = ImageLayout.Stretch;
+            btnClose.Location = new Point(1792, 12);
             btnClose.Name = "btnClose";
-            btnClose.Size = new Size(66, 60);
-            btnClose.TabIndex = 7;
-            btnClose.Text = "X";
-            btnClose.UseVisualStyleBackColor = true;
+            btnClose.Size = new Size(54, 56);
+            btnClose.TabIndex = 8;
+            btnClose.UseVisualStyleBackColor = false;
             btnClose.Click += btnClose_Click;
-            // 
-            // BtnLogin
-            // 
-            BtnLogin.BackColor = Color.DarkOrange;
-            BtnLogin.Font = new Font("Cooper Black", 26F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnLogin.ForeColor = Color.White;
-            BtnLogin.Location = new Point(579, 756);
-            BtnLogin.Name = "BtnLogin";
-            BtnLogin.Size = new Size(655, 99);
-            BtnLogin.TabIndex = 6;
-            BtnLogin.Text = "Login";
-            BtnLogin.UseVisualStyleBackColor = false;
-            BtnLogin.Click += BtnLogin_Click;
-            // 
-            // TbPassword
-            // 
-            TbPassword.Location = new Point(755, 527);
-            TbPassword.Name = "TbPassword";
-            TbPassword.Size = new Size(392, 31);
-            TbPassword.TabIndex = 5;
-            // 
-            // TbUsername
-            // 
-            TbUsername.Location = new Point(751, 384);
-            TbUsername.Name = "TbUsername";
-            TbUsername.Size = new Size(396, 31);
-            TbUsername.TabIndex = 4;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Cooper Black", 22F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.FromArgb(128, 64, 0);
-            label3.Location = new Point(739, 452);
-            label3.Name = "label3";
-            label3.Size = new Size(253, 50);
-            label3.TabIndex = 3;
-            label3.Text = "Password ";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Cooper Black", 22F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.FromArgb(128, 64, 0);
-            label2.Location = new Point(739, 302);
-            label2.Name = "label2";
-            label2.Size = new Size(396, 50);
-            label2.TabIndex = 2;
-            label2.Text = "Email/Username";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Showcard Gothic", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ControlDark;
-            label1.Location = new Point(609, 224);
-            label1.Name = "label1";
-            label1.Size = new Size(0, 44);
-            label1.TabIndex = 1;
             // 
             // FormLogin
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.NavajoWhite;
-            ClientSize = new Size(1920, 1080);
-            Controls.Add(panel1);
+            BackColor = Color.FromArgb(255, 249, 243);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(1898, 1024);
+            Controls.Add(btnClose);
+            Controls.Add(btndaftarakun);
+            Controls.Add(btnlogin);
+            Controls.Add(txtpassword);
+            Controls.Add(txtemail);
+            Controls.Add(lblatau);
+            Controls.Add(lblpassword);
+            Controls.Add(lblemail);
+            Controls.Add(pcblogo);
+            DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormLogin";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormLogin";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            Load += FormLogin_Load;
+            ((System.ComponentModel.ISupportInitialize)pcblogo).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private PictureBox pictureBox1;
-        private Panel panel1;
-        private Label label1;
-        private Label label3;
-        private Label label2;
-        private TextBox TbUsername;
-        private TextBox TbPassword;
-        private Button BtnLogin;
+        private PictureBox pcblogo;
+        private Label lblemail;
+        private Label lblpassword;
+        private Label lblatau;
+        private TextBox txtemail;
+        private TextBox txtpassword;
+        private Button btnlogin;
+        private Button btndaftarakun;
         private Button btnClose;
     }
 }
