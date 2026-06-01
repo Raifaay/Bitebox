@@ -30,26 +30,26 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegister));
             lblBuatAkunBaru = new Label();
-            label1 = new Label();
+            lbldaftar = new Label();
             pnlnamalengkap = new Panel();
-            lblnamalengkap = new Label();
             txtnamalengkap = new TextBox();
+            lblnamalengkap = new Label();
             pnlemail = new Panel();
             txtemail = new TextBox();
             lblemail = new Label();
             pnlusername = new Panel();
             txtusername = new TextBox();
             lblusername = new Label();
-            panel1 = new Panel();
-            textBox1 = new TextBox();
-            label2 = new Label();
+            pnlpassword = new Panel();
+            txtpassword = new TextBox();
+            lblpassword = new Label();
             btndaftar = new Button();
-            label3 = new Label();
-            button1 = new Button();
+            lblsudahpunyaakun = new Label();
+            btnlogindisini = new Button();
             pnlnamalengkap.SuspendLayout();
             pnlemail.SuspendLayout();
             pnlusername.SuspendLayout();
-            panel1.SuspendLayout();
+            pnlpassword.SuspendLayout();
             SuspendLayout();
             // 
             // lblBuatAkunBaru
@@ -62,15 +62,15 @@
             lblBuatAkunBaru.TabIndex = 0;
             lblBuatAkunBaru.Text = "Buat Akun Baru";
             // 
-            // label1
+            // lbldaftar
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(746, 126);
-            label1.Name = "label1";
-            label1.Size = new Size(444, 30);
-            label1.TabIndex = 1;
-            label1.Text = "Daftar untuk memulai menggunakan Bitebox";
+            lbldaftar.AutoSize = true;
+            lbldaftar.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbldaftar.Location = new Point(746, 126);
+            lbldaftar.Name = "lbldaftar";
+            lbldaftar.Size = new Size(444, 30);
+            lbldaftar.TabIndex = 1;
+            lbldaftar.Text = "Daftar untuk memulai menggunakan Bitebox";
             // 
             // pnlnamalengkap
             // 
@@ -83,6 +83,14 @@
             pnlnamalengkap.TabIndex = 2;
             pnlnamalengkap.Paint += panel1_Paint;
             // 
+            // txtnamalengkap
+            // 
+            txtnamalengkap.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtnamalengkap.Location = new Point(34, 38);
+            txtnamalengkap.Name = "txtnamalengkap";
+            txtnamalengkap.Size = new Size(784, 37);
+            txtnamalengkap.TabIndex = 2;
+            // 
             // lblnamalengkap
             // 
             lblnamalengkap.AutoSize = true;
@@ -93,14 +101,6 @@
             lblnamalengkap.TabIndex = 1;
             lblnamalengkap.Text = "Nama Lengkap";
             lblnamalengkap.Click += lblnamalengkap_Click;
-            // 
-            // txtnamalengkap
-            // 
-            txtnamalengkap.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtnamalengkap.Location = new Point(34, 38);
-            txtnamalengkap.Name = "txtnamalengkap";
-            txtnamalengkap.Size = new Size(784, 37);
-            txtnamalengkap.TabIndex = 2;
             // 
             // pnlemail
             // 
@@ -158,33 +158,35 @@
             lblusername.TabIndex = 1;
             lblusername.Text = "Username";
             // 
-            // panel1
+            // pnlpassword
             // 
-            panel1.BackColor = Color.FromArgb(255, 224, 188);
-            panel1.Controls.Add(textBox1);
-            panel1.Controls.Add(label2);
-            panel1.Location = new Point(548, 533);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(853, 86);
-            panel1.TabIndex = 3;
+            pnlpassword.BackColor = Color.FromArgb(255, 224, 188);
+            pnlpassword.Controls.Add(txtpassword);
+            pnlpassword.Controls.Add(lblpassword);
+            pnlpassword.Location = new Point(548, 533);
+            pnlpassword.Name = "pnlpassword";
+            pnlpassword.Size = new Size(853, 86);
+            pnlpassword.TabIndex = 3;
             // 
-            // textBox1
+            // txtpassword
             // 
-            textBox1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(34, 38);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(784, 37);
-            textBox1.TabIndex = 2;
+            txtpassword.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtpassword.Location = new Point(34, 38);
+            txtpassword.Name = "txtpassword";
+            txtpassword.Size = new Size(784, 37);
+            txtpassword.TabIndex = 2;
+            txtpassword.Size = new Size(784, 37);
+            txtpassword.PasswordChar = '•';
             // 
-            // label2
+            // lblpassword
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(34, 10);
-            label2.Name = "label2";
-            label2.Size = new Size(92, 25);
-            label2.TabIndex = 1;
-            label2.Text = "Password";
+            lblpassword.AutoSize = true;
+            lblpassword.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblpassword.Location = new Point(34, 10);
+            lblpassword.Name = "lblpassword";
+            lblpassword.Size = new Size(92, 25);
+            lblpassword.TabIndex = 1;
+            lblpassword.Text = "Password";
             // 
             // btndaftar
             // 
@@ -197,28 +199,32 @@
             btndaftar.TabIndex = 5;
             btndaftar.Text = "Daftar";
             btndaftar.UseVisualStyleBackColor = false;
+            btndaftar.UseVisualStyleBackColor = false;
+            btndaftar.Click += btndaftar_Click;
             // 
-            // label3
+            // lblsudahpunyaakun
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(810, 732);
-            label3.Name = "label3";
-            label3.Size = new Size(178, 25);
-            label3.TabIndex = 6;
-            label3.Text = "Sudah punya akun?";
+            lblsudahpunyaakun.AutoSize = true;
+            lblsudahpunyaakun.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblsudahpunyaakun.Location = new Point(810, 732);
+            lblsudahpunyaakun.Name = "lblsudahpunyaakun";
+            lblsudahpunyaakun.Size = new Size(178, 25);
+            lblsudahpunyaakun.TabIndex = 6;
+            lblsudahpunyaakun.Text = "Sudah punya akun?";
             // 
-            // button1
+            // btnlogindisini
             // 
-            button1.BackColor = Color.Transparent;
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.FromArgb(255, 165, 81);
-            button1.Location = new Point(994, 727);
-            button1.Name = "button1";
-            button1.Size = new Size(128, 34);
-            button1.TabIndex = 7;
-            button1.Text = "Login di sini";
-            button1.UseVisualStyleBackColor = false;
+            btnlogindisini.BackColor = Color.Transparent;
+            btnlogindisini.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnlogindisini.ForeColor = Color.FromArgb(255, 165, 81);
+            btnlogindisini.Location = new Point(994, 727);
+            btnlogindisini.Name = "btnlogindisini";
+            btnlogindisini.Size = new Size(128, 34);
+            btnlogindisini.TabIndex = 7;
+            btnlogindisini.Text = "Login di sini";
+            btnlogindisini.UseVisualStyleBackColor = false;
+            btnlogindisini.UseVisualStyleBackColor = false;
+            btnlogindisini.Click += btnlogindisini_Click;
             // 
             // FormRegister
             // 
@@ -227,14 +233,14 @@
             BackColor = Color.FromArgb(255, 249, 243);
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1898, 1024);
-            Controls.Add(button1);
-            Controls.Add(label3);
+            Controls.Add(btnlogindisini);
+            Controls.Add(lblsudahpunyaakun);
             Controls.Add(btndaftar);
-            Controls.Add(panel1);
+            Controls.Add(pnlpassword);
             Controls.Add(pnlusername);
             Controls.Add(pnlemail);
             Controls.Add(pnlnamalengkap);
-            Controls.Add(label1);
+            Controls.Add(lbldaftar);
             Controls.Add(lblBuatAkunBaru);
             ForeColor = Color.FromArgb(128, 66, 50);
             FormBorderStyle = FormBorderStyle.None;
@@ -248,16 +254,15 @@
             pnlemail.PerformLayout();
             pnlusername.ResumeLayout(false);
             pnlusername.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            pnlpassword.ResumeLayout(false);
+            pnlpassword.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
         private Label lblBuatAkunBaru;
-        private Label label1;
+        private Label lbldaftar;
         private Panel pnlnamalengkap;
         private Label lblnamalengkap;
         private TextBox txtnamalengkap;
@@ -267,11 +272,11 @@
         private Panel pnlusername;
         private TextBox txtusername;
         private Label lblusername;
-        private Panel panel1;
-        private TextBox textBox1;
-        private Label label2;
+        private Panel pnlpassword;
+        private TextBox txtpassword;
+        private Label lblpassword;
         private Button btndaftar;
-        private Label label3;
-        private Button button1;
+        private Label lblsudahpunyaakun;
+        private Button btnlogindisini;
     }
 }

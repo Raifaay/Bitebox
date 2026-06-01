@@ -46,5 +46,25 @@ namespace Bitebox.Controllers
             }
             return akun;
         }
+
+        public bool Register(string namaLengkap, string email, string username, string password)
+        {
+            string query = "INSERT INTO akun (username, password_akun, nama_lengkap, email, role_akun) VALUES (@username, @password, @nama, @email, 'customer')";
+
+            using (NpgsqlConnection conn = DatabaseConnection.GetConnection())
+            {
+                conn.Open();
+                using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@password", password);
+                    cmd.Parameters.AddWithValue("@nama", namaLengkap);
+                    cmd.Parameters.AddWithValue("@email", email);
+
+                    int rows = cmd.ExecuteNonQuery();
+                    return rows > 0;
+                }
+            }
+        }
     }
 }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using Bitebox.Controllers;
 using Bitebox.Models;
+using Bitebox.Views;
 
 namespace Bitebox.Views
 {
@@ -57,7 +58,9 @@ namespace Bitebox.Views
 
         private void btndaftarakun_Click(object sender, EventArgs e)
         {
-            
+            FormRegister formRegister = new FormRegister();
+            formRegister.Show();
+            this.Hide();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
