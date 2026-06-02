@@ -90,6 +90,7 @@
             txtnamalengkap.Name = "txtnamalengkap";
             txtnamalengkap.Size = new Size(784, 37);
             txtnamalengkap.TabIndex = 2;
+            txtnamalengkap.TextChanged += txtnamalengkap_TextChanged;
             // 
             // lblnamalengkap
             // 
@@ -173,10 +174,9 @@
             txtpassword.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtpassword.Location = new Point(34, 38);
             txtpassword.Name = "txtpassword";
+            txtpassword.PasswordChar = '•';
             txtpassword.Size = new Size(784, 37);
             txtpassword.TabIndex = 2;
-            txtpassword.Size = new Size(784, 37);
-            txtpassword.PasswordChar = '•';
             // 
             // lblpassword
             // 
@@ -198,7 +198,6 @@
             btndaftar.Size = new Size(739, 73);
             btndaftar.TabIndex = 5;
             btndaftar.Text = "Daftar";
-            btndaftar.UseVisualStyleBackColor = false;
             btndaftar.UseVisualStyleBackColor = false;
             btndaftar.Click += btndaftar_Click;
             // 
@@ -222,7 +221,6 @@
             btnlogindisini.Size = new Size(128, 34);
             btnlogindisini.TabIndex = 7;
             btnlogindisini.Text = "Login di sini";
-            btnlogindisini.UseVisualStyleBackColor = false;
             btnlogindisini.UseVisualStyleBackColor = false;
             btnlogindisini.Click += btnlogindisini_Click;
             // 

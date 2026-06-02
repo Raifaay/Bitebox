@@ -72,5 +72,10 @@ namespace Bitebox.Views
             formLogin.Show();
             this.Close();
         }
+
+        private void txtnamalengkap_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

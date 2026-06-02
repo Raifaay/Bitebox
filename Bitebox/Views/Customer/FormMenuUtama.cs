@@ -34,5 +34,10 @@ namespace Bitebox.Views
         {
 
         }
+
+        private void FormMenuUtama_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

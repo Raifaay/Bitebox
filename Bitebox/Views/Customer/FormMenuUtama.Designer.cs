@@ -347,6 +347,7 @@
             Name = "FormMenuUtama";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormMenuUtama";
+            Load += FormMenuUtama_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pcblogo).EndInit();
             panel2.ResumeLayout(false);
