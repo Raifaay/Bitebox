@@ -1,70 +1,29 @@
 ﻿using System;
-using Npgsql;
-using Bitebox.Models;
-using Bitebox.Helpers;
+using Bitebox.Models.Entity;
+using Bitebox.Models.Context; // Memanggil namespace context yang baru dibuat
 
 namespace Bitebox.Controllers
 {
     internal class AkunController
     {
+        private readonly AkunContext _akunContext;
+
+        public AkunController()
+        {
+            // Inisialisasi data access / context layer di constructor
+            _akunContext = new AkunContext();
+        }
+
         public Akun Login(string usernameOrEmail, string password)
         {
-            Akun akun = null;
-            string query = "SELECT * FROM akun WHERE (username = @input OR email = @input) AND password_akun = @password";
-
-            using (NpgsqlConnection conn = DatabaseConnection.GetConnection())
-            {
-                conn.Open();
-                using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@input", usernameOrEmail);
-                    cmd.Parameters.AddWithValue("@password", password);
-
-                    using (NpgsqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            string role = reader["role_akun"].ToString();
-
-                            if (role == "admin")
-                            {
-                                akun = new Admin();
-                            }
-                            else
-                            {
-                                akun = new Customer();
-                            }
-
-                            akun.IdAkun = (int)reader["id_akun"];
-                            akun.Username = reader["username"].ToString();
-                            akun.NamaLengkap = reader["nama_lengkap"].ToString();
-                            akun.Email = reader["email"].ToString();
-                            akun.Role = role;
-                        }
-                    }
-                }
-            }
-            return akun;
+            // Controller hanya menjembatani ke model context
+            return _akunContext.GetAkunByCredentials(usernameOrEmail, password);
         }
 
         public bool Register(string namaLengkap, string email, string username, string password)
         {
-            string query = "INSERT INTO akun (username, password_akun, nama_lengkap, email, role_akun) VALUES (@username, @password, @nama, @email, 'customer')";
-
-            using (NpgsqlConnection conn = DatabaseConnection.GetConnection())
-            {
-                conn.Open();
-                using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@username", username);
-                    cmd.Parameters.AddWithValue("@password", password);
-                    cmd.Parameters.AddWithValue("@nama", namaLengkap);
-                    cmd.Parameters.AddWithValue("@email", email);
-
-                    int rows = cmd.ExecuteNonQuery();
-                    return rows > 0;
-                }
-            }
+            // Controller meneruskan data registrasi ke model context
+            return _akunContext.InsertAkun(namaLengkap, email, username, password);
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Bitebox.Models
+namespace Bitebox.Models.Entity
 {
     internal class Akun 
     {

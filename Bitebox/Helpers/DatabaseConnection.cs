@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿//KURANG EKSEKUSI, SKALAR, ACTION, SELECT
+using Npgsql;
 
 namespace Bitebox.Helpers
 {

@@ -49,7 +49,10 @@
             btnburger = new Button();
             btnpizza = new Button();
             btnminuman = new Button();
-            label3 = new Label();
+            lbldaftarmenu = new Label();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            flowLayoutPanel2 = new FlowLayoutPanel();
+            flowLayoutPanel3 = new FlowLayoutPanel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pcblogo).BeginInit();
             panel2.SuspendLayout();
@@ -255,7 +258,7 @@
             // 
             btnburger.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnburger.ForeColor = Color.FromArgb(128, 66, 50);
-            btnburger.Location = new Point(326, 512);
+            btnburger.Location = new Point(326, 510);
             btnburger.Name = "btnburger";
             btnburger.Size = new Size(179, 47);
             btnburger.TabIndex = 15;
@@ -266,7 +269,7 @@
             // 
             btnpizza.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnpizza.ForeColor = Color.FromArgb(128, 66, 50);
-            btnpizza.Location = new Point(549, 512);
+            btnpizza.Location = new Point(550, 510);
             btnpizza.Name = "btnpizza";
             btnpizza.Size = new Size(179, 47);
             btnpizza.TabIndex = 16;
@@ -277,32 +280,58 @@
             // 
             btnminuman.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnminuman.ForeColor = Color.FromArgb(128, 66, 50);
-            btnminuman.Location = new Point(764, 512);
+            btnminuman.Location = new Point(773, 510);
             btnminuman.Name = "btnminuman";
             btnminuman.Size = new Size(179, 47);
             btnminuman.TabIndex = 17;
             btnminuman.Text = "Minuman";
             btnminuman.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // lbldaftarmenu
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.FromArgb(128, 66, 50);
-            label3.Location = new Point(326, 580);
-            label3.Name = "label3";
-            label3.Size = new Size(186, 38);
-            label3.TabIndex = 18;
-            label3.Text = "Daftar Menu";
+            lbldaftarmenu.AutoSize = true;
+            lbldaftarmenu.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbldaftarmenu.ForeColor = Color.FromArgb(128, 66, 50);
+            lbldaftarmenu.Location = new Point(326, 580);
+            lbldaftarmenu.Name = "lbldaftarmenu";
+            lbldaftarmenu.Size = new Size(186, 38);
+            lbldaftarmenu.TabIndex = 18;
+            lbldaftarmenu.Text = "Daftar Menu";
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.BackColor = Color.White;
+            flowLayoutPanel1.Location = new Point(326, 649);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(370, 206);
+            flowLayoutPanel1.TabIndex = 19;
+            // 
+            // flowLayoutPanel2
+            // 
+            flowLayoutPanel2.BackColor = Color.White;
+            flowLayoutPanel2.Location = new Point(741, 649);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new Size(377, 206);
+            flowLayoutPanel2.TabIndex = 20;
+            // 
+            // flowLayoutPanel3
+            // 
+            flowLayoutPanel3.BackColor = Color.White;
+            flowLayoutPanel3.Location = new Point(1172, 649);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            flowLayoutPanel3.Size = new Size(370, 206);
+            flowLayoutPanel3.TabIndex = 20;
             // 
             // FormMenuUtama
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 249, 243);
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1898, 1024);
-            Controls.Add(label3);
+            Controls.Add(flowLayoutPanel3);
+            Controls.Add(flowLayoutPanel2);
+            Controls.Add(flowLayoutPanel1);
+            Controls.Add(lbldaftarmenu);
             Controls.Add(btnminuman);
             Controls.Add(btnpizza);
             Controls.Add(btnburger);
@@ -349,6 +378,9 @@
         private Button btnburger;
         private Button btnpizza;
         private Button btnminuman;
-        private Label label3;
+        private Label lbldaftarmenu;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel flowLayoutPanel2;
+        private FlowLayoutPanel flowLayoutPanel3;
     }
 }

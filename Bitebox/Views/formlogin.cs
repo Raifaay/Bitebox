@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Bitebox.Controllers;
-using Bitebox.Models;
+using Bitebox.Models.Entity;
 using Bitebox.Views;
 
 namespace Bitebox.Views
