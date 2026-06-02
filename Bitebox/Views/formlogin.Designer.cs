@@ -33,13 +33,14 @@
             // pcblogo
             // 
             pcblogo.BackColor = Color.Transparent;
-            pcblogo.BackgroundImage = (Image)resources.GetObject("pcblogo.BackgroundImage");
+            pcblogo.BackgroundImage = Properties.Resources.bitebox2;
             pcblogo.BackgroundImageLayout = ImageLayout.Stretch;
             pcblogo.Location = new Point(811, 12);
             pcblogo.Name = "pcblogo";
             pcblogo.Size = new Size(308, 287);
             pcblogo.TabIndex = 0;
             pcblogo.TabStop = false;
+            pcblogo.Click += pcblogo_Click;
             // 
             // lblemail
             // 

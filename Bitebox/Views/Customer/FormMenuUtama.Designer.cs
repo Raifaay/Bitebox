@@ -134,13 +134,14 @@
             // pcblogo
             // 
             pcblogo.BackColor = Color.Transparent;
-            pcblogo.BackgroundImage = (Image)resources.GetObject("pcblogo.BackgroundImage");
+            pcblogo.BackgroundImage = Properties.Resources.logo;
             pcblogo.BackgroundImageLayout = ImageLayout.Stretch;
             pcblogo.Location = new Point(30, 0);
             pcblogo.Name = "pcblogo";
             pcblogo.Size = new Size(214, 195);
             pcblogo.TabIndex = 1;
             pcblogo.TabStop = false;
+            pcblogo.Click += pcblogo_Click;
             // 
             // lblHai
             // 
@@ -213,7 +214,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImage = Properties.Resources.burger;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.Location = new Point(607, -21);
             pictureBox1.Name = "pictureBox1";

@@ -67,5 +67,10 @@ namespace Bitebox.Views
         {
             Application.Exit();
         }
+
+        private void pcblogo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
