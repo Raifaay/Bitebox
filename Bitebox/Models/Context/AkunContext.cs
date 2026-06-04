@@ -7,27 +7,26 @@ namespace Bitebox.Models.Context
 {
     internal class AkunContext
     {
-        // Mengambil data akun berdasarkan username/email dan password (untuk Login)
-        public Akun GetAkunByCredentials(string usernameOrEmail, string password)
+        public Akun? GetAkunByCredentials(string usernameOrEmail, string password)
         {
-            Akun akun = null;
-            string query = "SELECT * FROM akun WHERE (username = @input OR email = @input) AND password_akun = @password";
+            Akun? akun = null;
+            string query = "SELECT * FROM akun WHERE (username = @input1 OR email = @input2) AND password_akun = @password";
 
             using (NpgsqlConnection conn = DatabaseConnection.GetConnection())
             {
                 conn.Open();
                 using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@input", usernameOrEmail);
+                    cmd.Parameters.AddWithValue("@input1", usernameOrEmail);
+                    cmd.Parameters.AddWithValue("@input2", usernameOrEmail);
                     cmd.Parameters.AddWithValue("@password", password);
 
                     using (NpgsqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
                         {
-                            string role = reader["role_akun"].ToString();
+                            string role = reader["role_akun"]?.ToString() ?? "";
 
-                            // Polimorfisme berdasarkan role akun
                             if (role == "admin")
                             {
                                 akun = new Admin();
@@ -38,9 +37,9 @@ namespace Bitebox.Models.Context
                             }
 
                             akun.IdAkun = (int)reader["id_akun"];
-                            akun.Username = reader["username"].ToString();
-                            akun.NamaLengkap = reader["nama_lengkap"].ToString();
-                            akun.Email = reader["email"].ToString();
+                            akun.Username = reader["username"]?.ToString() ?? "";
+                            akun.NamaLengkap = reader["nama_lengkap"]?.ToString() ?? "";
+                            akun.Email = reader["email"]?.ToString() ?? "";
                             akun.Role = role;
                         }
                     }
@@ -49,7 +48,6 @@ namespace Bitebox.Models.Context
             return akun;
         }
 
-        // Memasukkan data akun baru ke database (untuk Register)
         public bool InsertAkun(string namaLengkap, string email, string username, string password)
         {
             string query = "INSERT INTO akun (username, password_akun, nama_lengkap, email, role_akun) VALUES (@username, @password, @nama, @email, 'customer')";

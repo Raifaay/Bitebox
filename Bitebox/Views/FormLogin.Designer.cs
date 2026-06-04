@@ -33,7 +33,7 @@
             // pcblogo
             // 
             pcblogo.BackColor = Color.Transparent;
-            pcblogo.BackgroundImage = (Image)resources.GetObject("pcblogo.BackgroundImage");
+            pcblogo.BackgroundImage = Properties.Resources.bitebox2;
             pcblogo.BackgroundImageLayout = ImageLayout.Stretch;
             pcblogo.Location = new Point(811, 12);
             pcblogo.Name = "pcblogo";
@@ -138,7 +138,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 249, 243);
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImage = Properties.Resources.login_;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1898, 1024);
             Controls.Add(btnClose);

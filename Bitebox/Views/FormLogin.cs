@@ -7,7 +7,6 @@ using System.Text;
 using System.Windows.Forms;
 using Bitebox.Controllers;
 using Bitebox.Models.Entity;
-using Bitebox.Views;
 
 namespace Bitebox.Views
 {
@@ -38,7 +37,7 @@ namespace Bitebox.Views
             }
 
             AkunController akunController = new AkunController();
-            Akun akun = akunController.Login(emailInput, passwordInput);
+            Akun? akun = akunController.Login(emailInput, passwordInput);
 
             if (akun == null)
             {
@@ -70,7 +69,6 @@ namespace Bitebox.Views
 
         private void pcblogo_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

@@ -55,14 +55,14 @@ namespace Bitebox.Views
 
             if (berhasil)
             {
-                MessageBox.Show("Akun berhasil dibuat, silakan login", "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Akun berhasil dibuat!\nUsername: {username}\nSilakan login dengan akun kamu.", "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 FormLogin formLogin = new FormLogin();
                 formLogin.Show();
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Registrasi gagal, coba lagi", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Registrasi gagal, email atau username sudah digunakan", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
