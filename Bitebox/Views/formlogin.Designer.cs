@@ -17,7 +17,6 @@
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             pcblogo = new PictureBox();
             lblemail = new Label();
             lblpassword = new Label();
@@ -124,7 +123,7 @@
             // btnClose
             // 
             btnClose.BackColor = Color.FromArgb(255, 249, 243);
-            btnClose.BackgroundImage = (Image)resources.GetObject("btnClose.BackgroundImage");
+            btnClose.BackgroundImage = Properties.Resources.btn;
             btnClose.BackgroundImageLayout = ImageLayout.Stretch;
             btnClose.Location = new Point(1792, 12);
             btnClose.Name = "btnClose";
