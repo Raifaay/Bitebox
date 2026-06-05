@@ -8,11 +8,11 @@ namespace Bitebox.Controllers
 {
     public class DashboardController
     {
-        private readonly DashboadContext _dashboardContext; 
+        private readonly DashboardContext _dashboardContext; 
 
         public DashboardController()
         {
-            _dashboardContext = new DashboadContext(); 
+            _dashboardContext = new DashboardContext(); 
         }
 
         public DashboardStats GetDashboardData()

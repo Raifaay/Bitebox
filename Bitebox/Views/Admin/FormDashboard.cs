@@ -1,4 +1,5 @@
 ﻿using Bitebox.Controllers;
+using Bitebox.Models.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,6 @@ namespace Bitebox.Views.Admin
     public partial class FormDashboard : Form
     {
         private readonly DashboardController _dashboardController;
-        private Form formAktif = null; 
 
         public FormDashboard()
         {
@@ -41,45 +41,35 @@ namespace Bitebox.Views.Admin
         {
             try
             {
-                long totalProduk = _dashboardController.GetTotalProduk();
-                long totalPenjualan = _dashboardController.GetTotalPenjualan();
-                decimal totalPenhasilan = _dashboardController.GetTotalPenghasilan();
+                DashboardStats model = _dashboardController.GetDashboardData();
 
-                lbAngka.Text = totalProduk.ToString();
-                lbAngka1.Text = totalPenjualan.ToString();
-                lbAngka2.Text = string.Format("Rp.{0:n0}", totalPenghasilan); 
+                lbAngka.Text = model.TotalProduk.ToString("N0");
+                lbAngka1.Text = model.TotalPenjualan.ToString("N0");
+                lbAngka2.Text = "Rp" + model.TotalPenghasilan.ToString("N0");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error memuat statistik: " + ex.Message, " BiteBox Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Gagal memuat data:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void BukaFormAnak(Form formAnak)
-        {
-            if (formAktif != null)
-            {
-                formAktif.Close();
-            }
-
-            formAktif = formAnak;
-            formAnak.TopLevel = false; 
-
-        }
+            
 
         private void btnPengelolaMenu_Click(object sender, EventArgs e)
         {
-
+            FormPengelolaMenu form = new FormPengelolaMenu();
+            form.Show(); 
         }
 
         private void btnLaporanPenjualan_Click(object sender, EventArgs e)
         {
-
+            FormLaporanPenjualan form = new FormLaporanPenjualan();
+            form.Show();
         }
 
         private void btnKelolaCustomer_Click(object sender, EventArgs e)
         {
-
+            FormKelolaCustomer form = new FormKelolaCustomer();
+            form.Show();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

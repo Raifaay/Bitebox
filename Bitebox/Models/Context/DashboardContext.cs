@@ -7,7 +7,7 @@ using Bitebox.Models.Entity;
 
 namespace Bitebox.Models.Context
 {
-    public class DashboadContext
+    public class DashboardContext
     {
         public DashboardStats GetDashboardStatsData()
         {
