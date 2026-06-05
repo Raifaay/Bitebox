@@ -7,10 +7,10 @@ namespace Bitebox.Models.Entity
     internal class Menu
     {
         private int idMenu;
-        private string namaMenu;
+        private string namaMenu = string.Empty;
         private int hargaMenu;
-        private string deskripsiMenu;
-        private byte[] gambarMenu;
+        private string deskripsiMenu = string.Empty;
+        private byte[]? gambarMenu;
         private int idKategoriMenu;
 
         public int IdMenu
@@ -33,7 +33,7 @@ namespace Bitebox.Models.Entity
             get { return deskripsiMenu; }
             set { deskripsiMenu = value; }
         }
-        public byte[] GambarMenu
+        public byte[]? GambarMenu
         {
             get { return gambarMenu; }
             set { gambarMenu = value; }
@@ -46,7 +46,7 @@ namespace Bitebox.Models.Entity
 
         public Menu() { }
 
-        public Menu(int idMenu, string namaMenu, int hargaMenu, string deskripsiMenu, byte[] gambarMenu, int idKategoriMenu)
+        public Menu(int idMenu, string namaMenu, int hargaMenu, string deskripsiMenu, byte[]? gambarMenu, int idKategoriMenu)
         {
             this.idMenu = idMenu;
             this.namaMenu = namaMenu;

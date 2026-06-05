@@ -86,6 +86,7 @@
             btnkeluar.TabIndex = 5;
             btnkeluar.Text = "Keluar";
             btnkeluar.UseVisualStyleBackColor = false;
+            btnkeluar.Click += btnkeluar_Click;
             // 
             // btnpengaturan
             // 
@@ -265,6 +266,7 @@
             btnburger.TabIndex = 15;
             btnburger.Text = "Burger";
             btnburger.UseVisualStyleBackColor = true;
+            btnburger.Click += btnburger_Click;
             // 
             // btnpizza
             // 
@@ -276,6 +278,7 @@
             btnpizza.TabIndex = 16;
             btnpizza.Text = "Pizza";
             btnpizza.UseVisualStyleBackColor = true;
+            btnpizza.Click += btnpizza_Click;
             // 
             // btnminuman
             // 
@@ -287,6 +290,7 @@
             btnminuman.TabIndex = 17;
             btnminuman.Text = "Minuman";
             btnminuman.UseVisualStyleBackColor = true;
+            btnminuman.Click += btnminuman_Click;
             // 
             // lbldaftarmenu
             // 
@@ -306,14 +310,17 @@
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(370, 206);
             flowLayoutPanel1.TabIndex = 19;
+            flowLayoutPanel1.WrapContents = false;
             // 
             // flowLayoutPanel2
             // 
             flowLayoutPanel2.BackColor = Color.White;
             flowLayoutPanel2.Location = new Point(741, 649);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(377, 206);
+            flowLayoutPanel2.Size = new Size(370, 206);
             flowLayoutPanel2.TabIndex = 20;
+            flowLayoutPanel2.WrapContents = false;
+            flowLayoutPanel2.Paint += flowLayoutPanel2_Paint;
             // 
             // flowLayoutPanel3
             // 
@@ -322,6 +329,7 @@
             flowLayoutPanel3.Name = "flowLayoutPanel3";
             flowLayoutPanel3.Size = new Size(370, 206);
             flowLayoutPanel3.TabIndex = 20;
+            flowLayoutPanel3.WrapContents = false;
             // 
             // FormMenuUtama
             // 
