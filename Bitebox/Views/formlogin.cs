@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using Bitebox.Controllers;
 using Bitebox.Models.Entity;
+using Bitebox.Views.Admin;
 
 namespace Bitebox.Views
 {
@@ -48,6 +49,9 @@ namespace Bitebox.Views
             if (akun.Role == "admin")
             {
                 MessageBox.Show("Login sebagai Admin", "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FormDashboard formDashboard = new FormDashboard();
+                formDashboard.Show();
+                this.Hide(); 
             }
             else
             {
