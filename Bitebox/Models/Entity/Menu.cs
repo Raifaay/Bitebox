@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Bitebox.Models.Entity
 {
-    internal class Menu
+    public class Menu
     {
         private int idMenu;
         private string namaMenu = string.Empty;

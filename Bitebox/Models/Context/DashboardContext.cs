@@ -28,7 +28,13 @@ namespace Bitebox.Models.Context
 
                 }
 
-                using (NpgsqlCommand cmd = new NpgsqlCommand("SELECT COALESCE(SUM(total_penghasilan), 0) FROM pesanan", conn))
+                string queryPenghasilan = @"
+                    SELECT COALESCE(SUM(dp.subtotal),0)
+                    FROM detail_pesanan dp
+                    JOIN pesanan p ON dp.id_pesanan = p.id_pesanan
+                    WHERE p.id_status_pembayaran = 1"; 
+
+                using (NpgsqlCommand cmd = new NpgsqlCommand(queryPenghasilan, conn))
                 {
                     stats.TotalPenghasilan = Convert.ToDecimal(cmd.ExecuteScalar());
                 }

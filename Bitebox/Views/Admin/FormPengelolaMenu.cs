@@ -14,5 +14,10 @@ namespace Bitebox.Views.Admin
         {
             InitializeComponent();
         }
+
+        private void btnEdit1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
