@@ -1,11 +1,14 @@
-﻿using System;
+﻿using Bitebox.Controllers;
+using Bitebox.Helpers;
+using Bitebox.Models.Entity;
+using Bitebox.Views.Customer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using Bitebox.Controllers;
 using MenuEntity = Bitebox.Models.Entity.Menu;
 
 namespace Bitebox.Views
@@ -56,7 +59,7 @@ namespace Bitebox.Views
             gambar.Size = new Size(120, 120);
             gambar.Location = new Point(10, 10);
             gambar.SizeMode = PictureBoxSizeMode.Zoom;
-            gambar.BackColor = Color.LightGray;
+            gambar.BackColor = Color.White;
 
             if (menu.GambarMenu != null && menu.GambarMenu.Length > 0)
             {
@@ -69,12 +72,12 @@ namespace Bitebox.Views
                 }
                 catch
                 {
-                    gambar.BackColor = Color.LightGray;
+                    gambar.BackColor = Color.White;
                 }
             }
             else
             {
-                gambar.BackColor = Color.LightGray;
+                gambar.BackColor = Color.White;
             }
 
             Label lblNama = new Label();
@@ -108,6 +111,21 @@ namespace Bitebox.Views
             btnTambah.FlatStyle = FlatStyle.Flat;
             btnTambah.Tag = menu;
 
+            btnTambah.Tag = menu;
+
+            btnTambah.Click += (s, e) =>
+            {
+                MenuEntity m = (MenuEntity)btnTambah.Tag;
+                KeranjangSession.TambahItem(new KeranjangItem
+                {
+                    IdMenu = m.IdMenu,
+                    NamaMenu = m.NamaMenu,
+                    HargaMenu = m.HargaMenu,
+                    Jumlah = 1
+                });
+                MessageBox.Show($"{m.NamaMenu} ditambahkan ke keranjang!");
+            };
+
             kartu.Controls.Add(gambar);
             kartu.Controls.Add(lblNama);
             kartu.Controls.Add(lblDeskripsi);
@@ -116,7 +134,6 @@ namespace Bitebox.Views
 
             return kartu;
         }
-
 
         private void btnburger_Click(object sender, EventArgs e)
         {
@@ -140,9 +157,13 @@ namespace Bitebox.Views
 
         private void btnkeluar_Click(object sender, EventArgs e)
         {
-            FormLogin formLogin = new FormLogin();
-            formLogin.Show();
-            this.Close();
+            DialogResult result = MessageBox.Show("Yakin mau keluar?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                FormLogin formLogin = new FormLogin();
+                formLogin.Show();
+                this.Close();
+            }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e) { }
@@ -151,6 +172,68 @@ namespace Bitebox.Views
         private void pcblogo_Click(object sender, EventArgs e) { }
 
         private void flowLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnkeranjang_Click(object sender, EventArgs e)
+        {
+            FormKeranjang formKeranjang = new FormKeranjang();
+            formKeranjang.Show();
+            this.Hide();
+        }
+
+        private void btnberanda_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnriwayat_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtcarimenufav_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblnikmatin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbldaftarmenu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbltanggal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnpengaturan_Click(object sender, EventArgs e)
         {
 
         }

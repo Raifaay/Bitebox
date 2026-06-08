@@ -38,7 +38,6 @@
             pcblogo = new PictureBox();
             lblHai = new Label();
             lblmaumakan = new Label();
-            btnClose = new Button();
             txtcarimenufav = new TextBox();
             panel2 = new Panel();
             label2 = new Label();
@@ -98,6 +97,7 @@
             btnpengaturan.TabIndex = 4;
             btnpengaturan.Text = "Pengaturan";
             btnpengaturan.UseVisualStyleBackColor = true;
+            btnpengaturan.Click += btnpengaturan_Click;
             // 
             // btnriwayat
             // 
@@ -109,6 +109,7 @@
             btnriwayat.TabIndex = 3;
             btnriwayat.Text = "Riwayat";
             btnriwayat.UseVisualStyleBackColor = true;
+            btnriwayat.Click += btnriwayat_Click;
             // 
             // btnkeranjang
             // 
@@ -120,6 +121,7 @@
             btnkeranjang.TabIndex = 2;
             btnkeranjang.Text = "Keranjang";
             btnkeranjang.UseVisualStyleBackColor = true;
+            btnkeranjang.Click += btnkeranjang_Click;
             // 
             // btnberanda
             // 
@@ -131,6 +133,7 @@
             btnberanda.TabIndex = 1;
             btnberanda.Text = "Beranda";
             btnberanda.UseVisualStyleBackColor = true;
+            btnberanda.Click += btnberanda_Click;
             // 
             // pcblogo
             // 
@@ -168,18 +171,6 @@
             lblmaumakan.Text = "Mau makan apa hari ini?";
             lblmaumakan.Click += label2_Click;
             // 
-            // btnClose
-            // 
-            btnClose.BackColor = Color.FromArgb(255, 249, 243);
-            btnClose.BackgroundImage = (Image)resources.GetObject("btnClose.BackgroundImage");
-            btnClose.BackgroundImageLayout = ImageLayout.Stretch;
-            btnClose.Location = new Point(1810, 41);
-            btnClose.Name = "btnClose";
-            btnClose.Size = new Size(76, 69);
-            btnClose.TabIndex = 9;
-            btnClose.UseVisualStyleBackColor = false;
-            btnClose.Click += btnClose_Click;
-            // 
             // txtcarimenufav
             // 
             txtcarimenufav.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -189,6 +180,7 @@
             txtcarimenufav.Size = new Size(1195, 45);
             txtcarimenufav.TabIndex = 10;
             txtcarimenufav.Tag = "";
+            txtcarimenufav.TextChanged += txtcarimenufav_TextChanged;
             // 
             // panel2
             // 
@@ -201,6 +193,7 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1541, 207);
             panel2.TabIndex = 12;
+            panel2.Paint += panel2_Paint;
             // 
             // label2
             // 
@@ -212,6 +205,7 @@
             label2.Size = new Size(381, 45);
             label2.TabIndex = 15;
             label2.Text = "lebih cepat dan praktis!!";
+            label2.Click += label2_Click_1;
             // 
             // pictureBox1
             // 
@@ -222,6 +216,7 @@
             pictureBox1.Size = new Size(413, 279);
             pictureBox1.TabIndex = 16;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // lblnikmatin
             // 
@@ -233,6 +228,7 @@
             lblnikmatin.Size = new Size(441, 45);
             lblnikmatin.TabIndex = 14;
             lblnikmatin.Text = "Nikmati makanan favoritmu";
+            lblnikmatin.Click += lblnikmatin_Click;
             // 
             // lbltanggal
             // 
@@ -244,6 +240,7 @@
             lbltanggal.Size = new Size(179, 38);
             lbltanggal.TabIndex = 13;
             lbltanggal.Text = "10 Mei 2026";
+            lbltanggal.Click += lbltanggal_Click;
             // 
             // label1
             // 
@@ -255,6 +252,7 @@
             label1.Size = new Size(213, 38);
             label1.TabIndex = 14;
             label1.Text = "Kategori Menu";
+            label1.Click += label1_Click_1;
             // 
             // btnburger
             // 
@@ -302,6 +300,7 @@
             lbldaftarmenu.Size = new Size(186, 38);
             lbldaftarmenu.TabIndex = 18;
             lbldaftarmenu.Text = "Daftar Menu";
+            lbldaftarmenu.Click += lbldaftarmenu_Click;
             // 
             // flowLayoutPanel1
             // 
@@ -348,7 +347,6 @@
             Controls.Add(lbltanggal);
             Controls.Add(panel2);
             Controls.Add(txtcarimenufav);
-            Controls.Add(btnClose);
             Controls.Add(lblmaumakan);
             Controls.Add(lblHai);
             Controls.Add(panel1);
@@ -377,7 +375,6 @@
         private Button btnpengaturan;
         private Label lblHai;
         private Label lblmaumakan;
-        private Button btnClose;
         private TextBox txtcarimenufav;
         private Panel panel2;
         private Label lbltanggal;

@@ -1,4 +1,5 @@
 using Bitebox.Views;
+using Bitebox.Views.Admin;
 
 namespace Bitebox
 {

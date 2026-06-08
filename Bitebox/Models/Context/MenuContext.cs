@@ -11,8 +11,7 @@ namespace Bitebox.Models.Context
         public List<MenuEntity> GetAllMenu()
         {
             List<MenuEntity> listMenu = new List<MenuEntity>();
-            string query = "SELECT * FROM menu";
-
+            string query = "SELECT * FROM menu ORDER BY id_menu ASC";
             using (NpgsqlConnection conn = DatabaseConnection.GetConnection())
             {
                 conn.Open();
@@ -40,7 +39,7 @@ namespace Bitebox.Models.Context
         public List<MenuEntity> GetMenuByKategori(int idKategori)
         {
             List<MenuEntity> listMenu = new List<MenuEntity>();
-            string query = "SELECT * FROM menu WHERE id_kategori_menu = @idKategori";
+            string query = "SELECT * FROM menu WHERE id_kategori_menu = @idKategori ORDER BY id_menu ASC";
 
             using (NpgsqlConnection conn = DatabaseConnection.GetConnection())
             {

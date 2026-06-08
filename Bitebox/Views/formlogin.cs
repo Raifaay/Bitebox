@@ -19,6 +19,7 @@ namespace Bitebox.Views
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
+
         }
 
         private void lblemail_Click(object sender, EventArgs e)
@@ -51,7 +52,9 @@ namespace Bitebox.Views
             }
             else
             {
-                MessageBox.Show("Login sebagai Customer", "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FormMenuUtama formMenu = new FormMenuUtama(akun.NamaLengkap);
+                formMenu.Show();
+                this.Hide();
             }
         }
 
