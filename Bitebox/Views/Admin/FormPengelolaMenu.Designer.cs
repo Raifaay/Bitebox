@@ -62,6 +62,7 @@
             btnLogout.TabIndex = 4;
             btnLogout.Text = "Logout ";
             btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
             // 
             // btnKelolaCustomer
             // 
@@ -71,6 +72,7 @@
             btnKelolaCustomer.TabIndex = 3;
             btnKelolaCustomer.Text = "Kelola Customer";
             btnKelolaCustomer.UseVisualStyleBackColor = true;
+            btnKelolaCustomer.Click += btnKelolaCustomer_Click;
             // 
             // btnLaporanPenjualan
             // 
@@ -80,6 +82,7 @@
             btnLaporanPenjualan.TabIndex = 2;
             btnLaporanPenjualan.Text = "Laporan Penjualan";
             btnLaporanPenjualan.UseVisualStyleBackColor = true;
+            btnLaporanPenjualan.Click += btnLaporanPenjualan_Click;
             // 
             // btnPengelolaMenu
             // 
@@ -98,6 +101,7 @@
             btnDashboard.TabIndex = 0;
             btnDashboard.Text = "Dashboard";
             btnDashboard.UseVisualStyleBackColor = true;
+            btnDashboard.Click += btnDashboard_Click;
             // 
             // lbPengelolaMenu
             // 
@@ -116,6 +120,7 @@
             btnTambah.TabIndex = 5;
             btnTambah.Text = "Tambah ";
             btnTambah.UseVisualStyleBackColor = true;
+            btnTambah.Click += btnTambah_Click;
             // 
             // fLPMenu
             // 
