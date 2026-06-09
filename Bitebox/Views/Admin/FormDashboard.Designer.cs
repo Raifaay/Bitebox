@@ -54,6 +54,7 @@
             // 
             // panel1
             // 
+            panel1.BackgroundImage = Properties.Resources.login_;
             panel1.Controls.Add(btnLogout);
             panel1.Controls.Add(btnKelolaCustomer);
             panel1.Controls.Add(btnLaporanPenjualan);

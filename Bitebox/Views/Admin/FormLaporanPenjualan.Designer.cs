@@ -277,6 +277,7 @@
             btnPerKategori.TabIndex = 1;
             btnPerKategori.Text = "Per Kategori";
             btnPerKategori.UseVisualStyleBackColor = true;
+            btnPerKategori.Click += btnPerKategori_Click;
             // 
             // FormLaporanPenjualan
             // 

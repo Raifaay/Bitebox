@@ -59,7 +59,7 @@ namespace Bitebox.Views.Customer
                             WHERE p.id_akun = @idAkun
                             GROUP BY p.id_pesanan, p.tanggal_pesanan, p.kode_pickup, p.id_meja,
                             m.nomor_meja, sp.nama_status_pesanan
-                            ORDER BY p.tanggal_pesanan DESC";
+                            ORDER BY p.tanggal_pesanan DESC"; //bungkus view + taro context 
 
             using (NpgsqlConnection conn = DatabaseConnection.GetConnection())
             {

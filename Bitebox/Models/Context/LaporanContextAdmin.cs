@@ -18,7 +18,7 @@ namespace Bitebox.Models.Context
             {
                 conn.Open();
                 using var cmd = new NpgsqlCommand(query, conn);
-                return (int)(long)cmd.ExecuteScalar()!;
+                return (int)(long)cmd.ExecuteScalar()!; 
             }
         }
 
@@ -31,7 +31,7 @@ namespace Bitebox.Models.Context
             {
                 conn.Open();
                 using var cmd = new NpgsqlCommand(query, conn);
-                return (int)(long)cmd.ExecuteScalar()!;
+                return (int)(long)cmd.ExecuteScalar()!;//groupby
             }
         }
 
@@ -51,7 +51,7 @@ namespace Bitebox.Models.Context
                 JOIN kategori_menu km ON m.id_kategori_menu = km.id_kategori_menu
                 WHERE (@kategori IS NULL OR km.nama_kategori = @kategori)
                 GROUP BY dp.nama_menu, km.nama_kategori
-                ORDER BY jumlah_terjual DESC";
+                ORDER BY jumlah_terjual DESC"; //bungkus
 
             using (var conn = DatabaseConnection.GetConnection())
             {

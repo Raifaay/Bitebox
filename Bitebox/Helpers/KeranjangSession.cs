@@ -26,7 +26,7 @@ namespace Bitebox.Helpers
             Items.Clear();
         }
 
-        public static int TotalHarga()
+        public static int TotalHarga()//antara ini dan itu
         {
             int total = 0;
             foreach (var item in Items)

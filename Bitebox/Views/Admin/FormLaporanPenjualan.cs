@@ -101,5 +101,10 @@ namespace Bitebox.Views.Admin
                 this.Close();
             }
         }
+
+        private void btnPerKategori_Click(object sender, EventArgs e)
+        {
+            //kasih function
+        }
     }
 }
