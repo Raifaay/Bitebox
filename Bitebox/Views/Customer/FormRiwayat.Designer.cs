@@ -1,6 +1,6 @@
 ﻿namespace Bitebox.Views.Customer
 {
-    partial class FormKeranjang
+    partial class FormRiwayat
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormKeranjang));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRiwayat));
             pnlsidebar = new Panel();
             btnkeluar = new Button();
             btnpengaturan = new Button();
@@ -36,13 +36,11 @@
             btnkeranjang = new Button();
             btnberanda = new Button();
             pcblogo = new PictureBox();
-            lblKeranjangPesanan = new Label();
-            FlowKeranjang = new FlowLayoutPanel();
-            lblharga = new Label();
-            lbltotalpembayaran = new Label();
-            btnCheckout = new Button();
+            label1 = new Label();
+            dgvRiwayat = new DataGridView();
             pnlsidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pcblogo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRiwayat).BeginInit();
             SuspendLayout();
             // 
             // pnlsidebar
@@ -58,7 +56,7 @@
             pnlsidebar.Location = new Point(0, 1);
             pnlsidebar.Name = "pnlsidebar";
             pnlsidebar.Size = new Size(278, 1024);
-            pnlsidebar.TabIndex = 1;
+            pnlsidebar.TabIndex = 3;
             // 
             // btnkeluar
             // 
@@ -106,6 +104,7 @@
             btnkeranjang.TabIndex = 2;
             btnkeranjang.Text = "Keranjang";
             btnkeranjang.UseVisualStyleBackColor = true;
+            btnkeranjang.Click += btnkeranjang_Click;
             // 
             // btnberanda
             // 
@@ -130,85 +129,51 @@
             pcblogo.TabIndex = 1;
             pcblogo.TabStop = false;
             // 
-            // lblKeranjangPesanan
+            // label1
             // 
-            lblKeranjangPesanan.AutoSize = true;
-            lblKeranjangPesanan.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblKeranjangPesanan.ForeColor = Color.FromArgb(128, 66, 50);
-            lblKeranjangPesanan.Location = new Point(317, 55);
-            lblKeranjangPesanan.Name = "lblKeranjangPesanan";
-            lblKeranjangPesanan.Size = new Size(265, 38);
-            lblKeranjangPesanan.TabIndex = 2;
-            lblKeranjangPesanan.Text = "Keranjang Pesanan";
-            lblKeranjangPesanan.Click += lblKeranjangPesanan_Click;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.FromArgb(128, 66, 50);
+            label1.Location = new Point(326, 64);
+            label1.Name = "label1";
+            label1.Size = new Size(236, 38);
+            label1.TabIndex = 4;
+            label1.Text = "Riwayat Pesanan";
             // 
-            // FlowKeranjang
+            // dgvRiwayat
             // 
-            FlowKeranjang.AutoScroll = true;
-            FlowKeranjang.BackColor = Color.FromArgb(255, 240, 222);
-            FlowKeranjang.FlowDirection = FlowDirection.TopDown;
-            FlowKeranjang.Location = new Point(317, 119);
-            FlowKeranjang.Name = "FlowKeranjang";
-            FlowKeranjang.Size = new Size(1381, 613);
-            FlowKeranjang.TabIndex = 3;
-            FlowKeranjang.WrapContents = false;
+            dgvRiwayat.AllowUserToAddRows = false;
+            dgvRiwayat.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvRiwayat.BackgroundColor = Color.FromArgb(255, 240, 222);
+            dgvRiwayat.BorderStyle = BorderStyle.None;
+            dgvRiwayat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvRiwayat.Location = new Point(326, 130);
+            dgvRiwayat.Name = "dgvRiwayat";
+            dgvRiwayat.ReadOnly = true;
+            dgvRiwayat.RowHeadersWidth = 62;
+            dgvRiwayat.Size = new Size(1468, 699);
+            dgvRiwayat.TabIndex = 5;
+            dgvRiwayat.CellContentClick += dgvRiwayat_CellContentClick;
             // 
-            // lblharga
-            // 
-            lblharga.AutoSize = true;
-            lblharga.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblharga.ForeColor = Color.FromArgb(128, 66, 50);
-            lblharga.Location = new Point(1311, 792);
-            lblharga.Name = "lblharga";
-            lblharga.Size = new Size(66, 32);
-            lblharga.TabIndex = 5;
-            lblharga.Text = "Rp 0";
-            // 
-            // lbltotalpembayaran
-            // 
-            lbltotalpembayaran.AutoSize = true;
-            lbltotalpembayaran.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbltotalpembayaran.ForeColor = Color.FromArgb(128, 66, 50);
-            lbltotalpembayaran.Location = new Point(329, 786);
-            lbltotalpembayaran.Name = "lbltotalpembayaran";
-            lbltotalpembayaran.Size = new Size(251, 38);
-            lbltotalpembayaran.TabIndex = 6;
-            lbltotalpembayaran.Text = "Total Pembayaran";
-            // 
-            // btnCheckout
-            // 
-            btnCheckout.BackColor = Color.FromArgb(255, 165, 81);
-            btnCheckout.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCheckout.ForeColor = SystemColors.ButtonHighlight;
-            btnCheckout.Location = new Point(317, 834);
-            btnCheckout.Name = "btnCheckout";
-            btnCheckout.Size = new Size(1381, 92);
-            btnCheckout.TabIndex = 7;
-            btnCheckout.Text = "Check Out";
-            btnCheckout.UseVisualStyleBackColor = false;
-            btnCheckout.Click += btnCheckout_Click;
-            // 
-            // FormKeranjang
+            // FormRiwayat
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 249, 243);
-            BackgroundImageLayout = ImageLayout.Stretch;
+            BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(1898, 1024);
-            Controls.Add(btnCheckout);
-            Controls.Add(lbltotalpembayaran);
-            Controls.Add(lblharga);
-            Controls.Add(FlowKeranjang);
-            Controls.Add(lblKeranjangPesanan);
+            Controls.Add(dgvRiwayat);
+            Controls.Add(label1);
             Controls.Add(pnlsidebar);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
-            Name = "FormKeranjang";
+            Name = "FormRiwayat";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormKeranjang";
-            Load += FormKeranjang_Load;
+            Text = "FormRiwayat";
+            Load += FormRiwayat_Load;
             pnlsidebar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pcblogo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRiwayat).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -222,10 +187,7 @@
         private Button btnkeranjang;
         private Button btnberanda;
         private PictureBox pcblogo;
-        private Label lblKeranjangPesanan;
-        private FlowLayoutPanel FlowKeranjang;
-        private Label lblharga;
-        private Label lbltotalpembayaran;
-        private Button btnCheckout;
+        private Label label1;
+        private DataGridView dgvRiwayat;
     }
 }

@@ -439,6 +439,11 @@ namespace Bitebox.Views.Admin
                 this.Close();
             }
         }
+
+        private void FormPengelolaMenu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public class KategoriItem

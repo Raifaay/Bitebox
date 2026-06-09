@@ -56,7 +56,7 @@ namespace Bitebox.Views
             }
             else
             {
-                FormMenuUtama formMenu = new FormMenuUtama(akun.NamaLengkap);
+                FormMenuUtama formMenu = new FormMenuUtama(akun.NamaLengkap, akun.IdAkun);
                 formMenu.Show();
                 this.Hide();
             }

@@ -8,9 +8,12 @@ namespace Bitebox.Views.Customer
 {
     public partial class FormKeranjang : Form
     {
-        public FormKeranjang()
+        private int idAkun;
+
+        public FormKeranjang(int idAkun)
         {
             InitializeComponent();
+            this.idAkun = idAkun;
         }
 
         private void FormKeranjang_Load(object sender, EventArgs e)
@@ -37,7 +40,7 @@ namespace Bitebox.Views.Customer
         private Panel BuatBarisItem(KeranjangItem item)
         {
             Panel baris = new Panel();
-            baris.Size = new Size(1230, 130);
+            baris.Size = new Size(1380, 140);
             baris.BackColor = Color.FromArgb(255, 240, 222);
             baris.Margin = new Padding(0, 0, 0, 5);
 
@@ -65,7 +68,7 @@ namespace Bitebox.Views.Customer
             btnPlus.FlatStyle = FlatStyle.Flat;
             btnPlus.Click += (s, e) => { item.Jumlah++; TampilkanKeranjang(); };
             btnPlus.Location = new Point(900, 30);
-            
+
 
             Label lblJumlah = new Label();
             lblJumlah.Text = item.Jumlah.ToString();
@@ -98,11 +101,12 @@ namespace Bitebox.Views.Customer
             lblSubtotal.Size = new Size(300, 20);
 
             Button btnHapus = new Button();
-            btnHapus.Location = new Point(1270, 0);
+            btnHapus.Size = new Size(90, 130);
+            btnHapus.Location = new Point(1130, 0);
             btnHapus.BackColor = Color.Red;
             btnHapus.FlatStyle = FlatStyle.Flat;
             btnHapus.BackgroundImage = Properties.Resources.sampahkeranjang;
-            btnHapus.BackgroundImageLayout = ImageLayout.Center;
+            btnHapus.BackgroundImageLayout = ImageLayout.Zoom;
             btnHapus.Click += (s, e) =>
             {
                 KeranjangSession.HapusItem(item.IdMenu);
@@ -137,7 +141,7 @@ namespace Bitebox.Views.Customer
 
         private void btnsampah_Click(object sender, EventArgs e)
         {
-           
+
             if (KeranjangSession.Items.Count == 0)
             {
                 MessageBox.Show("Keranjang sudah kosong!");
@@ -148,8 +152,39 @@ namespace Bitebox.Views.Customer
             {
                 KeranjangSession.Clear();
                 TampilkanKeranjang();
-            
+
+            }
         }
-    }
+
+        private void btnkeluar_Click(object sender, EventArgs e)
+        {
+            var konfirmasi = MessageBox.Show("Yakin mau keluar?", "Konfirmasi", MessageBoxButtons.YesNo);
+            if (konfirmasi == DialogResult.Yes)
+            {
+                KeranjangSession.Clear();
+                FormLogin formLogin = new FormLogin();
+                formLogin.Show();
+                this.Close();
+            }
+        }
+
+        private void btnCheckout_Click(object sender, EventArgs e)
+        {
+            if (KeranjangSession.Items.Count == 0)
+            {
+                MessageBox.Show("Keranjang masih kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            FormCheckout formCheckout = new FormCheckout(idAkun);
+            formCheckout.Show();
+            this.Close();
+        }
+
+        private void btnriwayat_Click(object sender, EventArgs e)
+        {
+            FormRiwayat formRiwayat = new FormRiwayat(idAkun);
+            formRiwayat.Show();
+            this.Close();
+        }
     }
 }

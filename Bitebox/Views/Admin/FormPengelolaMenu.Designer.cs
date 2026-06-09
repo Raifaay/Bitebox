@@ -158,6 +158,7 @@
             Name = "FormPengelolaMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormPengelolaMenu";
+            Load += FormPengelolaMenu_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

@@ -10,7 +10,7 @@ namespace Bitebox.Helpers
             "Port=5432;" +
             "Database=bitebox;" +
             "Username=postgres;" +
-            "Password=0402";
+            "Password=2007";
 
         public static NpgsqlConnection GetConnection()
         {

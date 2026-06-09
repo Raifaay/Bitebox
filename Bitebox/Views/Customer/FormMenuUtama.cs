@@ -17,11 +17,13 @@ namespace Bitebox.Views
     {
         private MenuController menuController = new MenuController();
         private string namaCustomer = "";
+        private int idAkun;
 
-        public FormMenuUtama(string nama)
+        public FormMenuUtama(string nama, int idAkun)
         {
             InitializeComponent();
             this.namaCustomer = nama;
+            this.idAkun = idAkun;
         }
 
         private void FormMenuUtama_Load(object sender, EventArgs e)
@@ -178,7 +180,7 @@ namespace Bitebox.Views
 
         private void btnkeranjang_Click(object sender, EventArgs e)
         {
-            FormKeranjang formKeranjang = new FormKeranjang();
+            FormKeranjang formKeranjang = new FormKeranjang(idAkun);
             formKeranjang.Show();
             this.Hide();
         }
@@ -190,7 +192,9 @@ namespace Bitebox.Views
 
         private void btnriwayat_Click(object sender, EventArgs e)
         {
-
+            FormRiwayat formRiwayat = new FormRiwayat(idAkun);
+            formRiwayat.Show();
+            this.Hide();
         }
 
         private void txtcarimenufav_TextChanged(object sender, EventArgs e)
