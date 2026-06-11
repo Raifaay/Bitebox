@@ -152,6 +152,7 @@
             FlowKeranjang.Size = new Size(1381, 613);
             FlowKeranjang.TabIndex = 3;
             FlowKeranjang.WrapContents = false;
+            FlowKeranjang.Paint += FlowKeranjang_Paint;
             // 
             // lblharga
             // 

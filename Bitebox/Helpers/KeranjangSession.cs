@@ -26,9 +26,9 @@ namespace Bitebox.Helpers
             Items.Clear();
         }
 
-        public static int TotalHarga()//antara ini dan itu
+        public static decimal TotalHarga()
         {
-            int total = 0;
+            decimal total = 0;
             foreach (var item in Items)
                 total += item.Subtotal;
             return total;

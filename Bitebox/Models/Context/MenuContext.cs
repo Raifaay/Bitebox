@@ -22,12 +22,14 @@ namespace Bitebox.Models.Context
                         while (reader.Read())
                         {
                             MenuEntity menu = new MenuEntity();
-                            menu.IdMenu = (int)reader["id_menu"];
+
+                            menu.IdMenu = Convert.ToInt32(reader["id_menu"]);
                             menu.NamaMenu = reader["nama_menu"]?.ToString() ?? "";
-                            menu.HargaMenu = (int)reader["harga_menu"];
+                            menu.HargaMenu = Convert.ToInt32(reader["harga_menu"]);
                             menu.DeskripsiMenu = reader["deskripsi_menu"]?.ToString() ?? "";
                             menu.GambarMenu = reader["gambar_menu"] as byte[];
-                            menu.IdKategoriMenu = (int)reader["id_kategori_menu"];
+                            menu.IdKategoriMenu = Convert.ToInt32(reader["id_kategori_menu"]);
+
                             listMenu.Add(menu);
                         }
                     }
@@ -53,12 +55,14 @@ namespace Bitebox.Models.Context
                         while (reader.Read())
                         {
                             MenuEntity menu = new MenuEntity();
-                            menu.IdMenu = (int)reader["id_menu"];
+
+                            menu.IdMenu = Convert.ToInt32(reader["id_menu"]);
                             menu.NamaMenu = reader["nama_menu"]?.ToString() ?? "";
-                            menu.HargaMenu = (int)reader["harga_menu"];
+                            menu.HargaMenu = Convert.ToInt32(reader["harga_menu"]);
                             menu.DeskripsiMenu = reader["deskripsi_menu"]?.ToString() ?? "";
                             menu.GambarMenu = reader["gambar_menu"] as byte[];
-                            menu.IdKategoriMenu = (int)reader["id_kategori_menu"];
+                            menu.IdKategoriMenu = Convert.ToInt32(reader["id_kategori_menu"]);
+
                             listMenu.Add(menu);
                         }
                     }

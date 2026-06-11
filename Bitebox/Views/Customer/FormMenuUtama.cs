@@ -123,7 +123,8 @@ namespace Bitebox.Views
                     IdMenu = m.IdMenu,
                     NamaMenu = m.NamaMenu,
                     HargaMenu = m.HargaMenu,
-                    Jumlah = 1
+                    Jumlah = 1,
+                    IdAkun = this.idAkun 
                 });
                 MessageBox.Show($"{m.NamaMenu} ditambahkan ke keranjang!");
             };

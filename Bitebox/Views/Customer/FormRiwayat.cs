@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Bitebox.Helpers;
+using Bitebox.Models.Context;
+using Npgsql;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Npgsql;
-using Bitebox.Helpers;
+using Bitebox.Models.Entity;
+using Bitebox.Models.Context;
 
 namespace Bitebox.Views.Customer
 {
@@ -42,49 +45,25 @@ namespace Bitebox.Views.Customer
         {
             dgvRiwayat.Rows.Clear();
             dgvRiwayat.Columns.Clear();
-
             dgvRiwayat.Columns.Add("id_pesanan", "ID Pesanan");
             dgvRiwayat.Columns.Add("tanggal", "Tanggal");
             dgvRiwayat.Columns.Add("jenis", "Jenis Layanan");
             dgvRiwayat.Columns.Add("total", "Total");
             dgvRiwayat.Columns.Add("status", "Status Pesanan");
 
-            string query = @"SELECT p.id_pesanan, p.tanggal_pesanan, p.kode_pickup, p.id_meja,
-                            m.nomor_meja, sp.nama_status_pesanan,
-                            SUM(dp.subtotal) as total
-                            FROM pesanan p
-                            LEFT JOIN meja m ON p.id_meja = m.id_meja
-                            LEFT JOIN status_pesanan sp ON p.id_status_pesanan = sp.id_status_pesanan
-                            LEFT JOIN detail_pesanan dp ON p.id_pesanan = dp.id_pesanan
-                            WHERE p.id_akun = @idAkun
-                            GROUP BY p.id_pesanan, p.tanggal_pesanan, p.kode_pickup, p.id_meja,
-                            m.nomor_meja, sp.nama_status_pesanan
-                            ORDER BY p.tanggal_pesanan DESC"; //bungkus view + taro context 
+            RiwayatContext riwayatContext = new RiwayatContext();
+            List<RiwayatItem> listRiwayat = riwayatContext.GetRiwayatByAkun(idAkun);
 
-            using (NpgsqlConnection conn = DatabaseConnection.GetConnection())
+            foreach (RiwayatItem r in listRiwayat)
             {
-                conn.Open();
-                using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@idAkun", idAkun);
-                    using (NpgsqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            string jenis = reader["id_meja"] == DBNull.Value
-                                ? $"Take Away"
-                                : $"Eat In - {reader["nomor_meja"]}";
-
-                            dgvRiwayat.Rows.Add(
-                                $"#{reader["id_pesanan"]}",
-                                Convert.ToDateTime(reader["tanggal_pesanan"]).ToString("dd MMM yyyy"),
-                                jenis,
-                                $"Rp {(reader["total"] == DBNull.Value ? 0 : Convert.ToInt32(reader["total"])):N0}",
-                                reader["nama_status_pesanan"]?.ToString()
-                            );
-                        }
-                    }
-                }
+                string jenis = r.KodePickup != null ? "Take Away" : $"Eat In - {r.NomorMeja}";
+                dgvRiwayat.Rows.Add(
+                    $"#{r.IdPesanan}",
+                    r.TanggalPesanan.ToString("dd MMM yyyy"),
+                    jenis,
+                    $"Rp {r.Total:N0}",
+                    r.NamaStatus
+                );
             }
         }
 

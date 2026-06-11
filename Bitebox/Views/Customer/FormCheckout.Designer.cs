@@ -39,7 +39,7 @@
             lblKonfirmasi = new Label();
             pnllayanan = new Panel();
             btnTakeAway = new Button();
-            btneatin = new Button();
+            btndinein = new Button();
             lblPilihLayanan = new Label();
             panel1 = new Panel();
             cmbNomorMeja = new ComboBox();
@@ -48,6 +48,8 @@
             lblTotalPembayaran = new Label();
             lblTotal = new Label();
             btnKonfirmasiPesanan = new Button();
+            btnTunai = new Button();
+            btnNonTunai = new Button();
             pnlsidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pcblogo).BeginInit();
             pnllayanan.SuspendLayout();
@@ -154,7 +156,7 @@
             // 
             pnllayanan.BackColor = Color.FromArgb(255, 240, 222);
             pnllayanan.Controls.Add(btnTakeAway);
-            pnllayanan.Controls.Add(btneatin);
+            pnllayanan.Controls.Add(btndinein);
             pnllayanan.Controls.Add(lblPilihLayanan);
             pnllayanan.Location = new Point(324, 97);
             pnllayanan.Name = "pnllayanan";
@@ -162,7 +164,7 @@
             pnllayanan.TabIndex = 4;
             // 
             // btnTakeAway
-            // 
+            //
             btnTakeAway.BackColor = Color.FromArgb(255, 249, 243);
             btnTakeAway.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnTakeAway.ForeColor = Color.FromArgb(128, 66, 50);
@@ -172,18 +174,20 @@
             btnTakeAway.TabIndex = 2;
             btnTakeAway.Text = "Take Away";
             btnTakeAway.UseVisualStyleBackColor = false;
+            btnTakeAway.Click += btnTakeAway_Click; // ← tambah ini
             // 
-            // btneatin
+            // btndinein
             // 
-            btneatin.BackColor = Color.FromArgb(255, 249, 243);
-            btneatin.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btneatin.ForeColor = Color.FromArgb(128, 66, 50);
-            btneatin.Location = new Point(57, 61);
-            btneatin.Name = "btneatin";
-            btneatin.Size = new Size(608, 206);
-            btneatin.TabIndex = 1;
-            btneatin.Text = "Eat In";
-            btneatin.UseVisualStyleBackColor = false;
+            btndinein.BackColor = Color.FromArgb(255, 249, 243);
+            btndinein.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btndinein.ForeColor = Color.FromArgb(128, 66, 50);
+            btndinein.Location = new Point(57, 61);
+            btndinein.Name = "btndinein";
+            btndinein.Size = new Size(608, 206);
+            btndinein.TabIndex = 1;
+            btndinein.Text = "Dine In";
+            btndinein.UseVisualStyleBackColor = false;
+            btndinein.Click += btndinein_Click;
             // 
             // lblPilihLayanan
             // 
@@ -230,9 +234,9 @@
             // 
             // FlowRingkasan
             // 
-            FlowRingkasan.Location = new Point(324, 564);
+            FlowRingkasan.Location = new Point(324, 613);
             FlowRingkasan.Name = "FlowRingkasan";
-            FlowRingkasan.Size = new Size(1412, 198);
+            FlowRingkasan.Size = new Size(1412, 149);
             FlowRingkasan.TabIndex = 6;
             // 
             // lblTotalPembayaran
@@ -270,6 +274,30 @@
             btnKonfirmasiPesanan.UseVisualStyleBackColor = false;
             btnKonfirmasiPesanan.Click += btnKonfirmasiPesanan_Click;
             // 
+            // btnTunai
+            // 
+            btnTunai.BackColor = Color.FromArgb(255, 240, 222);
+            btnTunai.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnTunai.ForeColor = Color.FromArgb(128, 66, 50);
+            btnTunai.Location = new Point(327, 560);
+            btnTunai.Name = "btnTunai";
+            btnTunai.Size = new Size(154, 34);
+            btnTunai.TabIndex = 10;
+            btnTunai.Text = "Tunai";
+            btnTunai.UseVisualStyleBackColor = false;
+            // 
+            // btnNonTunai
+            // 
+            btnNonTunai.BackColor = Color.FromArgb(255, 240, 222);
+            btnNonTunai.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnNonTunai.ForeColor = Color.FromArgb(128, 66, 50);
+            btnNonTunai.Location = new Point(503, 560);
+            btnNonTunai.Name = "btnNonTunai";
+            btnNonTunai.Size = new Size(154, 34);
+            btnNonTunai.TabIndex = 11;
+            btnNonTunai.Text = "Non Tunai";
+            btnNonTunai.UseVisualStyleBackColor = false;
+            // 
             // FormCheckout
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -277,6 +305,8 @@
             BackColor = Color.FromArgb(255, 249, 243);
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1876, 968);
+            Controls.Add(btnNonTunai);
+            Controls.Add(btnTunai);
             Controls.Add(btnKonfirmasiPesanan);
             Controls.Add(lblTotal);
             Controls.Add(lblTotalPembayaran);
@@ -313,7 +343,7 @@
         private Label lblKonfirmasi;
         private Panel pnllayanan;
         private Button btnTakeAway;
-        private Button btneatin;
+        private Button btndinein;
         private Label lblPilihLayanan;
         private Panel panel1;
         private ComboBox cmbNomorMeja;
@@ -322,5 +352,7 @@
         private Label lblTotalPembayaran;
         private Label lblTotal;
         private Button btnKonfirmasiPesanan;
+        private Button btnTunai;
+        private Button btnNonTunai;
     }
 }

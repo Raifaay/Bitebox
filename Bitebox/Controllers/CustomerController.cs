@@ -10,16 +10,13 @@ namespace Bitebox.Controllers
     {
         private CustomerHelper _helper = new CustomerHelper();
 
-        // Mengambil data dari Helper, dibungkus ke List<CustomerModel>, lalu dikembalikan
         public List<EntityCustomerAdmin> GetCustomerList()
         {
             return _helper.GetAllCustomers();
         }
 
-        // Menangani logika penonaktifan akun
         public bool ToggleCustomerStatus(int id, bool currentStatus)
         {
-            // Jika tadinya true (aktif), diubah jadi false (nonaktif), dan sebaliknya
             bool newStatus = !currentStatus;
             return _helper.UpdateStatus(id, newStatus);
         }

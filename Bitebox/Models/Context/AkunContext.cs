@@ -36,7 +36,11 @@ namespace Bitebox.Models.Context
                                 akun = new Customer();
                             }
 
-                            akun.IdAkun = (int)reader["id_akun"];
+                            if (reader["id_akun"] != DBNull.Value)
+                            {
+                                akun.IdAkun = Convert.ToInt32(reader["id_akun"]);
+                            }
+
                             akun.Username = reader["username"]?.ToString() ?? "";
                             akun.NamaLengkap = reader["nama_lengkap"]?.ToString() ?? "";
                             akun.Email = reader["email"]?.ToString() ?? "";

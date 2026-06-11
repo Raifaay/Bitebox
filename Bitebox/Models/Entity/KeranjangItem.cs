@@ -8,8 +8,10 @@ namespace Bitebox.Models.Entity
     {
         public int IdMenu { get; set; }
         public string NamaMenu { get; set; } = string.Empty;
-        public int HargaMenu { get; set; }
+        public decimal HargaMenu { get; set; }
         public int Jumlah { get; set; }
-        public int Subtotal => HargaMenu * Jumlah;
+        public int IdAkun { get; set; }
+
+        public decimal Subtotal => HargaMenu * Jumlah;
     }
 }

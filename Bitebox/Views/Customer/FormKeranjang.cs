@@ -61,27 +61,24 @@ namespace Bitebox.Views.Customer
             Button btnPlus = new Button();
             btnPlus.Text = "+";
             btnPlus.Size = new Size(50, 50);
-            btnPlus.Location = new Point(700, 40);
+            btnPlus.Location = new Point(900, 30);
             btnPlus.BackColor = Color.FromArgb(255, 165, 81);
             btnPlus.ForeColor = Color.White;
             btnPlus.Font = new Font("Segoe UI", 12, FontStyle.Bold);
             btnPlus.FlatStyle = FlatStyle.Flat;
             btnPlus.Click += (s, e) => { item.Jumlah++; TampilkanKeranjang(); };
-            btnPlus.Location = new Point(900, 30);
-
 
             Label lblJumlah = new Label();
             lblJumlah.Text = item.Jumlah.ToString();
             lblJumlah.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-            lblJumlah.Location = new Point(960, 37);
-            lblJumlah.Size = new Size(40, 35);
+            lblJumlah.Location = new Point(955, 37);
+            lblJumlah.Size = new Size(80, 35);
             lblJumlah.TextAlign = ContentAlignment.MiddleCenter;
-            btnPlus.Location = new Point(900, 30);
 
             Button btnMinus = new Button();
             btnMinus.Text = "-";
             btnMinus.Size = new Size(50, 50);
-            btnMinus.Location = new Point(1010, 30);
+            btnMinus.Location = new Point(1040, 30);
             btnMinus.BackColor = Color.FromArgb(255, 165, 81);
             btnMinus.ForeColor = Color.White;
             btnMinus.Font = new Font("Segoe UI", 12, FontStyle.Bold);
@@ -137,28 +134,24 @@ namespace Bitebox.Views.Customer
             this.Close();
         }
 
-        private void lblKeranjangPesanan_Click(object sender, EventArgs e) { }
-
         private void btnsampah_Click(object sender, EventArgs e)
         {
-
             if (KeranjangSession.Items.Count == 0)
             {
-                MessageBox.Show("Keranjang sudah kosong!");
+                MessageBox.Show("Keranjang sudah kosong!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            var konfirmasi = MessageBox.Show("Hapus semua item dari keranjang?", "Konfirmasi", MessageBoxButtons.YesNo);
+            var konfirmasi = MessageBox.Show("Hapus semua item dari keranjang?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (konfirmasi == DialogResult.Yes)
             {
                 KeranjangSession.Clear();
                 TampilkanKeranjang();
-
             }
         }
 
         private void btnkeluar_Click(object sender, EventArgs e)
         {
-            var konfirmasi = MessageBox.Show("Yakin mau keluar?", "Konfirmasi", MessageBoxButtons.YesNo);
+            var konfirmasi = MessageBox.Show("Yakin mau keluar?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (konfirmasi == DialogResult.Yes)
             {
                 KeranjangSession.Clear();
@@ -186,5 +179,8 @@ namespace Bitebox.Views.Customer
             formRiwayat.Show();
             this.Close();
         }
+
+        private void lblKeranjangPesanan_Click(object sender, EventArgs e) { }
+        private void FlowKeranjang_Paint(object sender, PaintEventArgs e) { }
     }
 }
