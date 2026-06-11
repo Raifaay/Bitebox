@@ -51,7 +51,6 @@
             ColTotalPendapat = new DataGridViewTextBoxColumn();
             comboBox1 = new ComboBox();
             lbFilterKategori = new Label();
-            btnPerKategori = new Button();
             panel1.SuspendLayout();
             pnlTotalPenjualan.SuspendLayout();
             panel2.SuspendLayout();
@@ -207,7 +206,6 @@
             panel4.Controls.Add(dataGridView1);
             panel4.Controls.Add(comboBox1);
             panel4.Controls.Add(lbFilterKategori);
-            panel4.Controls.Add(btnPerKategori);
             panel4.Location = new Point(391, 296);
             panel4.Name = "panel4";
             panel4.Size = new Size(1459, 654);
@@ -217,7 +215,7 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ColNamaMenu, ColKategori, ColJumlahTerjual, ColTotalPendapat });
-            dataGridView1.Location = new Point(61, 205);
+            dataGridView1.Location = new Point(49, 120);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(921, 225);
@@ -254,30 +252,21 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Semua Kategori", "Makanan", "Minuman", "Snack" });
-            comboBox1.Location = new Point(214, 143);
+            comboBox1.Items.AddRange(new object[] { "Semua Kategori", "Burger", "Pizza", "Minuman" });
+            comboBox1.Location = new Point(202, 54);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(768, 33);
             comboBox1.TabIndex = 4;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // lbFilterKategori
             // 
             lbFilterKategori.AutoSize = true;
-            lbFilterKategori.Location = new Point(61, 146);
+            lbFilterKategori.Location = new Point(61, 54);
             lbFilterKategori.Name = "lbFilterKategori";
             lbFilterKategori.Size = new Size(121, 25);
             lbFilterKategori.TabIndex = 3;
             lbFilterKategori.Text = "Filter Kategori";
-            // 
-            // btnPerKategori
-            // 
-            btnPerKategori.Location = new Point(61, 50);
-            btnPerKategori.Name = "btnPerKategori";
-            btnPerKategori.Size = new Size(138, 45);
-            btnPerKategori.TabIndex = 1;
-            btnPerKategori.Text = "Per Kategori";
-            btnPerKategori.UseVisualStyleBackColor = true;
-            btnPerKategori.Click += btnPerKategori_Click;
             // 
             // FormLaporanPenjualan
             // 
@@ -324,7 +313,6 @@
         private Label lbHarga2;
         private Label lbRataRata1;
         private Panel panel4;
-        private Button btnPerKategori;
         private ComboBox comboBox1;
         private Label lbFilterKategori;
         private DataGridView dataGridView1;
