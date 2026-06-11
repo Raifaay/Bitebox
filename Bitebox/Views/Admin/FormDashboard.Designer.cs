@@ -46,6 +46,7 @@
             lbDariPenjualan = new Label();
             lbAngka2 = new Label();
             lbTotalPenghasilan = new Label();
+            dtpFilterTanggal = new DateTimePicker();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -226,11 +227,20 @@
             lbTotalPenghasilan.TabIndex = 0;
             lbTotalPenghasilan.Text = "Total Penghasilan";
             // 
+            // dtpFilterTanggal
+            // 
+            dtpFilterTanggal.Location = new Point(400, 70);
+            dtpFilterTanggal.Name = "dtpFilterTanggal";
+            dtpFilterTanggal.Size = new Size(437, 31);
+            dtpFilterTanggal.TabIndex = 4;
+            dtpFilterTanggal.ValueChanged += dtpFilterTanggal_ValueChanged;
+            // 
             // FormDashboard
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1898, 1024);
+            Controls.Add(dtpFilterTanggal);
             Controls.Add(panel4);
             Controls.Add(panel3);
             Controls.Add(panel2);
@@ -270,5 +280,6 @@
         private Label lbDariPenjualan;
         private Label lbAngka2;
         private Label lbTotalPenghasilan;
+        private DateTimePicker dtpFilterTanggal;
     }
 }

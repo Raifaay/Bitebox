@@ -102,9 +102,46 @@ namespace Bitebox.Views.Admin
             }
         }
 
-        private void btnPerKategori_Click(object sender, EventArgs e)
+      
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //kasih function
+            if (comboBox1.SelectedItem != null)
+            {
+                string kategoriDipilih = comboBox1.SelectedItem.ToString()!;
+
+                if (kategoriDipilih == "Semua Kategori")
+                {
+                    // Trik Licik: Kosongkan tabel dulu, lalu paksa panggil semua kategori satu per satu!
+                    dataGridView1.Rows.Clear();
+
+                    // Panggil fungsi bawaan controller temenmu untuk masing-masing nama kategori
+                    // Pastikan huruf besar-kecilnya sama dengan di database ya!
+                    TampilkanTabelKombinasi("Burger");
+                    TampilkanTabelKombinasi("Pizza");
+                    TampilkanTabelKombinasi("Minuman");
+                }
+                else
+                {
+                    // Kalau milih satuan (Burger doang, Pizza doang) jalan normal seperti biasa
+                    dataGridView1.Rows.Clear();
+                    TampilkanTabelKombinasi(kategoriDipilih);
+                }
+            }
+        }
+
+        // Buat fungsi pembantu baru ini di bawahnya biar datanya gak saling menimpa (ke-overwrite)
+        private void TampilkanTabelKombinasi(string kategori)
+        {
+            var dataLaporan = laporanController.GetLaporan(kategori);
+            if (dataLaporan != null)
+            {
+                foreach (var item in dataLaporan)
+                {
+                    dataGridView1.Rows.Add(item.NamaMenu, item.Kategori, item.JumlahTerjual, $"Rp.{item.TotalPendapat:N0}");
+                }
+            }
         }
     }
+
 }

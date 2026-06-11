@@ -52,12 +52,12 @@ namespace Bitebox.Views.Admin
                 MessageBox.Show("Gagal memuat data:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-            
+
 
         private void btnPengelolaMenu_Click(object sender, EventArgs e)
         {
             FormPengelolaMenu form = new FormPengelolaMenu();
-            form.Show(); 
+            form.Show();
         }
 
         private void btnLaporanPenjualan_Click(object sender, EventArgs e)
@@ -79,7 +79,30 @@ namespace Bitebox.Views.Admin
             {
                 FormLogin fromLogin = new FormLogin();
                 fromLogin.Show();
-                this.Close(); 
+                this.Close();
+            }
+        }
+
+        private void dtpFilterTanggal_ValueChanged(object sender, EventArgs e)
+        {
+            // 1. Ambil tanggal dari kalender
+            DateTime tanggalTerpilih = dtpFilterTanggal.Value;
+
+            try
+            {
+                // 2. Panggil controller
+                DashboardController dashboardController = new DashboardController();
+                int totalJual = dashboardController.GetTotalJualByTanggal(tanggalTerpilih);
+                long totalCuan = dashboardController.GetTotalPenghasilanByTanggal(tanggalTerpilih);
+
+                // 3. SEKARANG KITA TEMBAK ALAMAT YANG BENER!
+                // Mengubah angka gede di tengah tanpa merusak judul atas/bawah
+                lbAngka.Text = totalJual.ToString();
+                lbAngka2.Text = $"Rp.{totalCuan:N0}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal mengambil data dashboard: " + ex.Message);
             }
         }
     }
