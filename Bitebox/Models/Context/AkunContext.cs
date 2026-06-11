@@ -10,7 +10,7 @@ namespace Bitebox.Models.Context
         public Akun? GetAkunByCredentials(string usernameOrEmail, string password)
         {
             Akun? akun = null;
-            string query = "SELECT * FROM akun WHERE (username = @input1 OR email = @input2) AND password_akun = @password";
+            string query = "SELECT * FROM akun WHERE (username = @input1 OR email = @input2) AND password_akun = @password AND is_aktif = TRUE";
 
             using (NpgsqlConnection conn = DatabaseConnection.GetConnection())
             {
