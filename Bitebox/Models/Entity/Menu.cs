@@ -8,7 +8,7 @@ namespace Bitebox.Models.Entity
     {
         private int idMenu;
         private string namaMenu = string.Empty;
-        private int hargaMenu;
+        private decimal hargaMenu;
         private string deskripsiMenu = string.Empty;
         private byte[]? gambarMenu;
         private int idKategoriMenu;
@@ -23,7 +23,7 @@ namespace Bitebox.Models.Entity
             get { return namaMenu; }
             set { namaMenu = value; }
         }
-        public int HargaMenu
+        public decimal HargaMenu
         {
             get { return hargaMenu; }
             set { hargaMenu = value; }
@@ -46,7 +46,7 @@ namespace Bitebox.Models.Entity
 
         public Menu() { }
 
-        public Menu(int idMenu, string namaMenu, int hargaMenu, string deskripsiMenu, byte[]? gambarMenu, int idKategoriMenu)
+        public Menu(int idMenu, string namaMenu, decimal hargaMenu, string deskripsiMenu, byte[]? gambarMenu, int idKategoriMenu)
         {
             this.idMenu = idMenu;
             this.namaMenu = namaMenu;

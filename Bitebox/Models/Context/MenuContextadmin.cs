@@ -90,7 +90,7 @@ namespace Bitebox.Models.Context
                 reader["deskripsi_menu"]?.ToString() ?? " ",
                 reader["gambar_menu"] as byte[],
                 (int)reader["id_kategori_menu"]
-                );
+                ); //:: 
         }
     }
 }

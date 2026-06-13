@@ -72,7 +72,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(278, 1024);
             panel1.TabIndex = 0;
-            panel1.Paint += panel1_Paint;
             // 
             // btnkeluar
             // 
@@ -97,7 +96,6 @@
             btnpengaturan.TabIndex = 4;
             btnpengaturan.Text = "Pengaturan";
             btnpengaturan.UseVisualStyleBackColor = true;
-            btnpengaturan.Click += btnpengaturan_Click;
             // 
             // btnriwayat
             // 
@@ -133,7 +131,6 @@
             btnberanda.TabIndex = 1;
             btnberanda.Text = "Beranda";
             btnberanda.UseVisualStyleBackColor = true;
-            btnberanda.Click += btnberanda_Click;
             // 
             // pcblogo
             // 
@@ -145,7 +142,6 @@
             pcblogo.Size = new Size(214, 195);
             pcblogo.TabIndex = 1;
             pcblogo.TabStop = false;
-            pcblogo.Click += pcblogo_Click;
             // 
             // lblHai
             // 
@@ -157,7 +153,6 @@
             lblHai.Size = new Size(77, 38);
             lblHai.TabIndex = 1;
             lblHai.Text = "Hai, ";
-            lblHai.Click += label1_Click;
             // 
             // lblmaumakan
             // 
@@ -169,7 +164,6 @@
             lblmaumakan.Size = new Size(276, 32);
             lblmaumakan.TabIndex = 2;
             lblmaumakan.Text = "Mau makan apa hari ini?";
-            lblmaumakan.Click += label2_Click;
             // 
             // txtcarimenufav
             // 
@@ -180,7 +174,6 @@
             txtcarimenufav.Size = new Size(1195, 45);
             txtcarimenufav.TabIndex = 10;
             txtcarimenufav.Tag = "";
-            txtcarimenufav.TextChanged += txtcarimenufav_TextChanged;
             // 
             // panel2
             // 
@@ -193,7 +186,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1541, 207);
             panel2.TabIndex = 12;
-            panel2.Paint += panel2_Paint;
             // 
             // label2
             // 
@@ -205,7 +197,6 @@
             label2.Size = new Size(381, 45);
             label2.TabIndex = 15;
             label2.Text = "lebih cepat dan praktis!!";
-            label2.Click += label2_Click_1;
             // 
             // pictureBox1
             // 
@@ -216,7 +207,6 @@
             pictureBox1.Size = new Size(413, 279);
             pictureBox1.TabIndex = 16;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
             // 
             // lblnikmatin
             // 
@@ -228,7 +218,6 @@
             lblnikmatin.Size = new Size(441, 45);
             lblnikmatin.TabIndex = 14;
             lblnikmatin.Text = "Nikmati makanan favoritmu";
-            lblnikmatin.Click += lblnikmatin_Click;
             // 
             // lbltanggal
             // 
@@ -240,7 +229,6 @@
             lbltanggal.Size = new Size(179, 38);
             lbltanggal.TabIndex = 13;
             lbltanggal.Text = "10 Mei 2026";
-            lbltanggal.Click += lbltanggal_Click;
             // 
             // label1
             // 
@@ -252,7 +240,6 @@
             label1.Size = new Size(213, 38);
             label1.TabIndex = 14;
             label1.Text = "Kategori Menu";
-            label1.Click += label1_Click_1;
             // 
             // btnburger
             // 
@@ -300,7 +287,6 @@
             lbldaftarmenu.Size = new Size(186, 38);
             lbldaftarmenu.TabIndex = 18;
             lbldaftarmenu.Text = "Daftar Menu";
-            lbldaftarmenu.Click += lbldaftarmenu_Click;
             // 
             // flowLayoutPanel1
             // 
@@ -319,7 +305,6 @@
             flowLayoutPanel2.Size = new Size(370, 206);
             flowLayoutPanel2.TabIndex = 20;
             flowLayoutPanel2.WrapContents = false;
-            flowLayoutPanel2.Paint += flowLayoutPanel2_Paint;
             // 
             // flowLayoutPanel3
             // 

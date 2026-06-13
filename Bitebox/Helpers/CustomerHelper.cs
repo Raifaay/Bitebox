@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Bitebox.Helpers
 {
-    public class CustomerHelper
+    public class CustomerHelper //hanya bantu
     {
         private string connectionString = "Host=localhost;Database=bitebox;Username=postgres;Password=0402";
 
@@ -19,7 +19,7 @@ namespace Bitebox.Helpers
             using (NpgsqlConnection conn = new NpgsqlConnection(connectionString))
             {
                 NpgsqlCommand cmd = new NpgsqlCommand(query, conn);
-                conn.Open();
+                conn.Open(); //masih crash juga
 
                 using (NpgsqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -41,7 +41,9 @@ namespace Bitebox.Helpers
             return list;
         }
 
-      
+      //selecty, excution, scalar
+      //uihelper.excution
+      //ui.helper.select
         public bool UpdateStatus(int id, bool isActive)
         {
         

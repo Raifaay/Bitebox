@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using Npgsql;
 using Bitebox.Helpers;
+using Bitebox.Models.Context;
 
 namespace Bitebox.Views.Customer
 {
@@ -12,6 +11,7 @@ namespace Bitebox.Views.Customer
         private int idAkun;
         private string jenisLayanan = "dinein";
         private string metodePembayaran = "tunai";
+        private CheckoutContext checkoutContext = new CheckoutContext();
 
         public FormCheckout(int idAkun)
         {
@@ -23,7 +23,6 @@ namespace Bitebox.Views.Customer
         {
             TampilkanRingkasan();
             LoadMejaTersedia();
-
             panel1.Visible = true;
             jenisLayanan = "dinein";
         }
@@ -52,25 +51,11 @@ namespace Bitebox.Views.Customer
         private void LoadMejaTersedia()
         {
             cmbNomorMeja.Items.Clear();
-            string query = "SELECT id_meja, nomor_meja FROM meja WHERE status_meja = 'Tersedia'";
-
             try
             {
-                using (NpgsqlConnection conn = DatabaseConnection.GetConnection())
-                {
-                    conn.Open();
-                    using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
-                    {
-                        using (NpgsqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                cmbNomorMeja.Items.Add($"{reader["id_meja"]} - {reader["nomor_meja"]}");
-                            }
-                        }
-                    }
-                }
-
+                var listMeja = checkoutContext.GetMejaTersedia();
+                foreach (var meja in listMeja)
+                    cmbNomorMeja.Items.Add(meja);
                 if (cmbNomorMeja.Items.Count > 0)
                     cmbNomorMeja.SelectedIndex = 0;
             }
@@ -82,7 +67,7 @@ namespace Bitebox.Views.Customer
 
         private void btndinein_Click(object sender, EventArgs e)
         {
-            jenisLayanan = "dinein"; 
+            jenisLayanan = "dinein";
             panel1.Visible = true;
         }
 
@@ -111,85 +96,29 @@ namespace Bitebox.Views.Customer
             }
 
             int? idMeja = null;
-
             if (jenisLayanan == "dinein")
             {
-                if (cmbNomorMeja.SelectedItem == null || string.IsNullOrEmpty(cmbNomorMeja.SelectedItem.ToString()))
+                if (cmbNomorMeja.SelectedItem == null)
                 {
                     MessageBox.Show("Pilih nomor meja dulu!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
                 string selected = cmbNomorMeja.SelectedItem.ToString() ?? "";
                 idMeja = int.Parse(selected.Split('-')[0].Trim());
-            }
-            else
-            {
-                idMeja = null;
             }
 
             try
             {
-                using (NpgsqlConnection conn = DatabaseConnection.GetConnection())
-                {
-                    conn.Open();
+                int idPesanan = checkoutContext.Checkout(idAkun, jenisLayanan, idMeja, metodePembayaran);
+                string? kodePickup = checkoutContext.GetKodePickup(idPesanan);
+                KeranjangSession.Clear();
 
-                    using (NpgsqlCommand cmd = new NpgsqlCommand("CALL checkout_pesanan(@p_id_akun, @p_jenis_layanan, @p_id_meja, @p_metode_pembayaran::metode_pembayaran_enum)", conn))
-                    {
-                        cmd.Parameters.AddWithValue("@p_id_akun", idAkun);
-                        cmd.Parameters.AddWithValue("@p_jenis_layanan", jenisLayanan);
-                        cmd.Parameters.AddWithValue("@p_id_meja", idMeja.HasValue ? (object)idMeja.Value : DBNull.Value);
-                        cmd.Parameters.AddWithValue("@p_metode_pembayaran", metodePembayaran);
-                        cmd.ExecuteNonQuery();
-                    }
-
-                    int idPesanan = 0;
-                    string? kodePickup = null;
-
-                    using (NpgsqlCommand cmdGet = new NpgsqlCommand(
-                        "SELECT id_pesanan, kode_pickup FROM pesanan WHERE id_akun = @idAkun ORDER BY tanggal_pesanan DESC LIMIT 1", conn))
-                    {
-                        cmdGet.Parameters.AddWithValue("@idAkun", idAkun);
-                        using (NpgsqlDataReader reader = cmdGet.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                idPesanan = Convert.ToInt32(reader["id_pesanan"]);
-                                kodePickup = reader["kode_pickup"]?.ToString();
-                            }
-                        }
-                    }
-
-                    foreach (var item in KeranjangSession.Items)
-                    {
-                        string qDetail = "INSERT INTO detail_pesanan (harga_saat_transaksi, jumlah, subtotal, id_menu, id_pesanan) VALUES (@harga_saat_transaksi, @jumlah, @subtotal, @id_menu, @id_pesanan)";
-                        using (NpgsqlCommand cmdDetail = new NpgsqlCommand(qDetail, conn))
-                        {
-                            int hargaSatuan = (int)(item.Subtotal / item.Jumlah);
-
-                            cmdDetail.Parameters.AddWithValue("@harga_saat_transaksi", hargaSatuan);
-                            cmdDetail.Parameters.AddWithValue("@jumlah", item.Jumlah);
-                            cmdDetail.Parameters.AddWithValue("@subtotal", (int)item.Subtotal);
-                            cmdDetail.Parameters.AddWithValue("@id_menu", item.IdMenu);
-                            cmdDetail.Parameters.AddWithValue("@id_pesanan", idPesanan);
-
-                            cmdDetail.ExecuteNonQuery();
-                        }
-                    }
-
-                    KeranjangSession.Clear();
-
-                    if (jenisLayanan == "takeaway")
-                    {
-                        MessageBox.Show($"Pesanan Take Away Berhasil!\n\nNomor Pesanan: #{idPesanan}\nKode Pickup: {kodePickup}",
-                            "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Pesanan Dine In Berhasil!\n\nNomor Pesanan: #{idPesanan}",
-                            "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
+                if (jenisLayanan == "takeaway")
+                    MessageBox.Show($"Pesanan Take Away Berhasil!\n\nNomor Pesanan: #{idPesanan}\nKode Pickup: {kodePickup}",
+                        "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show($"Pesanan Dine In Berhasil!\n\nNomor Pesanan: #{idPesanan}",
+                        "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 FormMenuUtama formMenu = new FormMenuUtama("", idAkun);
                 formMenu.Show();
@@ -223,14 +152,7 @@ namespace Bitebox.Views.Customer
 
         private void btnkeluar_Click(object sender, EventArgs e)
         {
-            var konfirmasi = MessageBox.Show("Yakin mau keluar?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (konfirmasi == DialogResult.Yes)
-            {
-                KeranjangSession.Clear();
-                FormLogin formLogin = new FormLogin();
-                formLogin.Show();
-                this.Close();
-            }
+            NavigationHelper.KeluarKeLogin(this);
         }
 
         private void btnriwayat_Click(object sender, EventArgs e)
@@ -240,13 +162,5 @@ namespace Bitebox.Views.Customer
             this.Close();
         }
 
-        private void btnkeranjang_Click_1(object sender, EventArgs e)
-        {
-            FormKeranjang formKeranjang = new FormKeranjang(idAkun);
-            formKeranjang.Show();
-            this.Hide();
-        }
-
-        private void pnlsidebar_Paint(object sender, PaintEventArgs e) { }
     }
 }

@@ -29,7 +29,9 @@ namespace Bitebox.Models.Context
                                 KodePickup = reader["kode_pickup"] as string,
                                 NomorMeja = reader["nomor_meja"] as string,
                                 NamaStatus = reader["nama_status_pesanan"]?.ToString() ?? "",
-                                Total = reader["total"] == DBNull.Value ? 0 : Convert.ToInt32(reader["total"])
+                                NamaStatusPembayaran = reader["nama_status_pembayaran"]?.ToString() ?? "",
+                                MetodePembayaran = reader["metode_pembayaran"]?.ToString() ?? "",
+                                Total = reader["total"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["total"])
                             });
                         }
                     }

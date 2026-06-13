@@ -1,7 +1,4 @@
-﻿
-using Bitebox.Models.Entity;
-using Bitebox.Models.Context;
-using System;
+﻿using System;
 
 namespace Bitebox.Models.Entity
 {
@@ -12,6 +9,9 @@ namespace Bitebox.Models.Entity
         public string? KodePickup { get; set; }
         public string? NomorMeja { get; set; }
         public string NamaStatus { get; set; } = string.Empty;
-        public int Total { get; set; }
+        public string NamaStatusPembayaran { get; set; } = string.Empty;
+        public string MetodePembayaran { get; set; } = string.Empty;
+        public decimal Total { get; set; }
+        public string JenisLayanan => KodePickup != null ? "Take Away" : $"Dine In - {NomorMeja}";
     }
 }

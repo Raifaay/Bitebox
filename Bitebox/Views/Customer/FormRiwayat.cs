@@ -1,11 +1,10 @@
 ﻿using Bitebox.Helpers;
 using Bitebox.Models.Context;
-using Npgsql;
+using Bitebox.Models.Entity;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using Bitebox.Models.Entity;
-using Bitebox.Models.Context;
 
 namespace Bitebox.Views.Customer
 {
@@ -23,11 +22,9 @@ namespace Bitebox.Views.Customer
         {
             LoadRiwayat();
             StylingDgv();
-
             btnberanda.Click += btnberanda_Click;
             btnkeranjang.Click += btnkeranjang_Click;
             btnkeluar.Click += btnkeluar_Click;
-            btnriwayat.Click += btnriwayat_Click;
         }
 
         private void StylingDgv()
@@ -48,21 +45,25 @@ namespace Bitebox.Views.Customer
             dgvRiwayat.Columns.Add("id_pesanan", "ID Pesanan");
             dgvRiwayat.Columns.Add("tanggal", "Tanggal");
             dgvRiwayat.Columns.Add("jenis", "Jenis Layanan");
+            dgvRiwayat.Columns.Add("metode", "Metode Pembayaran");
             dgvRiwayat.Columns.Add("total", "Total");
             dgvRiwayat.Columns.Add("status", "Status Pesanan");
+            dgvRiwayat.Columns.Add("status_bayar", "Status Pembayaran");
 
             RiwayatContext riwayatContext = new RiwayatContext();
             List<RiwayatItem> listRiwayat = riwayatContext.GetRiwayatByAkun(idAkun);
 
             foreach (RiwayatItem r in listRiwayat)
             {
-                string jenis = r.KodePickup != null ? "Take Away" : $"Eat In - {r.NomorMeja}";
+                string jenis = r.KodePickup != null ? "Take Away" : $"Dine In - {r.NomorMeja}";
                 dgvRiwayat.Rows.Add(
                     $"#{r.IdPesanan}",
                     r.TanggalPesanan.ToString("dd MMM yyyy"),
                     jenis,
+                    r.MetodePembayaran,
                     $"Rp {r.Total:N0}",
-                    r.NamaStatus
+                    r.NamaStatus,
+                    r.NamaStatusPembayaran
                 );
             }
         }
@@ -89,21 +90,7 @@ namespace Bitebox.Views.Customer
 
         private void btnkeluar_Click(object sender, EventArgs e)
         {
-            var konfirmasi = MessageBox.Show("Yakin mau keluar?", "Konfirmasi", MessageBoxButtons.YesNo);
-            if (konfirmasi == DialogResult.Yes)
-            {
-                KeranjangSession.Clear();
-                FormLogin formLogin = new FormLogin();
-                formLogin.Show();
-                this.Close();
-            }
-        }
-
-        private void dgvRiwayat_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
-
-        private void btnriwayat_Click(object sender, EventArgs e)
-        {
-
+            NavigationHelper.KeluarKeLogin(this);
         }
     }
 }

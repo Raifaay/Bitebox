@@ -92,7 +92,6 @@
             btnriwayat.TabIndex = 3;
             btnriwayat.Text = "Riwayat";
             btnriwayat.UseVisualStyleBackColor = true;
-            btnriwayat.Click += btnriwayat_Click;
             // 
             // btnkeranjang
             // 
@@ -153,7 +152,6 @@
             dgvRiwayat.RowHeadersWidth = 62;
             dgvRiwayat.Size = new Size(1468, 699);
             dgvRiwayat.TabIndex = 5;
-            dgvRiwayat.CellContentClick += dgvRiwayat_CellContentClick;
             // 
             // FormRiwayat
             // 

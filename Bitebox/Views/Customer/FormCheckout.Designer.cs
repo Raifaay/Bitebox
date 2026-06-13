@@ -70,7 +70,6 @@
             pnlsidebar.Name = "pnlsidebar";
             pnlsidebar.Size = new Size(278, 1024);
             pnlsidebar.TabIndex = 2;
-            pnlsidebar.Paint += pnlsidebar_Paint;
             // 
             // btnkeluar
             // 
@@ -117,7 +116,6 @@
             btnkeranjang.TabIndex = 2;
             btnkeranjang.Text = "Keranjang";
             btnkeranjang.UseVisualStyleBackColor = true;
-            btnkeranjang.Click += btnkeranjang_Click_1;
             // 
             // btnberanda
             // 
@@ -174,7 +172,7 @@
             btnTakeAway.TabIndex = 2;
             btnTakeAway.Text = "Take Away";
             btnTakeAway.UseVisualStyleBackColor = false;
-            btnTakeAway.Click += btnTakeAway_Click; // ← tambah ini
+            btnTakeAway.Click += btnTakeAway_Click; 
             // 
             // btndinein
             // 

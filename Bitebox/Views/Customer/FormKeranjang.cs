@@ -151,14 +151,7 @@ namespace Bitebox.Views.Customer
 
         private void btnkeluar_Click(object sender, EventArgs e)
         {
-            var konfirmasi = MessageBox.Show("Yakin mau keluar?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (konfirmasi == DialogResult.Yes)
-            {
-                KeranjangSession.Clear();
-                FormLogin formLogin = new FormLogin();
-                formLogin.Show();
-                this.Close();
-            }
+            NavigationHelper.KeluarKeLogin(this);
         }
 
         private void btnCheckout_Click(object sender, EventArgs e)

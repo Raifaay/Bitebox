@@ -12,6 +12,7 @@ namespace Bitebox.Models.Context
         {
             List<MenuEntity> listMenu = new List<MenuEntity>();
             string query = "SELECT * FROM menu ORDER BY id_menu ASC";
+
             using (NpgsqlConnection conn = DatabaseConnection.GetConnection())
             {
                 conn.Open();
@@ -22,14 +23,12 @@ namespace Bitebox.Models.Context
                         while (reader.Read())
                         {
                             MenuEntity menu = new MenuEntity();
-
                             menu.IdMenu = Convert.ToInt32(reader["id_menu"]);
                             menu.NamaMenu = reader["nama_menu"]?.ToString() ?? "";
-                            menu.HargaMenu = Convert.ToInt32(reader["harga_menu"]);
+                            menu.HargaMenu = Convert.ToDecimal(reader["harga_menu"]);
                             menu.DeskripsiMenu = reader["deskripsi_menu"]?.ToString() ?? "";
                             menu.GambarMenu = reader["gambar_menu"] as byte[];
                             menu.IdKategoriMenu = Convert.ToInt32(reader["id_kategori_menu"]);
-
                             listMenu.Add(menu);
                         }
                     }
@@ -55,14 +54,12 @@ namespace Bitebox.Models.Context
                         while (reader.Read())
                         {
                             MenuEntity menu = new MenuEntity();
-
                             menu.IdMenu = Convert.ToInt32(reader["id_menu"]);
                             menu.NamaMenu = reader["nama_menu"]?.ToString() ?? "";
-                            menu.HargaMenu = Convert.ToInt32(reader["harga_menu"]);
+                            menu.HargaMenu = Convert.ToDecimal(reader["harga_menu"]);
                             menu.DeskripsiMenu = reader["deskripsi_menu"]?.ToString() ?? "";
                             menu.GambarMenu = reader["gambar_menu"] as byte[];
                             menu.IdKategoriMenu = Convert.ToInt32(reader["id_kategori_menu"]);
-
                             listMenu.Add(menu);
                         }
                     }

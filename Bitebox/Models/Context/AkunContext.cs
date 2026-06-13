@@ -25,26 +25,22 @@ namespace Bitebox.Models.Context
                     {
                         if (reader.Read())
                         {
+                            int idAkun = Convert.ToInt32(reader["id_akun"]);
+                            string username = reader["username"]?.ToString() ?? "";
+                            string passwordAkun = reader["password_akun"]?.ToString() ?? "";
+                            string namaLengkap = reader["nama_lengkap"]?.ToString() ?? "";
+                            string email = reader["email"]?.ToString() ?? "";
                             string role = reader["role_akun"]?.ToString() ?? "";
+                            bool isAktif = reader["is_aktif"] != DBNull.Value && Convert.ToBoolean(reader["is_aktif"]);
 
                             if (role == "admin")
                             {
-                                akun = new Admin();
+                                akun = new Admin(idAkun, username, passwordAkun, namaLengkap, email, isAktif);
                             }
                             else
                             {
-                                akun = new Customer();
+                                akun = new Customer(idAkun, username, passwordAkun, namaLengkap, email, isAktif);
                             }
-
-                            if (reader["id_akun"] != DBNull.Value)
-                            {
-                                akun.IdAkun = Convert.ToInt32(reader["id_akun"]);
-                            }
-
-                            akun.Username = reader["username"]?.ToString() ?? "";
-                            akun.NamaLengkap = reader["nama_lengkap"]?.ToString() ?? "";
-                            akun.Email = reader["email"]?.ToString() ?? "";
-                            akun.Role = role;
                         }
                     }
                 }

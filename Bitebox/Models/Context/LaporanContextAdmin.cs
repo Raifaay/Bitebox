@@ -42,7 +42,7 @@ namespace Bitebox.Models.Context
                 using var cmd = new NpgsqlCommand(query, conn);
                 cmd.Parameters.Add("@kategori", NpgsqlTypes.NpgsqlDbType.Text).Value =
                     (object?)filterKategori ?? DBNull.Value;
-                using var reader = cmd.ExecuteReader();
+                using var reader = cmd.ExecuteReader(); //ini masih crash
                 while (reader.Read())
                 {
                     list.Add(new LaporanItem

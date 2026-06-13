@@ -4,11 +4,15 @@ using System.Text;
 
 namespace Bitebox.Models.Entity
 {
-    internal class Admin : Akun
+    public class Admin : Akun
     {
-        public Admin() { }
-        public Admin(int idAkun, string username, string namaLengkap, string email, string role) : base(idAkun, username, namaLengkap, email, role)
+        public Admin(int idAkun, string username, string passwordAkun, string namaLengkap, string email, bool isAktif)
+            : base(idAkun, username, passwordAkun, namaLengkap, email, "admin", isAktif)
         {
+        }
+        public override string GetHakAksesDashboard()
+        {
+            return $"Peringatan Keamanan! {NamaLengkap} masuk sebagai Administrator. Anda memiliki akses penuh ke manajemen menu."; //ini juga tak benerin
         }
     }
 }

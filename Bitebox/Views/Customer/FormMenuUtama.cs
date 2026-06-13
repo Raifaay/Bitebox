@@ -4,10 +4,7 @@ using Bitebox.Models.Entity;
 using Bitebox.Views.Customer;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using MenuEntity = Bitebox.Models.Entity.Menu;
 
@@ -113,8 +110,6 @@ namespace Bitebox.Views
             btnTambah.FlatStyle = FlatStyle.Flat;
             btnTambah.Tag = menu;
 
-            btnTambah.Tag = menu;
-
             btnTambah.Click += (s, e) =>
             {
                 MenuEntity m = (MenuEntity)btnTambah.Tag;
@@ -124,7 +119,7 @@ namespace Bitebox.Views
                     NamaMenu = m.NamaMenu,
                     HargaMenu = m.HargaMenu,
                     Jumlah = 1,
-                    IdAkun = this.idAkun 
+                    IdAkun = this.idAkun
                 });
                 MessageBox.Show($"{m.NamaMenu} ditambahkan ke keranjang!");
             };
@@ -160,23 +155,7 @@ namespace Bitebox.Views
 
         private void btnkeluar_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Yakin mau keluar?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                FormLogin formLogin = new FormLogin();
-                formLogin.Show();
-                this.Close();
-            }
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e) { }
-        private void label1_Click(object sender, EventArgs e) { }
-        private void label2_Click(object sender, EventArgs e) { }
-        private void pcblogo_Click(object sender, EventArgs e) { }
-
-        private void flowLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
+            NavigationHelper.KeluarKeLogin(this);
         }
 
         private void btnkeranjang_Click(object sender, EventArgs e)
@@ -186,61 +165,11 @@ namespace Bitebox.Views
             this.Hide();
         }
 
-        private void btnberanda_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnriwayat_Click(object sender, EventArgs e)
         {
             FormRiwayat formRiwayat = new FormRiwayat(idAkun);
             formRiwayat.Show();
             this.Hide();
-        }
-
-        private void txtcarimenufav_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblnikmatin_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbldaftarmenu_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbltanggal_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnpengaturan_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

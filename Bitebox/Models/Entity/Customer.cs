@@ -4,11 +4,15 @@ using System.Text;
 
 namespace Bitebox.Models.Entity
 {
-    internal class Customer : Akun
+    public class Customer : Akun
     {
-        public Customer() { }
-        public Customer(int idAkun, string username, string namaLengkap, string email, string role) : base(idAkun, username, namaLengkap, email, role)
+        public Customer(int idAkun, string username, string passwordAkun, string namaLengkap, string email, bool isAktif)
+            : base(idAkun, username, passwordAkun, namaLengkap, email, "customer", isAktif)
         {
+        }
+        public override string GetHakAksesDashboard()
+        {
+            return $"Selamat Datang {NamaLengkap}! Anda masuk sebagai Customer. Anda bisa memesan makanan."; //nanti tak perbaiki bahasanya biar ga kaya ai
         }
     }
 }
