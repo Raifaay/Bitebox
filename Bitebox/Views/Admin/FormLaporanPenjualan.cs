@@ -75,7 +75,7 @@ namespace Bitebox.Views.Admin
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            FormDashboard form = new FormDashboard();
+            FormBeranda form = new FormBeranda();
             form.Show();
         }
 

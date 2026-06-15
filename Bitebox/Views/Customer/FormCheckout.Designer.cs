@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCheckout));
             pnlsidebar = new Panel();
             btnkeluar = new Button();
             btnpengaturan = new Button();
@@ -58,7 +57,7 @@
             // 
             // pnlsidebar
             // 
-            pnlsidebar.BackgroundImage = (Image)resources.GetObject("pnlsidebar.BackgroundImage");
+            pnlsidebar.BackgroundImage = Properties.Resources.sidebarrr;
             pnlsidebar.BackgroundImageLayout = ImageLayout.Stretch;
             pnlsidebar.Controls.Add(btnkeluar);
             pnlsidebar.Controls.Add(btnpengaturan);
@@ -162,7 +161,7 @@
             pnllayanan.TabIndex = 4;
             // 
             // btnTakeAway
-            //
+            // 
             btnTakeAway.BackColor = Color.FromArgb(255, 249, 243);
             btnTakeAway.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnTakeAway.ForeColor = Color.FromArgb(128, 66, 50);
@@ -172,7 +171,7 @@
             btnTakeAway.TabIndex = 2;
             btnTakeAway.Text = "Take Away";
             btnTakeAway.UseVisualStyleBackColor = false;
-            btnTakeAway.Click += btnTakeAway_Click; 
+            btnTakeAway.Click += btnTakeAway_Click;
             // 
             // btndinein
             // 

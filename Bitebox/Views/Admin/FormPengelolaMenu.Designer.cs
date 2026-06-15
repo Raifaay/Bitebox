@@ -28,154 +28,262 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            btnLogout = new Button();
-            btnKelolaCustomer = new Button();
-            btnLaporanPenjualan = new Button();
-            btnPengelolaMenu = new Button();
-            btnDashboard = new Button();
             lbPengelolaMenu = new Label();
             btnTambah = new Button();
-            fLPMenu = new FlowLayoutPanel();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            flowLayoutPanel2 = new FlowLayoutPanel();
+            dgvPengelolaMenu = new DataGridView();
+            pnlTambahMenu = new Panel();
+            lblTambahMenu = new Label();
+            panel1 = new Panel();
+            button1 = new Button();
+            pictureBox1 = new PictureBox();
+            button2 = new Button();
+            button3 = new Button();
+            button4 = new Button();
+            button5 = new Button();
+            button6 = new Button();
+            lblNamaMenu = new Label();
+            txtNamaMenu = new TextBox();
+            lblKategori = new Label();
+            comboBox1 = new ComboBox();
+            ((System.ComponentModel.ISupportInitialize)dgvPengelolaMenu).BeginInit();
+            pnlTambahMenu.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(btnLogout);
-            panel1.Controls.Add(btnKelolaCustomer);
-            panel1.Controls.Add(btnLaporanPenjualan);
-            panel1.Controls.Add(btnPengelolaMenu);
-            panel1.Controls.Add(btnDashboard);
-            panel1.Location = new Point(1, 4);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(287, 1017);
-            panel1.TabIndex = 0;
-            // 
-            // btnLogout
-            // 
-            btnLogout.Location = new Point(38, 537);
-            btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(197, 54);
-            btnLogout.TabIndex = 4;
-            btnLogout.Text = "Logout ";
-            btnLogout.UseVisualStyleBackColor = true;
-            btnLogout.Click += btnLogout_Click;
-            // 
-            // btnKelolaCustomer
-            // 
-            btnKelolaCustomer.Location = new Point(38, 430);
-            btnKelolaCustomer.Name = "btnKelolaCustomer";
-            btnKelolaCustomer.Size = new Size(197, 61);
-            btnKelolaCustomer.TabIndex = 3;
-            btnKelolaCustomer.Text = "Kelola Customer";
-            btnKelolaCustomer.UseVisualStyleBackColor = true;
-            btnKelolaCustomer.Click += btnKelolaCustomer_Click;
-            // 
-            // btnLaporanPenjualan
-            // 
-            btnLaporanPenjualan.Location = new Point(38, 333);
-            btnLaporanPenjualan.Name = "btnLaporanPenjualan";
-            btnLaporanPenjualan.Size = new Size(197, 58);
-            btnLaporanPenjualan.TabIndex = 2;
-            btnLaporanPenjualan.Text = "Laporan Penjualan";
-            btnLaporanPenjualan.UseVisualStyleBackColor = true;
-            btnLaporanPenjualan.Click += btnLaporanPenjualan_Click;
-            // 
-            // btnPengelolaMenu
-            // 
-            btnPengelolaMenu.Location = new Point(38, 240);
-            btnPengelolaMenu.Name = "btnPengelolaMenu";
-            btnPengelolaMenu.Size = new Size(197, 59);
-            btnPengelolaMenu.TabIndex = 1;
-            btnPengelolaMenu.Text = "Pengelola Menu";
-            btnPengelolaMenu.UseVisualStyleBackColor = true;
-            // 
-            // btnDashboard
-            // 
-            btnDashboard.Location = new Point(38, 149);
-            btnDashboard.Name = "btnDashboard";
-            btnDashboard.Size = new Size(197, 57);
-            btnDashboard.TabIndex = 0;
-            btnDashboard.Text = "Dashboard";
-            btnDashboard.UseVisualStyleBackColor = true;
-            btnDashboard.Click += btnDashboard_Click;
             // 
             // lbPengelolaMenu
             // 
             lbPengelolaMenu.AutoSize = true;
-            lbPengelolaMenu.Location = new Point(382, 100);
+            lbPengelolaMenu.Location = new Point(344, 106);
+            lbPengelolaMenu.Margin = new Padding(4, 0, 4, 0);
             lbPengelolaMenu.Name = "lbPengelolaMenu";
-            lbPengelolaMenu.Size = new Size(143, 25);
+            lbPengelolaMenu.Size = new Size(206, 32);
             lbPengelolaMenu.TabIndex = 1;
             lbPengelolaMenu.Text = "Pengelola Menu ";
             // 
             // btnTambah
             // 
-            btnTambah.Location = new Point(1289, 100);
+            btnTambah.BackColor = Color.FromArgb(255, 165, 81);
+            btnTambah.ForeColor = Color.White;
+            btnTambah.Location = new Point(1237, 91);
+            btnTambah.Margin = new Padding(4);
             btnTambah.Name = "btnTambah";
-            btnTambah.Size = new Size(165, 54);
+            btnTambah.Size = new Size(189, 47);
             btnTambah.TabIndex = 5;
             btnTambah.Text = "Tambah ";
-            btnTambah.UseVisualStyleBackColor = true;
+            btnTambah.UseVisualStyleBackColor = false;
             btnTambah.Click += btnTambah_Click;
             // 
-            // fLPMenu
+            // dgvPengelolaMenu
             // 
-            fLPMenu.Location = new Point(382, 203);
-            fLPMenu.Name = "fLPMenu";
-            fLPMenu.Size = new Size(293, 407);
-            fLPMenu.TabIndex = 6;
+            dgvPengelolaMenu.BackgroundColor = Color.FromArgb(255, 240, 222);
+            dgvPengelolaMenu.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPengelolaMenu.Location = new Point(344, 155);
+            dgvPengelolaMenu.Name = "dgvPengelolaMenu";
+            dgvPengelolaMenu.RowHeadersWidth = 62;
+            dgvPengelolaMenu.Size = new Size(1082, 831);
+            dgvPengelolaMenu.TabIndex = 10;
             // 
-            // flowLayoutPanel1
+            // pnlTambahMenu
             // 
-            flowLayoutPanel1.Location = new Point(777, 203);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(300, 407);
-            flowLayoutPanel1.TabIndex = 7;
+            pnlTambahMenu.BackColor = Color.FromArgb(255, 240, 222);
+            pnlTambahMenu.Controls.Add(comboBox1);
+            pnlTambahMenu.Controls.Add(lblKategori);
+            pnlTambahMenu.Controls.Add(txtNamaMenu);
+            pnlTambahMenu.Controls.Add(lblNamaMenu);
+            pnlTambahMenu.Controls.Add(lblTambahMenu);
+            pnlTambahMenu.Location = new Point(1465, 155);
+            pnlTambahMenu.Name = "pnlTambahMenu";
+            pnlTambahMenu.Size = new Size(398, 831);
+            pnlTambahMenu.TabIndex = 12;
             // 
-            // flowLayoutPanel2
+            // lblTambahMenu
             // 
-            flowLayoutPanel2.Location = new Point(1154, 203);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(300, 407);
-            flowLayoutPanel2.TabIndex = 8;
+            lblTambahMenu.AutoSize = true;
+            lblTambahMenu.Location = new Point(107, 17);
+            lblTambahMenu.Margin = new Padding(4, 0, 4, 0);
+            lblTambahMenu.Name = "lblTambahMenu";
+            lblTambahMenu.Size = new Size(176, 32);
+            lblTambahMenu.TabIndex = 13;
+            lblTambahMenu.Text = "Tambah Menu";
+            lblTambahMenu.Click += lblTambahMenu_Click;
+            // 
+            // panel1
+            // 
+            panel1.BackgroundImage = Properties.Resources.sidebarrr;
+            panel1.Controls.Add(button1);
+            panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(button2);
+            panel1.Controls.Add(button3);
+            panel1.Controls.Add(button4);
+            panel1.Controls.Add(button5);
+            panel1.Controls.Add(button6);
+            panel1.Location = new Point(3, -13);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(278, 1024);
+            panel1.TabIndex = 13;
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.FromArgb(128, 66, 50);
+            button1.Location = new Point(20, 392);
+            button1.Name = "button1";
+            button1.Size = new Size(232, 53);
+            button1.TabIndex = 7;
+            button1.Text = "Pengelola Pesanan";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.BackgroundImage = Properties.Resources.logo;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(20, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(214, 195);
+            pictureBox1.TabIndex = 6;
+            pictureBox1.TabStop = false;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.Red;
+            button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.ForeColor = SystemColors.ButtonHighlight;
+            button2.Location = new Point(20, 844);
+            button2.Name = "button2";
+            button2.Size = new Size(232, 53);
+            button2.TabIndex = 4;
+            button2.Text = "Keluar";
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button3.ForeColor = Color.FromArgb(128, 66, 50);
+            button3.Location = new Point(20, 558);
+            button3.Name = "button3";
+            button3.Size = new Size(232, 53);
+            button3.TabIndex = 3;
+            button3.Text = "Kelola Customer";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button4.ForeColor = Color.FromArgb(128, 66, 50);
+            button4.Location = new Point(20, 474);
+            button4.Name = "button4";
+            button4.Size = new Size(232, 53);
+            button4.TabIndex = 2;
+            button4.Text = "Laporan Penjualan";
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            button5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button5.ForeColor = Color.FromArgb(128, 66, 50);
+            button5.Location = new Point(20, 308);
+            button5.Name = "button5";
+            button5.Size = new Size(232, 53);
+            button5.TabIndex = 1;
+            button5.Text = "Pengelola Menu ";
+            button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            button6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button6.ForeColor = Color.FromArgb(128, 66, 50);
+            button6.Location = new Point(20, 229);
+            button6.Name = "button6";
+            button6.Size = new Size(232, 53);
+            button6.TabIndex = 0;
+            button6.Text = "Beranda";
+            button6.UseVisualStyleBackColor = true;
+            // 
+            // lblNamaMenu
+            // 
+            lblNamaMenu.AutoSize = true;
+            lblNamaMenu.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblNamaMenu.Location = new Point(16, 71);
+            lblNamaMenu.Margin = new Padding(4, 0, 4, 0);
+            lblNamaMenu.Name = "lblNamaMenu";
+            lblNamaMenu.Size = new Size(132, 30);
+            lblNamaMenu.TabIndex = 14;
+            lblNamaMenu.Text = "Nama Menu";
+            // 
+            // txtNamaMenu
+            // 
+            txtNamaMenu.Location = new Point(16, 114);
+            txtNamaMenu.Name = "txtNamaMenu";
+            txtNamaMenu.Size = new Size(369, 39);
+            txtNamaMenu.TabIndex = 15;
+            // 
+            // lblKategori
+            // 
+            lblKategori.AutoSize = true;
+            lblKategori.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblKategori.Location = new Point(16, 163);
+            lblKategori.Margin = new Padding(4, 0, 4, 0);
+            lblKategori.Name = "lblKategori";
+            lblKategori.Size = new Size(95, 30);
+            lblKategori.TabIndex = 16;
+            lblKategori.Text = "Kategori";
+            lblKategori.Click += lblKategori_Click;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(16, 210);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(369, 40);
+            comboBox1.TabIndex = 17;
             // 
             // FormPengelolaMenu
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(14F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(255, 249, 243);
             ClientSize = new Size(1898, 1024);
-            Controls.Add(flowLayoutPanel2);
-            Controls.Add(flowLayoutPanel1);
-            Controls.Add(fLPMenu);
+            Controls.Add(panel1);
+            Controls.Add(pnlTambahMenu);
+            Controls.Add(dgvPengelolaMenu);
             Controls.Add(btnTambah);
             Controls.Add(lbPengelolaMenu);
-            Controls.Add(panel1);
+            Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ForeColor = Color.FromArgb(128, 66, 50);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(4);
             Name = "FormPengelolaMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormPengelolaMenu";
             Load += FormPengelolaMenu_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvPengelolaMenu).EndInit();
+            pnlTambahMenu.ResumeLayout(false);
+            pnlTambahMenu.PerformLayout();
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Panel panel1;
-        private Button btnDashboard;
-        private Button btnPengelolaMenu;
-        private Button btnLaporanPenjualan;
-        private Button btnKelolaCustomer;
-        private Button btnLogout;
         private Label lbPengelolaMenu;
         private Button btnTambah;
-        private FlowLayoutPanel fLPMenu;
-        private FlowLayoutPanel flowLayoutPanel1;
-        private FlowLayoutPanel flowLayoutPanel2;
+        private DataGridView dgvPengelolaMenu;
+        private Panel pnlTambahMenu;
+        private Label lblTambahMenu;
+        private Panel panel1;
+        private Button button1;
+        private PictureBox pictureBox1;
+        private Button button2;
+        private Button button3;
+        private Button button4;
+        private Button button5;
+        private Button button6;
+        private TextBox txtNamaMenu;
+        private Label lblNamaMenu;
+        private ComboBox comboBox1;
+        private Label lblKategori;
     }
 }

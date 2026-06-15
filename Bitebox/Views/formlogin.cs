@@ -18,19 +18,10 @@ namespace Bitebox.Views
             InitializeComponent();
         }
 
-        private void FormLogin_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblemail_Click(object sender, EventArgs e)
-        {
-        }
-
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            string emailInput = txtemail.Text;
-            string passwordInput = txtpassword.Text;
+            string emailInput = txtemail.Text.Trim();
+            string passwordInput = txtpassword.Text.Trim();
 
             if (string.IsNullOrEmpty(emailInput) || string.IsNullOrEmpty(passwordInput))
             {
@@ -47,12 +38,14 @@ namespace Bitebox.Views
                 return;
             }
 
-            if (akun.Role == "admin")
+            string pesanSelamatDatang = akun.GetHakAksesDashboard();
+            MessageBox.Show(pesanSelamatDatang, "Berhasil Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            if (akun.RoleAkun.ToLower() == "admin")
             {
-                MessageBox.Show("Login sebagai Admin", "Berhasil", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                FormDashboard formDashboard = new FormDashboard();
+                FormBeranda formDashboard = new FormBeranda();
                 formDashboard.Show();
-                this.Hide(); 
+                this.Hide();
             }
             else
             {
@@ -74,8 +67,5 @@ namespace Bitebox.Views
             Application.Exit();
         }
 
-        private void pcblogo_Click(object sender, EventArgs e)
-        {
-        }
     }
 }

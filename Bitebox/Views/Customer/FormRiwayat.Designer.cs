@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRiwayat));
             pnlsidebar = new Panel();
             btnkeluar = new Button();
             btnpengaturan = new Button();
@@ -45,7 +44,7 @@
             // 
             // pnlsidebar
             // 
-            pnlsidebar.BackgroundImage = (Image)resources.GetObject("pnlsidebar.BackgroundImage");
+            pnlsidebar.BackgroundImage = Properties.Resources.sidebarrr;
             pnlsidebar.BackgroundImageLayout = ImageLayout.Stretch;
             pnlsidebar.Controls.Add(btnkeluar);
             pnlsidebar.Controls.Add(btnpengaturan);

@@ -68,7 +68,7 @@ namespace Bitebox.Views.Admin
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            FormDashboard form = new FormDashboard();
+            FormBeranda form = new FormBeranda();
             form.Show();
         }
 
@@ -93,6 +93,11 @@ namespace Bitebox.Views.Admin
                 fromLogin.Show();
                 this.Close();
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

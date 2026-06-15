@@ -411,36 +411,24 @@ namespace Bitebox.Views.Admin
             pnlInput.Visible = false;
         }
 
-        private void btnDashboard_Click(object sender, EventArgs e)
-        {
-            FormDashboard form = new FormDashboard();
-            form.Show();
-        }
 
-        private void btnLaporanPenjualan_Click(object sender, EventArgs e)
-        {
-            FormLaporanPenjualan form = new FormLaporanPenjualan();
-            form.Show();
-        }
-
-        private void btnKelolaCustomer_Click(object sender, EventArgs e)
-        {
-            FormKelolaCustomer form = new FormKelolaCustomer();
-            form.Show();
-        }
-
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Apakah Anda yakin ingin keluar?", "Konfirmasi Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
-            {
-                FormLogin fromLogin = new FormLogin();
-                fromLogin.Show();
-                this.Close();
-            }
-        }
 
         private void FormPengelolaMenu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblTambahMenu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblKategori_Click(object sender, EventArgs e)
         {
 
         }

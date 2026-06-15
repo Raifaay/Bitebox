@@ -39,7 +39,6 @@
             pcblogo.Size = new Size(308, 287);
             pcblogo.TabIndex = 0;
             pcblogo.TabStop = false;
-            pcblogo.Click += pcblogo_Click;
             // 
             // lblemail
             // 
@@ -51,7 +50,6 @@
             lblemail.Size = new Size(187, 32);
             lblemail.TabIndex = 1;
             lblemail.Text = "Email/Username";
-            lblemail.Click += lblemail_Click;
             // 
             // lblpassword
             // 
@@ -153,7 +151,6 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormLogin";
             StartPosition = FormStartPosition.CenterScreen;
-            Load += FormLogin_Load;
             ((System.ComponentModel.ISupportInitialize)pcblogo).EndInit();
             ResumeLayout(false);
             PerformLayout();
