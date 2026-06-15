@@ -43,7 +43,7 @@ namespace Bitebox.Views
 
             if (akun.RoleAkun.ToLower() == "admin")
             {
-                FormDashboard formDashboard = new FormDashboard();
+                FormBeranda formDashboard = new FormBeranda();
                 formDashboard.Show();
                 this.Hide();
             }
