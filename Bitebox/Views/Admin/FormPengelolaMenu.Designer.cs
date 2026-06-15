@@ -44,7 +44,15 @@
             lblNamaMenu = new Label();
             txtNamaMenu = new TextBox();
             lblKategori = new Label();
-            comboBox1 = new ComboBox();
+            cmbKategori = new ComboBox();
+            lblHargaMenu = new Label();
+            txtHargaMenu = new TextBox();
+            lblDeskripsiMenu = new Label();
+            textBox1 = new TextBox();
+            lblGambarMenu = new Label();
+            btnUploadGambar = new Button();
+            btnBatal = new Button();
+            button8 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPengelolaMenu).BeginInit();
             pnlTambahMenu.SuspendLayout();
             panel1.SuspendLayout();
@@ -83,11 +91,20 @@
             dgvPengelolaMenu.RowHeadersWidth = 62;
             dgvPengelolaMenu.Size = new Size(1082, 831);
             dgvPengelolaMenu.TabIndex = 10;
+            dgvPengelolaMenu.CellContentClick += dgvPengelolaMenu_CellContentClick;
             // 
             // pnlTambahMenu
             // 
             pnlTambahMenu.BackColor = Color.FromArgb(255, 240, 222);
-            pnlTambahMenu.Controls.Add(comboBox1);
+            pnlTambahMenu.Controls.Add(button8);
+            pnlTambahMenu.Controls.Add(btnBatal);
+            pnlTambahMenu.Controls.Add(btnUploadGambar);
+            pnlTambahMenu.Controls.Add(lblGambarMenu);
+            pnlTambahMenu.Controls.Add(textBox1);
+            pnlTambahMenu.Controls.Add(lblDeskripsiMenu);
+            pnlTambahMenu.Controls.Add(txtHargaMenu);
+            pnlTambahMenu.Controls.Add(lblHargaMenu);
+            pnlTambahMenu.Controls.Add(cmbKategori);
             pnlTambahMenu.Controls.Add(lblKategori);
             pnlTambahMenu.Controls.Add(txtNamaMenu);
             pnlTambahMenu.Controls.Add(lblNamaMenu);
@@ -205,7 +222,7 @@
             // 
             lblNamaMenu.AutoSize = true;
             lblNamaMenu.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblNamaMenu.Location = new Point(16, 71);
+            lblNamaMenu.Location = new Point(16, 84);
             lblNamaMenu.Margin = new Padding(4, 0, 4, 0);
             lblNamaMenu.Name = "lblNamaMenu";
             lblNamaMenu.Size = new Size(132, 30);
@@ -223,7 +240,7 @@
             // 
             lblKategori.AutoSize = true;
             lblKategori.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblKategori.Location = new Point(16, 163);
+            lblKategori.Location = new Point(16, 156);
             lblKategori.Margin = new Padding(4, 0, 4, 0);
             lblKategori.Name = "lblKategori";
             lblKategori.Size = new Size(95, 30);
@@ -231,13 +248,91 @@
             lblKategori.Text = "Kategori";
             lblKategori.Click += lblKategori_Click;
             // 
-            // comboBox1
+            // cmbKategori
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(16, 210);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(369, 40);
-            comboBox1.TabIndex = 17;
+            cmbKategori.FormattingEnabled = true;
+            cmbKategori.Location = new Point(16, 189);
+            cmbKategori.Name = "cmbKategori";
+            cmbKategori.Size = new Size(369, 40);
+            cmbKategori.TabIndex = 17;
+            // 
+            // lblHargaMenu
+            // 
+            lblHargaMenu.AutoSize = true;
+            lblHargaMenu.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblHargaMenu.Location = new Point(16, 232);
+            lblHargaMenu.Margin = new Padding(4, 0, 4, 0);
+            lblHargaMenu.Name = "lblHargaMenu";
+            lblHargaMenu.Size = new Size(72, 30);
+            lblHargaMenu.TabIndex = 18;
+            lblHargaMenu.Text = "Harga";
+            // 
+            // txtHargaMenu
+            // 
+            txtHargaMenu.Location = new Point(16, 265);
+            txtHargaMenu.Name = "txtHargaMenu";
+            txtHargaMenu.Size = new Size(369, 39);
+            txtHargaMenu.TabIndex = 19;
+            // 
+            // lblDeskripsiMenu
+            // 
+            lblDeskripsiMenu.AutoSize = true;
+            lblDeskripsiMenu.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDeskripsiMenu.Location = new Point(16, 307);
+            lblDeskripsiMenu.Margin = new Padding(4, 0, 4, 0);
+            lblDeskripsiMenu.Name = "lblDeskripsiMenu";
+            lblDeskripsiMenu.Size = new Size(162, 30);
+            lblDeskripsiMenu.TabIndex = 20;
+            lblDeskripsiMenu.Text = "Deskripsi Menu";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(16, 340);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(369, 39);
+            textBox1.TabIndex = 21;
+            // 
+            // lblGambarMenu
+            // 
+            lblGambarMenu.AutoSize = true;
+            lblGambarMenu.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblGambarMenu.Location = new Point(16, 382);
+            lblGambarMenu.Margin = new Padding(4, 0, 4, 0);
+            lblGambarMenu.Name = "lblGambarMenu";
+            lblGambarMenu.Size = new Size(152, 30);
+            lblGambarMenu.TabIndex = 22;
+            lblGambarMenu.Text = "Gambar Menu";
+            // 
+            // btnUploadGambar
+            // 
+            btnUploadGambar.Location = new Point(16, 415);
+            btnUploadGambar.Name = "btnUploadGambar";
+            btnUploadGambar.Size = new Size(369, 153);
+            btnUploadGambar.TabIndex = 23;
+            btnUploadGambar.Text = "Upload Gambar";
+            btnUploadGambar.UseVisualStyleBackColor = true;
+            // 
+            // btnBatal
+            // 
+            btnBatal.BackColor = Color.Red;
+            btnBatal.ForeColor = Color.White;
+            btnBatal.Location = new Point(16, 722);
+            btnBatal.Name = "btnBatal";
+            btnBatal.Size = new Size(162, 49);
+            btnBatal.TabIndex = 24;
+            btnBatal.Text = "Batal";
+            btnBatal.UseVisualStyleBackColor = false;
+            // 
+            // button8
+            // 
+            button8.BackColor = Color.FromArgb(255, 165, 81);
+            button8.ForeColor = Color.White;
+            button8.Location = new Point(231, 722);
+            button8.Name = "button8";
+            button8.Size = new Size(154, 49);
+            button8.TabIndex = 25;
+            button8.Text = "button8";
+            button8.UseVisualStyleBackColor = false;
             // 
             // FormPengelolaMenu
             // 
@@ -283,7 +378,15 @@
         private Button button6;
         private TextBox txtNamaMenu;
         private Label lblNamaMenu;
-        private ComboBox comboBox1;
+        private ComboBox cmbKategori;
         private Label lblKategori;
+        private TextBox txtHargaMenu;
+        private Label lblHargaMenu;
+        private TextBox textBox1;
+        private Label lblDeskripsiMenu;
+        private Button btnUploadGambar;
+        private Label lblGambarMenu;
+        private Button button8;
+        private Button btnBatal;
     }
 }
