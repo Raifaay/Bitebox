@@ -1,81 +1,68 @@
 ﻿using Bitebox.Helpers;
 using Bitebox.Models.Entity;
 using Npgsql;
-using System;
-using System.Collections.Generic;
 
 namespace Bitebox.Models.Context
 {
     internal class LaporanContextAdmin
     {
-        public int GetTotalPenjualan()
+        public int GetTotalPenjualan(string periode = "bulan")
         {
-            string query = "SELECT COALESCE(SUM(subtotal), 0) FROM detail_pesanan";
-            using (var conn = DatabaseConnection.GetConnection())
-            {
-                conn.Open();
-                using var cmd = new NpgsqlCommand(query, conn);
-                return Convert.ToInt32(cmd.ExecuteScalar()!);
-            }
+            using var conn = DatabaseConnection.GetConnection();
+            conn.Open();
+            using var cmd = new NpgsqlCommand("SELECT get_total_penjualan(@periode)", conn);
+            cmd.Parameters.AddWithValue("@periode", periode);
+            return Convert.ToInt32(cmd.ExecuteScalar()!);
         }
 
-        public int GetTotalTransaksi()
+        public int GetTotalTransaksi(string periode = "bulan")
         {
-            string query = "SELECT COUNT(*) FROM pesanan";
-            using (var conn = DatabaseConnection.GetConnection())
-            {
-                conn.Open();
-                using var cmd = new NpgsqlCommand(query, conn);
-                return Convert.ToInt32(cmd.ExecuteScalar()!);
-            }
+            using var conn = DatabaseConnection.GetConnection();
+            conn.Open();
+            using var cmd = new NpgsqlCommand("SELECT get_total_transaksi(@periode)", conn);
+            cmd.Parameters.AddWithValue("@periode", periode);
+            return Convert.ToInt32(cmd.ExecuteScalar()!);
         }
 
-        public List<LaporanItem> GetLaporan(string? filterKategori = null)
+        public List<LaporanItem> GetLaporan(string periode = "bulan", string? filterKategori = null)
         {
             var list = new List<LaporanItem>();
-            string query = @"SELECT * FROM view_laporan_per_menu
-                WHERE (@kategori IS NULL OR nama_kategori = @kategori)
-                ORDER BY jumlah_terjual DESC";
-            using (var conn = DatabaseConnection.GetConnection())
+            using var conn = DatabaseConnection.GetConnection();
+            conn.Open();
+            using var cmd = new NpgsqlCommand("SELECT * FROM get_laporan_per_menu(@periode, @kategori)", conn);
+            cmd.Parameters.AddWithValue("@periode", periode);
+            cmd.Parameters.Add("@kategori", NpgsqlTypes.NpgsqlDbType.Text).Value = (object?)filterKategori ?? DBNull.Value;
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
             {
-                conn.Open();
-                using var cmd = new NpgsqlCommand(query, conn);
-                cmd.Parameters.Add("@kategori", NpgsqlTypes.NpgsqlDbType.Text).Value =
-                    (object?)filterKategori ?? DBNull.Value;
-                using var reader = cmd.ExecuteReader(); //ini masih crash
-                while (reader.Read())
+                list.Add(new LaporanItem
                 {
-                    list.Add(new LaporanItem
-                    {
-                        NamaMenu = reader["nama_menu"]?.ToString() ?? "",
-                        Kategori = reader["nama_kategori"]?.ToString() ?? "",
-                        JumlahTerjual = Convert.ToInt32(reader["jumlah_terjual"]),
-                        TotalPendapat = Convert.ToInt32(reader["total_pendapat"])
-                    });
-                }
+                    NamaMenu = reader["nama_menu"]?.ToString() ?? "",
+                    Kategori = reader["nama_kategori"]?.ToString() ?? "",
+                    JumlahTerjual = Convert.ToInt32(reader["jumlah_terjual"]),
+                    TotalPendapat = Convert.ToInt32(reader["total_pendapat"])
+                });
             }
             return list;
         }
 
-        public List<LaporanRollup> GetLaporanRollup()
+        public List<LaporanRollup> GetLaporanRollup(string periode = "bulan")
         {
             var list = new List<LaporanRollup>();
-            string query = "SELECT * FROM view_laporan_rollup";
-            using (var conn = DatabaseConnection.GetConnection())
+            using var conn = DatabaseConnection.GetConnection();
+            conn.Open();
+            using var cmd = new NpgsqlCommand("SELECT * FROM get_laporan_per_kategori(@periode)", conn);
+            cmd.Parameters.AddWithValue("@periode", periode);
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
             {
-                conn.Open();
-                using var cmd = new NpgsqlCommand(query, conn);
-                using var reader = cmd.ExecuteReader();
-                while (reader.Read())
+                list.Add(new LaporanRollup
                 {
-                    list.Add(new LaporanRollup
-                    {
-                        Kategori = reader["nama_kategori"] == DBNull.Value ? "GRAND TOTAL" : reader["nama_kategori"].ToString()!,
-                        NamaMenu = reader["nama_menu"] == DBNull.Value ? "-" : reader["nama_menu"].ToString()!,
-                        JumlahTerjual = reader["jumlah_terjual"] == DBNull.Value ? 0 : Convert.ToInt32(reader["jumlah_terjual"]),
-                        TotalPendapat = reader["total_pendapat"] == DBNull.Value ? 0 : Convert.ToInt32(reader["total_pendapat"])
-                    });
-                }
+                    Kategori = reader["nama_kategori"]?.ToString() ?? "",
+                    NamaMenu = "-",
+                    JumlahTerjual = Convert.ToInt32(reader["jumlah_terjual"]),
+                    TotalPendapat = Convert.ToInt32(reader["total_pendapat"])
+                });
             }
             return list;
         }
@@ -83,15 +70,12 @@ namespace Bitebox.Models.Context
         public List<string> GetSemuaKategori()
         {
             var list = new List<string>();
-            string query = "SELECT nama_kategori FROM kategori_menu ORDER BY nama_kategori";
-            using (var conn = DatabaseConnection.GetConnection())
-            {
-                conn.Open();
-                using var cmd = new NpgsqlCommand(query, conn);
-                using var reader = cmd.ExecuteReader();
-                while (reader.Read())
-                    list.Add(reader["nama_kategori"]?.ToString() ?? "");
-            }
+            using var conn = DatabaseConnection.GetConnection();
+            conn.Open();
+            using var cmd = new NpgsqlCommand("SELECT nama_kategori FROM kategori_menu ORDER BY nama_kategori", conn);
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+                list.Add(reader["nama_kategori"]?.ToString() ?? "");
             return list;
         }
     }

@@ -28,122 +28,151 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
+            pnlSidebar = new Panel();
+            btnPengelolaPesanan = new Button();
+            pcbLogo = new PictureBox();
             btnLogout = new Button();
             btnKelolaCustomer = new Button();
             btnLaporanPenjualan = new Button();
             btnPengelolaMenu = new Button();
-            btnDashboard = new Button();
-            dGVKelolaCustomer = new DataGridView();
-            btnAksi = new DataGridViewButtonColumn();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dGVKelolaCustomer).BeginInit();
+            btnBeranda = new Button();
+            dgvKelolaCustomer = new DataGridView();
+            pnlSidebar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pcbLogo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvKelolaCustomer).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // pnlSidebar
             // 
-            panel1.Controls.Add(btnLogout);
-            panel1.Controls.Add(btnKelolaCustomer);
-            panel1.Controls.Add(btnLaporanPenjualan);
-            panel1.Controls.Add(btnPengelolaMenu);
-            panel1.Controls.Add(btnDashboard);
-            panel1.Location = new Point(1, 2);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(287, 1017);
-            panel1.TabIndex = 0;
-            panel1.Paint += panel1_Paint;
+            pnlSidebar.BackgroundImage = Properties.Resources.sidebarrr;
+            pnlSidebar.Controls.Add(btnPengelolaPesanan);
+            pnlSidebar.Controls.Add(pcbLogo);
+            pnlSidebar.Controls.Add(btnLogout);
+            pnlSidebar.Controls.Add(btnKelolaCustomer);
+            pnlSidebar.Controls.Add(btnLaporanPenjualan);
+            pnlSidebar.Controls.Add(btnPengelolaMenu);
+            pnlSidebar.Controls.Add(btnBeranda);
+            pnlSidebar.Location = new Point(1, 2);
+            pnlSidebar.Name = "pnlSidebar";
+            pnlSidebar.Size = new Size(278, 1024);
+            pnlSidebar.TabIndex = 7;
+            // 
+            // btnPengelolaPesanan
+            // 
+            btnPengelolaPesanan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPengelolaPesanan.ForeColor = Color.FromArgb(128, 66, 50);
+            btnPengelolaPesanan.Location = new Point(20, 392);
+            btnPengelolaPesanan.Name = "btnPengelolaPesanan";
+            btnPengelolaPesanan.Size = new Size(232, 53);
+            btnPengelolaPesanan.TabIndex = 7;
+            btnPengelolaPesanan.Text = "Pengelola Pesanan";
+            btnPengelolaPesanan.UseVisualStyleBackColor = true;
+            // 
+            // pcbLogo
+            // 
+            pcbLogo.BackColor = Color.Transparent;
+            pcbLogo.BackgroundImage = Properties.Resources.logo;
+            pcbLogo.BackgroundImageLayout = ImageLayout.Stretch;
+            pcbLogo.Location = new Point(20, 12);
+            pcbLogo.Name = "pcbLogo";
+            pcbLogo.Size = new Size(214, 195);
+            pcbLogo.TabIndex = 6;
+            pcbLogo.TabStop = false;
             // 
             // btnLogout
             // 
-            btnLogout.Location = new Point(38, 537);
+            btnLogout.BackColor = Color.Red;
+            btnLogout.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogout.ForeColor = SystemColors.ButtonHighlight;
+            btnLogout.Location = new Point(20, 844);
             btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(197, 54);
+            btnLogout.Size = new Size(232, 53);
             btnLogout.TabIndex = 4;
-            btnLogout.Text = "Logout";
-            btnLogout.UseVisualStyleBackColor = true;
-            btnLogout.Click += btnLogout_Click;
+            btnLogout.Text = "Keluar";
+            btnLogout.UseVisualStyleBackColor = false;
             // 
             // btnKelolaCustomer
             // 
-            btnKelolaCustomer.Location = new Point(38, 430);
+            btnKelolaCustomer.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnKelolaCustomer.ForeColor = Color.FromArgb(128, 66, 50);
+            btnKelolaCustomer.Location = new Point(20, 558);
             btnKelolaCustomer.Name = "btnKelolaCustomer";
-            btnKelolaCustomer.Size = new Size(197, 61);
+            btnKelolaCustomer.Size = new Size(232, 53);
             btnKelolaCustomer.TabIndex = 3;
             btnKelolaCustomer.Text = "Kelola Customer";
             btnKelolaCustomer.UseVisualStyleBackColor = true;
             // 
             // btnLaporanPenjualan
             // 
-            btnLaporanPenjualan.Location = new Point(38, 333);
+            btnLaporanPenjualan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLaporanPenjualan.ForeColor = Color.FromArgb(128, 66, 50);
+            btnLaporanPenjualan.Location = new Point(20, 474);
             btnLaporanPenjualan.Name = "btnLaporanPenjualan";
-            btnLaporanPenjualan.Size = new Size(197, 58);
+            btnLaporanPenjualan.Size = new Size(232, 53);
             btnLaporanPenjualan.TabIndex = 2;
             btnLaporanPenjualan.Text = "Laporan Penjualan";
             btnLaporanPenjualan.UseVisualStyleBackColor = true;
-            btnLaporanPenjualan.Click += btnLaporanPenjualan_Click;
             // 
             // btnPengelolaMenu
             // 
-            btnPengelolaMenu.Location = new Point(38, 240);
+            btnPengelolaMenu.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPengelolaMenu.ForeColor = Color.FromArgb(128, 66, 50);
+            btnPengelolaMenu.Location = new Point(20, 308);
             btnPengelolaMenu.Name = "btnPengelolaMenu";
-            btnPengelolaMenu.Size = new Size(197, 59);
+            btnPengelolaMenu.Size = new Size(232, 53);
             btnPengelolaMenu.TabIndex = 1;
-            btnPengelolaMenu.Text = "Pengelola Menu";
+            btnPengelolaMenu.Text = "Pengelola Menu ";
             btnPengelolaMenu.UseVisualStyleBackColor = true;
-            btnPengelolaMenu.Click += btnPengelolaMenu_Click;
             // 
-            // btnDashboard
+            // btnBeranda
             // 
-            btnDashboard.Location = new Point(38, 149);
-            btnDashboard.Name = "btnDashboard";
-            btnDashboard.Size = new Size(197, 57);
-            btnDashboard.TabIndex = 0;
-            btnDashboard.Text = "Dashboard";
-            btnDashboard.UseVisualStyleBackColor = true;
-            btnDashboard.Click += btnDashboard_Click;
+            btnBeranda.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBeranda.ForeColor = Color.FromArgb(128, 66, 50);
+            btnBeranda.Location = new Point(20, 229);
+            btnBeranda.Name = "btnBeranda";
+            btnBeranda.Size = new Size(232, 53);
+            btnBeranda.TabIndex = 0;
+            btnBeranda.Text = "Beranda";
+            btnBeranda.UseVisualStyleBackColor = true;
             // 
-            // dGVKelolaCustomer
+            // dgvKelolaCustomer
             // 
-            dGVKelolaCustomer.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dGVKelolaCustomer.Columns.AddRange(new DataGridViewColumn[] { btnAksi });
-            dGVKelolaCustomer.Location = new Point(361, 151);
-            dGVKelolaCustomer.Name = "dGVKelolaCustomer";
-            dGVKelolaCustomer.RowHeadersWidth = 62;
-            dGVKelolaCustomer.Size = new Size(1054, 514);
-            dGVKelolaCustomer.TabIndex = 1;
-            // 
-            // btnAksi
-            // 
-            btnAksi.HeaderText = "Column1";
-            btnAksi.MinimumWidth = 8;
-            btnAksi.Name = "btnAksi";
-            btnAksi.Width = 150;
+            dgvKelolaCustomer.BackgroundColor = Color.FromArgb(255, 240, 222);
+            dgvKelolaCustomer.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvKelolaCustomer.Location = new Point(383, 90);
+            dgvKelolaCustomer.Name = "dgvKelolaCustomer";
+            dgvKelolaCustomer.RowHeadersWidth = 62;
+            dgvKelolaCustomer.Size = new Size(1415, 844);
+            dgvKelolaCustomer.TabIndex = 8;
             // 
             // FormKelolaCustomer
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(255, 249, 243);
             ClientSize = new Size(1898, 1024);
-            Controls.Add(dGVKelolaCustomer);
-            Controls.Add(panel1);
+            Controls.Add(dgvKelolaCustomer);
+            Controls.Add(pnlSidebar);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormKelolaCustomer";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormKelolaCustomer";
-            panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dGVKelolaCustomer).EndInit();
+            pnlSidebar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pcbLogo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvKelolaCustomer).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel panel1;
+        private Panel pnlSidebar;
+        private Button btnPengelolaPesanan;
+        private PictureBox pcbLogo;
         private Button btnLogout;
         private Button btnKelolaCustomer;
         private Button btnLaporanPenjualan;
         private Button btnPengelolaMenu;
-        private Button btnDashboard;
-        private DataGridView dGVKelolaCustomer;
-        private DataGridViewButtonColumn btnAksi;
+        private Button btnBeranda;
+        private DataGridView dgvKelolaCustomer;
     }
 }

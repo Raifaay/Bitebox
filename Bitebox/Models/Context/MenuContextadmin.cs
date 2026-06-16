@@ -28,45 +28,34 @@ namespace Bitebox.Models.Context
 
         public bool TambahMenu(MenuEntity menu)
         {
-            string query = @"INSERT INTO menu
-                            (nama_menu, harga_menu, deskripsi_menu, gambar_menu, id_kategori_menu)
-                VALUES (@nama, @harga, @deskripsi, @gambar, @kategori)";
-
             using (var conn = DatabaseConnection.GetConnection())
             {
                 conn.Open();
-                using var cmd = new NpgsqlCommand(query, conn);
+                using var cmd = new NpgsqlCommand("CALL tambah_menu(@nama, @harga, @deskripsi, @gambar, @kategori)", conn);
                 cmd.Parameters.AddWithValue("@nama", menu.NamaMenu);
-                cmd.Parameters.AddWithValue("@harga", menu.HargaMenu);
-                cmd.Parameters.AddWithValue("@deskripsi", menu.DeskripsiMenu);
+                cmd.Parameters.AddWithValue("@harga", (decimal)menu.HargaMenu);
+                cmd.Parameters.AddWithValue("@deskripsi", menu.DeskripsiMenu ?? "");
                 cmd.Parameters.AddWithValue("@gambar", (object?)menu.GambarMenu ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@kategori", menu.IdKategoriMenu);
-                return cmd.ExecuteNonQuery() > 0;
+                cmd.ExecuteNonQuery();
+                return true;
             }
         }
 
         public bool UpdateMenu(MenuEntity menu)
         {
-            string query = @"UPDATE menu SET
-                nama_menu = @nama,
-                harga_menu = @harga,
-                deskripsi_menu = @deskripsi,
-                gambar_menu = @gambar,
-                id_kategori_menu = @kategori
-                WHERE id_menu = @id"; 
-
             using (var conn = DatabaseConnection.GetConnection())
             {
                 conn.Open();
-                using var cmd = new NpgsqlCommand(query, conn);
+                using var cmd = new NpgsqlCommand("CALL update_menu(@id, @nama, @harga, @deskripsi, @gambar, @kategori)", conn);
                 cmd.Parameters.AddWithValue("@id", menu.IdMenu);
                 cmd.Parameters.AddWithValue("@nama", menu.NamaMenu);
-                cmd.Parameters.AddWithValue("@harga", menu.HargaMenu);
-                cmd.Parameters.AddWithValue("@deskripsi", menu.DeskripsiMenu ?? " ");
+                cmd.Parameters.AddWithValue("@harga", (decimal)menu.HargaMenu);
+                cmd.Parameters.AddWithValue("@deskripsi", menu.DeskripsiMenu ?? "");
                 cmd.Parameters.AddWithValue("@gambar", (object?)menu.GambarMenu ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@kategori", menu.IdKategoriMenu);
-                return cmd.ExecuteNonQuery() > 0;
-
+                cmd.ExecuteNonQuery();
+                return true;
             }
         }
 
@@ -75,9 +64,10 @@ namespace Bitebox.Models.Context
             using (var conn = DatabaseConnection.GetConnection())
             {
                 conn.Open();
-                using var cmd = new NpgsqlCommand("DELETE FROM menu WHERE id_menu = @id", conn);
+                using var cmd = new NpgsqlCommand("CALL hapus_menu(@id)", conn);
                 cmd.Parameters.AddWithValue("@id", idMenu);
-                return cmd.ExecuteNonQuery() > 0;
+                cmd.ExecuteNonQuery();
+                return true;
             }
         }
 
@@ -85,12 +75,12 @@ namespace Bitebox.Models.Context
         {
             return new MenuEntity(
                 (int)reader["id_menu"],
-                reader["nama_menu"]?.ToString() ?? " ",
-                (int)reader["harga_menu"],
-                reader["deskripsi_menu"]?.ToString() ?? " ",
+                reader["nama_menu"]?.ToString() ?? "",
+                Convert.ToInt32(reader["harga_menu"]),  
+                reader["deskripsi_menu"]?.ToString() ?? "",
                 reader["gambar_menu"] as byte[],
                 (int)reader["id_kategori_menu"]
-                ); //:: 
+            );
         }
     }
 }

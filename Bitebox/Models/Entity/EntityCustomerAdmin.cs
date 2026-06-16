@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Bitebox.Models.Entity
+﻿namespace Bitebox.Models.Entity
 {
     public class EntityCustomerAdmin
     {
         public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty; 
-        public bool IsActive { get; set; }
+        public string Username { get; set; } = string.Empty;
+        public string NamaLengkap { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public bool IsAktif { get; set; }
     }
 }

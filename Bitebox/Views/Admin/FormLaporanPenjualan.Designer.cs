@@ -28,261 +28,360 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
+            pnlTotalPenjualan = new Panel();
+            lblAngkaTotalPenjualan = new Label();
+            lbTotalPenjualan = new Label();
+            panel2 = new Panel();
+            lblAngkaTotalTransaksi = new Label();
+            lbTotalTransaksi = new Label();
+            panel3 = new Panel();
+            lblRataratatransaksi = new Label();
+            lblRatarata = new Label();
+            panel4 = new Panel();
+            cmbFilterKatgori = new ComboBox();
+            lbFilterKategori = new Label();
+            pnlSidebar = new Panel();
+            btnPengelolaPesanan = new Button();
+            pcbLogo = new PictureBox();
             btnLogout = new Button();
             btnKelolaCustomer = new Button();
             btnLaporanPenjualan = new Button();
             btnPengelolaMenu = new Button();
-            btnDashboard = new Button();
-            pnlTotalPenjualan = new Panel();
-            lbHarga = new Label();
-            lbTotalPenjualan = new Label();
-            panel2 = new Panel();
-            lbHarga1 = new Label();
-            lbTotalTransaksi = new Label();
-            panel3 = new Panel();
-            lbHarga2 = new Label();
-            lbRataRata1 = new Label();
-            panel4 = new Panel();
-            dataGridView1 = new DataGridView();
-            ColNamaMenu = new DataGridViewTextBoxColumn();
-            ColKategori = new DataGridViewTextBoxColumn();
-            ColJumlahTerjual = new DataGridViewTextBoxColumn();
-            ColTotalPendapat = new DataGridViewTextBoxColumn();
-            comboBox1 = new ComboBox();
-            lbFilterKategori = new Label();
-            panel1.SuspendLayout();
+            btnBeranda = new Button();
+            btnHariInibtnHariIni = new Button();
+            btnBulanIni = new Button();
+            btnTahunIni = new Button();
+            dgvPenjualanPermenu = new DataGridView();
+            lblPenjualanPerMenu = new Label();
+            lblPenjualanPerkategori = new Label();
+            dgvPenjualanPerkategori = new DataGridView();
             pnlTotalPenjualan.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            pnlSidebar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pcbLogo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPenjualanPermenu).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPenjualanPerkategori).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // pnlTotalPenjualan
             // 
-            panel1.Controls.Add(btnLogout);
-            panel1.Controls.Add(btnKelolaCustomer);
-            panel1.Controls.Add(btnLaporanPenjualan);
-            panel1.Controls.Add(btnPengelolaMenu);
-            panel1.Controls.Add(btnDashboard);
-            panel1.Location = new Point(1, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(287, 1017);
-            panel1.TabIndex = 0;
+            pnlTotalPenjualan.BackColor = Color.FromArgb(255, 240, 222);
+            pnlTotalPenjualan.Controls.Add(lblAngkaTotalPenjualan);
+            pnlTotalPenjualan.Controls.Add(lbTotalPenjualan);
+            pnlTotalPenjualan.Location = new Point(380, 36);
+            pnlTotalPenjualan.Name = "pnlTotalPenjualan";
+            pnlTotalPenjualan.Size = new Size(300, 116);
+            pnlTotalPenjualan.TabIndex = 1;
+            // 
+            // lblAngkaTotalPenjualan
+            // 
+            lblAngkaTotalPenjualan.AutoSize = true;
+            lblAngkaTotalPenjualan.ForeColor = Color.FromArgb(128, 66, 50);
+            lblAngkaTotalPenjualan.Location = new Point(126, 61);
+            lblAngkaTotalPenjualan.Name = "lblAngkaTotalPenjualan";
+            lblAngkaTotalPenjualan.Size = new Size(48, 25);
+            lblAngkaTotalPenjualan.TabIndex = 1;
+            lblAngkaTotalPenjualan.Text = "Rp.0";
+            // 
+            // lbTotalPenjualan
+            // 
+            lbTotalPenjualan.AutoSize = true;
+            lbTotalPenjualan.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbTotalPenjualan.ForeColor = Color.FromArgb(128, 66, 50);
+            lbTotalPenjualan.Location = new Point(87, 17);
+            lbTotalPenjualan.Name = "lbTotalPenjualan";
+            lbTotalPenjualan.Size = new Size(138, 25);
+            lbTotalPenjualan.TabIndex = 0;
+            lbTotalPenjualan.Text = "Total Penjualan";
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(255, 240, 222);
+            panel2.Controls.Add(lblAngkaTotalTransaksi);
+            panel2.Controls.Add(lbTotalTransaksi);
+            panel2.Location = new Point(784, 36);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(300, 116);
+            panel2.TabIndex = 2;
+            // 
+            // lblAngkaTotalTransaksi
+            // 
+            lblAngkaTotalTransaksi.AutoSize = true;
+            lblAngkaTotalTransaksi.ForeColor = Color.FromArgb(128, 66, 50);
+            lblAngkaTotalTransaksi.Location = new Point(149, 61);
+            lblAngkaTotalTransaksi.Name = "lblAngkaTotalTransaksi";
+            lblAngkaTotalTransaksi.Size = new Size(22, 25);
+            lblAngkaTotalTransaksi.TabIndex = 1;
+            lblAngkaTotalTransaksi.Text = "0";
+            // 
+            // lbTotalTransaksi
+            // 
+            lbTotalTransaksi.AutoSize = true;
+            lbTotalTransaksi.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbTotalTransaksi.ForeColor = Color.FromArgb(128, 66, 50);
+            lbTotalTransaksi.Location = new Point(97, 17);
+            lbTotalTransaksi.Name = "lbTotalTransaksi";
+            lbTotalTransaksi.Size = new Size(132, 25);
+            lbTotalTransaksi.TabIndex = 0;
+            lbTotalTransaksi.Text = "Total Transaksi";
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.FromArgb(255, 240, 222);
+            panel3.Controls.Add(lblRataratatransaksi);
+            panel3.Controls.Add(lblRatarata);
+            panel3.Location = new Point(1187, 36);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(300, 116);
+            panel3.TabIndex = 3;
+            // 
+            // lblRataratatransaksi
+            // 
+            lblRataratatransaksi.AutoSize = true;
+            lblRataratatransaksi.ForeColor = Color.FromArgb(128, 66, 50);
+            lblRataratatransaksi.Location = new Point(139, 61);
+            lblRataratatransaksi.Name = "lblRataratatransaksi";
+            lblRataratatransaksi.Size = new Size(48, 25);
+            lblRataratatransaksi.TabIndex = 1;
+            lblRataratatransaksi.Text = "Rp.0";
+            // 
+            // lblRatarata
+            // 
+            lblRatarata.AutoSize = true;
+            lblRatarata.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblRatarata.ForeColor = Color.FromArgb(128, 66, 50);
+            lblRatarata.Location = new Point(79, 17);
+            lblRatarata.Name = "lblRatarata";
+            lblRatarata.Size = new Size(167, 25);
+            lblRatarata.TabIndex = 0;
+            lblRatarata.Text = "Rata-rata Transaksi";
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.FromArgb(255, 249, 243);
+            panel4.Controls.Add(btnTahunIni);
+            panel4.Controls.Add(btnBulanIni);
+            panel4.Controls.Add(cmbFilterKatgori);
+            panel4.Controls.Add(btnHariInibtnHariIni);
+            panel4.Controls.Add(lbFilterKategori);
+            panel4.Location = new Point(380, 188);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(1413, 152);
+            panel4.TabIndex = 4;
+            // 
+            // cmbFilterKatgori
+            // 
+            cmbFilterKatgori.FormattingEnabled = true;
+            cmbFilterKatgori.Items.AddRange(new object[] { "Semua Kategori", "Burger", "Pizza", "Minuman" });
+            cmbFilterKatgori.Location = new Point(161, 86);
+            cmbFilterKatgori.Name = "cmbFilterKatgori";
+            cmbFilterKatgori.Size = new Size(1218, 33);
+            cmbFilterKatgori.TabIndex = 4;
+            cmbFilterKatgori.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // lbFilterKategori
+            // 
+            lbFilterKategori.AutoSize = true;
+            lbFilterKategori.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbFilterKategori.ForeColor = Color.FromArgb(128, 66, 50);
+            lbFilterKategori.Location = new Point(24, 86);
+            lbFilterKategori.Name = "lbFilterKategori";
+            lbFilterKategori.Size = new Size(131, 25);
+            lbFilterKategori.TabIndex = 3;
+            lbFilterKategori.Text = "Filter Kategori";
+            // 
+            // pnlSidebar
+            // 
+            pnlSidebar.BackgroundImage = Properties.Resources.sidebarrr;
+            pnlSidebar.Controls.Add(btnPengelolaPesanan);
+            pnlSidebar.Controls.Add(pcbLogo);
+            pnlSidebar.Controls.Add(btnLogout);
+            pnlSidebar.Controls.Add(btnKelolaCustomer);
+            pnlSidebar.Controls.Add(btnLaporanPenjualan);
+            pnlSidebar.Controls.Add(btnPengelolaMenu);
+            pnlSidebar.Controls.Add(btnBeranda);
+            pnlSidebar.Location = new Point(0, 0);
+            pnlSidebar.Name = "pnlSidebar";
+            pnlSidebar.Size = new Size(278, 1024);
+            pnlSidebar.TabIndex = 6;
+            // 
+            // btnPengelolaPesanan
+            // 
+            btnPengelolaPesanan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPengelolaPesanan.ForeColor = Color.FromArgb(128, 66, 50);
+            btnPengelolaPesanan.Location = new Point(20, 392);
+            btnPengelolaPesanan.Name = "btnPengelolaPesanan";
+            btnPengelolaPesanan.Size = new Size(232, 53);
+            btnPengelolaPesanan.TabIndex = 7;
+            btnPengelolaPesanan.Text = "Pengelola Pesanan";
+            btnPengelolaPesanan.UseVisualStyleBackColor = true;
+            // 
+            // pcbLogo
+            // 
+            pcbLogo.BackColor = Color.Transparent;
+            pcbLogo.BackgroundImage = Properties.Resources.logo;
+            pcbLogo.BackgroundImageLayout = ImageLayout.Stretch;
+            pcbLogo.Location = new Point(20, 12);
+            pcbLogo.Name = "pcbLogo";
+            pcbLogo.Size = new Size(214, 195);
+            pcbLogo.TabIndex = 6;
+            pcbLogo.TabStop = false;
             // 
             // btnLogout
             // 
-            btnLogout.Location = new Point(38, 537);
+            btnLogout.BackColor = Color.Red;
+            btnLogout.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogout.ForeColor = SystemColors.ButtonHighlight;
+            btnLogout.Location = new Point(20, 844);
             btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(197, 54);
+            btnLogout.Size = new Size(232, 53);
             btnLogout.TabIndex = 4;
-            btnLogout.Text = "Logout";
-            btnLogout.UseVisualStyleBackColor = true;
-            btnLogout.Click += btnLogout_Click;
+            btnLogout.Text = "Keluar";
+            btnLogout.UseVisualStyleBackColor = false;
             // 
             // btnKelolaCustomer
             // 
-            btnKelolaCustomer.Location = new Point(38, 430);
+            btnKelolaCustomer.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnKelolaCustomer.ForeColor = Color.FromArgb(128, 66, 50);
+            btnKelolaCustomer.Location = new Point(20, 558);
             btnKelolaCustomer.Name = "btnKelolaCustomer";
-            btnKelolaCustomer.Size = new Size(197, 61);
+            btnKelolaCustomer.Size = new Size(232, 53);
             btnKelolaCustomer.TabIndex = 3;
             btnKelolaCustomer.Text = "Kelola Customer";
             btnKelolaCustomer.UseVisualStyleBackColor = true;
-            btnKelolaCustomer.Click += btnKelolaCustomer_Click;
             // 
             // btnLaporanPenjualan
             // 
-            btnLaporanPenjualan.Location = new Point(38, 333);
+            btnLaporanPenjualan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLaporanPenjualan.ForeColor = Color.FromArgb(128, 66, 50);
+            btnLaporanPenjualan.Location = new Point(20, 474);
             btnLaporanPenjualan.Name = "btnLaporanPenjualan";
-            btnLaporanPenjualan.Size = new Size(197, 58);
+            btnLaporanPenjualan.Size = new Size(232, 53);
             btnLaporanPenjualan.TabIndex = 2;
             btnLaporanPenjualan.Text = "Laporan Penjualan";
             btnLaporanPenjualan.UseVisualStyleBackColor = true;
             // 
             // btnPengelolaMenu
             // 
-            btnPengelolaMenu.Location = new Point(38, 240);
+            btnPengelolaMenu.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPengelolaMenu.ForeColor = Color.FromArgb(128, 66, 50);
+            btnPengelolaMenu.Location = new Point(20, 308);
             btnPengelolaMenu.Name = "btnPengelolaMenu";
-            btnPengelolaMenu.Size = new Size(197, 59);
+            btnPengelolaMenu.Size = new Size(232, 53);
             btnPengelolaMenu.TabIndex = 1;
             btnPengelolaMenu.Text = "Pengelola Menu ";
             btnPengelolaMenu.UseVisualStyleBackColor = true;
-            btnPengelolaMenu.Click += btnPengelolaMenu_Click;
             // 
-            // btnDashboard
+            // btnBeranda
             // 
-            btnDashboard.Location = new Point(38, 149);
-            btnDashboard.Name = "btnDashboard";
-            btnDashboard.Size = new Size(197, 57);
-            btnDashboard.TabIndex = 0;
-            btnDashboard.Text = "Dashboard";
-            btnDashboard.UseVisualStyleBackColor = true;
-            btnDashboard.Click += btnDashboard_Click;
+            btnBeranda.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBeranda.ForeColor = Color.FromArgb(128, 66, 50);
+            btnBeranda.Location = new Point(20, 229);
+            btnBeranda.Name = "btnBeranda";
+            btnBeranda.Size = new Size(232, 53);
+            btnBeranda.TabIndex = 0;
+            btnBeranda.Text = "Beranda";
+            btnBeranda.UseVisualStyleBackColor = true;
             // 
-            // pnlTotalPenjualan
+            // btnHariInibtnHariIni
             // 
-            pnlTotalPenjualan.Controls.Add(lbHarga);
-            pnlTotalPenjualan.Controls.Add(lbTotalPenjualan);
-            pnlTotalPenjualan.Location = new Point(380, 91);
-            pnlTotalPenjualan.Name = "pnlTotalPenjualan";
-            pnlTotalPenjualan.Size = new Size(300, 150);
-            pnlTotalPenjualan.TabIndex = 1;
+            btnHariInibtnHariIni.BackColor = Color.FromArgb(255, 165, 81);
+            btnHariInibtnHariIni.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnHariInibtnHariIni.ForeColor = Color.White;
+            btnHariInibtnHariIni.Location = new Point(24, 17);
+            btnHariInibtnHariIni.Name = "btnHariInibtnHariIni";
+            btnHariInibtnHariIni.Size = new Size(150, 46);
+            btnHariInibtnHariIni.TabIndex = 0;
+            btnHariInibtnHariIni.Text = "Hari Ini";
+            btnHariInibtnHariIni.UseVisualStyleBackColor = false;
             // 
-            // lbHarga
+            // btnBulanIni
             // 
-            lbHarga.AutoSize = true;
-            lbHarga.Location = new Point(127, 74);
-            lbHarga.Name = "lbHarga";
-            lbHarga.Size = new Size(48, 25);
-            lbHarga.TabIndex = 1;
-            lbHarga.Text = "Rp.0";
+            btnBulanIni.BackColor = Color.FromArgb(255, 165, 81);
+            btnBulanIni.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBulanIni.ForeColor = Color.White;
+            btnBulanIni.Location = new Point(215, 17);
+            btnBulanIni.Name = "btnBulanIni";
+            btnBulanIni.Size = new Size(150, 46);
+            btnBulanIni.TabIndex = 4;
+            btnBulanIni.Text = "Bulan Ini";
+            btnBulanIni.UseVisualStyleBackColor = false;
             // 
-            // lbTotalPenjualan
+            // btnTahunIni
             // 
-            lbTotalPenjualan.AutoSize = true;
-            lbTotalPenjualan.Location = new Point(86, 30);
-            lbTotalPenjualan.Name = "lbTotalPenjualan";
-            lbTotalPenjualan.Size = new Size(128, 25);
-            lbTotalPenjualan.TabIndex = 0;
-            lbTotalPenjualan.Text = "Total Penjualan";
+            btnTahunIni.BackColor = Color.FromArgb(255, 165, 81);
+            btnTahunIni.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnTahunIni.ForeColor = Color.White;
+            btnTahunIni.Location = new Point(404, 17);
+            btnTahunIni.Name = "btnTahunIni";
+            btnTahunIni.Size = new Size(150, 46);
+            btnTahunIni.TabIndex = 5;
+            btnTahunIni.Text = "Tahun Ini";
+            btnTahunIni.UseVisualStyleBackColor = false;
             // 
-            // panel2
+            // dgvPenjualanPermenu
             // 
-            panel2.Controls.Add(lbHarga1);
-            panel2.Controls.Add(lbTotalTransaksi);
-            panel2.Location = new Point(784, 91);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(300, 150);
-            panel2.TabIndex = 2;
+            dgvPenjualanPermenu.BackgroundColor = Color.FromArgb(255, 240, 222);
+            dgvPenjualanPermenu.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPenjualanPermenu.Location = new Point(380, 428);
+            dgvPenjualanPermenu.Name = "dgvPenjualanPermenu";
+            dgvPenjualanPermenu.RowHeadersWidth = 62;
+            dgvPenjualanPermenu.Size = new Size(1413, 236);
+            dgvPenjualanPermenu.TabIndex = 7;
             // 
-            // lbHarga1
+            // lblPenjualanPerMenu
             // 
-            lbHarga1.AutoSize = true;
-            lbHarga1.Location = new Point(148, 74);
-            lbHarga1.Name = "lbHarga1";
-            lbHarga1.Size = new Size(22, 25);
-            lbHarga1.TabIndex = 1;
-            lbHarga1.Text = "0";
+            lblPenjualanPerMenu.AutoSize = true;
+            lblPenjualanPerMenu.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblPenjualanPerMenu.ForeColor = Color.FromArgb(128, 66, 50);
+            lblPenjualanPerMenu.Location = new Point(380, 370);
+            lblPenjualanPerMenu.Name = "lblPenjualanPerMenu";
+            lblPenjualanPerMenu.Size = new Size(244, 32);
+            lblPenjualanPerMenu.TabIndex = 6;
+            lblPenjualanPerMenu.Text = "Penjualan per Menu";
             // 
-            // lbTotalTransaksi
+            // lblPenjualanPerkategori
             // 
-            lbTotalTransaksi.AutoSize = true;
-            lbTotalTransaksi.Location = new Point(100, 30);
-            lbTotalTransaksi.Name = "lbTotalTransaksi";
-            lbTotalTransaksi.Size = new Size(124, 25);
-            lbTotalTransaksi.TabIndex = 0;
-            lbTotalTransaksi.Text = "Total Transaksi";
+            lblPenjualanPerkategori.AutoSize = true;
+            lblPenjualanPerkategori.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblPenjualanPerkategori.ForeColor = Color.FromArgb(128, 66, 50);
+            lblPenjualanPerkategori.Location = new Point(380, 695);
+            lblPenjualanPerkategori.Name = "lblPenjualanPerkategori";
+            lblPenjualanPerkategori.Size = new Size(276, 32);
+            lblPenjualanPerkategori.TabIndex = 8;
+            lblPenjualanPerkategori.Text = "Penjualan per Kategori";
             // 
-            // panel3
+            // dgvPenjualanPerkategori
             // 
-            panel3.Controls.Add(lbHarga2);
-            panel3.Controls.Add(lbRataRata1);
-            panel3.Location = new Point(1161, 91);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(300, 150);
-            panel3.TabIndex = 3;
-            // 
-            // lbHarga2
-            // 
-            lbHarga2.AutoSize = true;
-            lbHarga2.Location = new Point(131, 74);
-            lbHarga2.Name = "lbHarga2";
-            lbHarga2.Size = new Size(48, 25);
-            lbHarga2.TabIndex = 1;
-            lbHarga2.Text = "Rp.0";
-            // 
-            // lbRataRata1
-            // 
-            lbRataRata1.AutoSize = true;
-            lbRataRata1.Location = new Point(79, 30);
-            lbRataRata1.Name = "lbRataRata1";
-            lbRataRata1.Size = new Size(159, 25);
-            lbRataRata1.TabIndex = 0;
-            lbRataRata1.Text = "Rata-rata Transaksi";
-            // 
-            // panel4
-            // 
-            panel4.Controls.Add(dataGridView1);
-            panel4.Controls.Add(comboBox1);
-            panel4.Controls.Add(lbFilterKategori);
-            panel4.Location = new Point(391, 296);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(1459, 654);
-            panel4.TabIndex = 4;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ColNamaMenu, ColKategori, ColJumlahTerjual, ColTotalPendapat });
-            dataGridView1.Location = new Point(49, 120);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(921, 225);
-            dataGridView1.TabIndex = 5;
-            // 
-            // ColNamaMenu
-            // 
-            ColNamaMenu.HeaderText = "Nama Menu";
-            ColNamaMenu.MinimumWidth = 8;
-            ColNamaMenu.Name = "ColNamaMenu";
-            ColNamaMenu.Width = 150;
-            // 
-            // ColKategori
-            // 
-            ColKategori.HeaderText = "Kategori";
-            ColKategori.MinimumWidth = 8;
-            ColKategori.Name = "ColKategori";
-            ColKategori.Width = 150;
-            // 
-            // ColJumlahTerjual
-            // 
-            ColJumlahTerjual.HeaderText = "Jumlah Terjual";
-            ColJumlahTerjual.MinimumWidth = 8;
-            ColJumlahTerjual.Name = "ColJumlahTerjual";
-            ColJumlahTerjual.Width = 150;
-            // 
-            // ColTotalPendapat
-            // 
-            ColTotalPendapat.HeaderText = "Total Pendapat";
-            ColTotalPendapat.MinimumWidth = 8;
-            ColTotalPendapat.Name = "ColTotalPendapat";
-            ColTotalPendapat.Width = 150;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Semua Kategori", "Burger", "Pizza", "Minuman" });
-            comboBox1.Location = new Point(202, 54);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(768, 33);
-            comboBox1.TabIndex = 4;
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
-            // 
-            // lbFilterKategori
-            // 
-            lbFilterKategori.AutoSize = true;
-            lbFilterKategori.Location = new Point(61, 54);
-            lbFilterKategori.Name = "lbFilterKategori";
-            lbFilterKategori.Size = new Size(121, 25);
-            lbFilterKategori.TabIndex = 3;
-            lbFilterKategori.Text = "Filter Kategori";
+            dgvPenjualanPerkategori.BackgroundColor = Color.FromArgb(255, 240, 222);
+            dgvPenjualanPerkategori.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPenjualanPerkategori.Location = new Point(380, 743);
+            dgvPenjualanPerkategori.Name = "dgvPenjualanPerkategori";
+            dgvPenjualanPerkategori.RowHeadersWidth = 62;
+            dgvPenjualanPerkategori.Size = new Size(1413, 236);
+            dgvPenjualanPerkategori.TabIndex = 9;
             // 
             // FormLaporanPenjualan
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(255, 249, 243);
             ClientSize = new Size(1898, 1024);
+            Controls.Add(dgvPenjualanPerkategori);
+            Controls.Add(lblPenjualanPerkategori);
+            Controls.Add(lblPenjualanPerMenu);
+            Controls.Add(dgvPenjualanPermenu);
+            Controls.Add(pnlSidebar);
             Controls.Add(panel4);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(pnlTotalPenjualan);
-            Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormLaporanPenjualan";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormLaporanPenjualan";
-            panel1.ResumeLayout(false);
             pnlTotalPenjualan.ResumeLayout(false);
             pnlTotalPenjualan.PerformLayout();
             panel2.ResumeLayout(false);
@@ -291,34 +390,41 @@
             panel3.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            pnlSidebar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pcbLogo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPenjualanPermenu).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPenjualanPerkategori).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private Panel panel1;
-        private Button btnDashboard;
-        private Button btnPengelolaMenu;
-        private Button btnLaporanPenjualan;
-        private Button btnLogout;
-        private Button btnKelolaCustomer;
         private Panel pnlTotalPenjualan;
-        private Label lbHarga;
+        private Label lblAngkaTotalPenjualan;
         private Label lbTotalPenjualan;
         private Panel panel2;
         private Label lbTotalTransaksi;
-        private Label lbHarga1;
+        private Label lblAngkaTotalTransaksi;
         private Panel panel3;
-        private Label lbHarga2;
-        private Label lbRataRata1;
+        private Label lblRataratatransaksi;
+        private Label lblRatarata;
         private Panel panel4;
-        private ComboBox comboBox1;
+        private ComboBox cmbFilterKatgori;
         private Label lbFilterKategori;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn ColNamaMenu;
-        private DataGridViewTextBoxColumn ColKategori;
-        private DataGridViewTextBoxColumn ColJumlahTerjual;
-        private DataGridViewTextBoxColumn ColTotalPendapat;
+        private Panel pnlSidebar;
+        private Button btnPengelolaPesanan;
+        private PictureBox pcbLogo;
+        private Button btnLogout;
+        private Button btnKelolaCustomer;
+        private Button btnLaporanPenjualan;
+        private Button btnPengelolaMenu;
+        private Button btnBeranda;
+        private Button btnHariInibtnHariIni;
+        private Button btnTahunIni;
+        private Button btnBulanIni;
+        private DataGridView dgvPenjualanPermenu;
+        private Label lblPenjualanPerMenu;
+        private Label lblPenjualanPerkategori;
+        private DataGridView dgvPenjualanPerkategori;
     }
 }

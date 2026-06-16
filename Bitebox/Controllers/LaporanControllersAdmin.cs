@@ -6,29 +6,24 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-
 namespace Bitebox.Controllers
 {
     internal class LaporanControllersAdmin
     {
-        private LaporanContextAdmin laporanContext = new LaporanContextAdmin();
+        private readonly LaporanContextAdmin _context = new LaporanContextAdmin();
 
-        public int GetTotalPenjualan() => laporanContext.GetTotalPenjualan();
-
-        public int GetTotalTransaksi() => laporanContext.GetTotalTransaksi();
-
-        public int GetRataRata()
+        public int GetTotalPenjualan(string periode = "bulan") => _context.GetTotalPenjualan(periode);
+        public int GetTotalTransaksi(string periode = "bulan") => _context.GetTotalTransaksi(periode);
+        public int GetRataRata(string periode = "bulan")
         {
-            int totalTransaksi = laporanContext.GetTotalTransaksi();
+            int totalTransaksi = _context.GetTotalTransaksi(periode);
             if (totalTransaksi == 0) return 0;
-            return laporanContext.GetTotalPenjualan() / totalTransaksi;
+            return _context.GetTotalPenjualan(periode) / totalTransaksi;
         }
-
-        public List<LaporanItem> GetLaporan(string? filterKategori = null)
-        {
-            return laporanContext.GetLaporan(filterKategori);
-        }
-
-        public List<string> GetSemuaKategori() => laporanContext.GetSemuaKategori();
+        public List<LaporanItem> GetLaporan(string periode = "bulan", string? filterKategori = null)
+            => _context.GetLaporan(periode, filterKategori);
+        public List<LaporanRollup> GetLaporanRollup(string periode = "bulan")
+            => _context.GetLaporanRollup(periode);
+        public List<string> GetSemuaKategori() => _context.GetSemuaKategori();
     }
 }

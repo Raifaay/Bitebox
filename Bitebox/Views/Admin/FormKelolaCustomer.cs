@@ -1,103 +1,111 @@
 ﻿using Bitebox.Controllers;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+using Bitebox.Models.Entity;
 
 namespace Bitebox.Views.Admin
 {
     public partial class FormKelolaCustomer : Form
     {
-        private CustomerController _controller = new CustomerController();
+        private readonly CustomerController _controller = new CustomerController();
+
         public FormKelolaCustomer()
         {
             InitializeComponent();
-            LoadData();
+            SiapkanSidebar();
+            SiapkanDGV();
+            TampilkanCustomer();
         }
 
-        // Alur: View meminta data ke Controller -> Ditampilkan ke DataGridView
-        private void LoadData()
+        private void SiapkanSidebar()
         {
-            // Controller mengembalikan List<CustomerModel> ke View
-            dGVKelolaCustomer.DataSource = _controller.GetCustomerList();
-
-            // Opsional: Mempercantik teks tombol berdasarkan status di baris tersebut
-            FormatGridButtons();
-        }
-
-        private void FormatGridButtons()
-        {
-            // Loop untuk mengubah text tombol di grid (misal tombol ada di kolom indeks ke-4)
-            foreach (DataGridViewRow row in dGVKelolaCustomer.Rows)
+            btnBeranda.Click += (s, e) => { new FormBeranda().Show(); this.Close(); };
+            btnPengelolaMenu.Click += (s, e) => { new FormPengelolaMenu().Show(); this.Close(); };
+            btnPengelolaPesanan.Click += (s, e) => { new FormPengelolaPesanan().Show(); this.Close(); };
+            btnLaporanPenjualan.Click += (s, e) => { new FormLaporanPenjualan().Show(); this.Close(); };
+            btnLogout.Click += (s, e) =>
             {
-                if (row.Cells["IsActive"].Value != null)
+                var r = MessageBox.Show("Yakin mau keluar?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (r == DialogResult.Yes) { new FormLogin().Show(); this.Close(); }
+            };
+        }
+
+        private void SiapkanDGV()
+        {
+            dgvKelolaCustomer.Columns.Clear();
+            dgvKelolaCustomer.AllowUserToAddRows = false;
+            dgvKelolaCustomer.ReadOnly = true;
+            dgvKelolaCustomer.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvKelolaCustomer.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvKelolaCustomer.EnableHeadersVisualStyles = false;
+            dgvKelolaCustomer.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(230, 126, 34);
+            dgvKelolaCustomer.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvKelolaCustomer.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dgvKelolaCustomer.ColumnHeadersHeight = 45;
+            dgvKelolaCustomer.RowTemplate.Height = 45;
+            dgvKelolaCustomer.BorderStyle = BorderStyle.None;
+            dgvKelolaCustomer.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvKelolaCustomer.DefaultCellStyle.Font = new Font("Segoe UI", 10F);
+            dgvKelolaCustomer.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 220, 180);
+            dgvKelolaCustomer.DefaultCellStyle.SelectionForeColor = Color.FromArgb(128, 66, 50);
+
+            dgvKelolaCustomer.Columns.Add(new DataGridViewTextBoxColumn { Name = "colUsername", HeaderText = "Username" });
+            dgvKelolaCustomer.Columns.Add(new DataGridViewTextBoxColumn { Name = "colNama", HeaderText = "Nama Lengkap" });
+            dgvKelolaCustomer.Columns.Add(new DataGridViewTextBoxColumn { Name = "colEmail", HeaderText = "Email" });
+            dgvKelolaCustomer.Columns.Add(new DataGridViewTextBoxColumn { Name = "colStatus", HeaderText = "Status" });
+
+            var colAksi = new DataGridViewButtonColumn
+            {
+                Name = "colAksi",
+                HeaderText = "Aksi",
+                UseColumnTextForButtonValue = false,
+                FlatStyle = FlatStyle.Flat,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
+                Width = 180
+            };
+            dgvKelolaCustomer.Columns.Add(colAksi);
+
+            dgvKelolaCustomer.CellClick += DGV_CellClick;
+        }
+
+        private void TampilkanCustomer()
+        {
+            try
+            {
+                dgvKelolaCustomer.Rows.Clear();
+                var list = _controller.GetCustomerList();
+                foreach (var c in list)
                 {
-                    bool isActive = Convert.ToBoolean(row.Cells["IsActive"].Value);
-                    row.Cells["btnAksi"].Value = isActive ? "Nonaktifkan" : "Aktifkan";
+                    int idx = dgvKelolaCustomer.Rows.Add(
+                        c.Username,
+                        c.NamaLengkap,
+                        c.Email,
+                        c.IsAktif ? "Aktif" : "Nonaktif",
+                        c.IsAktif ? "Nonaktifkan" : "Aktifkan"
+                    );
+                    dgvKelolaCustomer.Rows[idx].Cells["colStatus"].Style.ForeColor = c.IsAktif
+                        ? Color.FromArgb(6, 95, 70) : Color.FromArgb(153, 27, 27);
+                    dgvKelolaCustomer.Rows[idx].Cells["colStatus"].Style.BackColor = c.IsAktif
+                        ? Color.FromArgb(209, 250, 229) : Color.FromArgb(254, 202, 202);
+                    dgvKelolaCustomer.Rows[idx].Tag = c;
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal memuat data:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // Kejadian ketika tombol di dalam DataGridView diklik
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DGV_CellClick(object? sender, DataGridViewCellEventArgs e)
         {
-            // Pastikan yang diklik adalah kolom tombol Aksi (misal nama kolomnya "btnAksi")
-            if (dGVKelolaCustomer.Columns[e.ColumnIndex].Name == "btnAksi" && e.RowIndex >= 0)
-            {
-                // Ambil data dari baris yang diklik
-                int id = Convert.ToInt32(dGVKelolaCustomer.Rows[e.RowIndex].Cells["Id"].Value);
-                bool currentStatus = Convert.ToBoolean(dGVKelolaCustomer.Rows[e.RowIndex].Cells["IsActive"].Value);
+            if (e.RowIndex < 0 || e.ColumnIndex != dgvKelolaCustomer.Columns["colAksi"].Index) return;
+            if (dgvKelolaCustomer.Rows[e.RowIndex].Tag is not EntityCustomerAdmin customer) return;
 
-                // Minta Controller untuk mengubah statusnya
-                bool isSuccess = _controller.ToggleCustomerStatus(id, currentStatus);
+            string aksi = customer.IsAktif ? "nonaktifkan" : "aktifkan";
+            var jawab = MessageBox.Show($"Yakin mau {aksi} akun {customer.Username}?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (jawab != DialogResult.Yes) return;
 
-                if (isSuccess)
-                {
-                    MessageBox.Show("Status customer berhasil diperbarui!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadData(); // Refresh grid agar datanya paling update
-                }
-                else
-                {
-                    MessageBox.Show("Gagal memperbarui status.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void btnDashboard_Click(object sender, EventArgs e)
-        {
-            FormBeranda form = new FormBeranda();
-            form.Show();
-        }
-
-        private void btnPengelolaMenu_Click(object sender, EventArgs e)
-        {
-            FormPengelolaMenu form = new FormPengelolaMenu();
-            form.Show();
-        }
-
-        private void btnLaporanPenjualan_Click(object sender, EventArgs e)
-        {
-            FormPengelolaMenu form = new FormPengelolaMenu();
-            form.Show();
-        }
-
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Apakah Anda yakin ingin keluar?", "Konfirmasi Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
-            {
-                FormLogin fromLogin = new FormLogin();
-                fromLogin.Show();
-                this.Close();
-            }
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
+            bool berhasil = _controller.ToggleCustomerStatus(customer.Id, customer.IsAktif);
+            if (berhasil) TampilkanCustomer();
+            else MessageBox.Show("Gagal update status customer.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

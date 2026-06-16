@@ -49,8 +49,6 @@
             btnminuman = new Button();
             lbldaftarmenu = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            flowLayoutPanel2 = new FlowLayoutPanel();
-            flowLayoutPanel3 = new FlowLayoutPanel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pcblogo).BeginInit();
             panel2.SuspendLayout();
@@ -71,6 +69,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(278, 1024);
             panel1.TabIndex = 0;
+            panel1.Paint += panel1_Paint;
             // 
             // btnkeluar
             // 
@@ -289,30 +288,12 @@
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.BackColor = Color.White;
+            flowLayoutPanel1.BackColor = Color.FromArgb(255, 249, 243);
             flowLayoutPanel1.Location = new Point(326, 649);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(370, 206);
+            flowLayoutPanel1.Size = new Size(1541, 340);
             flowLayoutPanel1.TabIndex = 19;
             flowLayoutPanel1.WrapContents = false;
-            // 
-            // flowLayoutPanel2
-            // 
-            flowLayoutPanel2.BackColor = Color.White;
-            flowLayoutPanel2.Location = new Point(741, 649);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(370, 206);
-            flowLayoutPanel2.TabIndex = 20;
-            flowLayoutPanel2.WrapContents = false;
-            // 
-            // flowLayoutPanel3
-            // 
-            flowLayoutPanel3.BackColor = Color.White;
-            flowLayoutPanel3.Location = new Point(1172, 649);
-            flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new Size(370, 206);
-            flowLayoutPanel3.TabIndex = 20;
-            flowLayoutPanel3.WrapContents = false;
             // 
             // FormMenuUtama
             // 
@@ -320,8 +301,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 249, 243);
             ClientSize = new Size(1898, 1024);
-            Controls.Add(flowLayoutPanel3);
-            Controls.Add(flowLayoutPanel2);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(lbldaftarmenu);
             Controls.Add(btnminuman);
@@ -371,7 +350,5 @@
         private Button btnminuman;
         private Label lbldaftarmenu;
         private FlowLayoutPanel flowLayoutPanel1;
-        private FlowLayoutPanel flowLayoutPanel2;
-        private FlowLayoutPanel flowLayoutPanel3;
     }
 }

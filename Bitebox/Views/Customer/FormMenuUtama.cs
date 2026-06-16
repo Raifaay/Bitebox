@@ -33,17 +33,14 @@ namespace Bitebox.Views
         private void TampilkanMenu(List<MenuEntity> listMenu)
         {
             flowLayoutPanel1.Controls.Clear();
-            flowLayoutPanel2.Controls.Clear();
-            flowLayoutPanel3.Controls.Clear();
+            flowLayoutPanel1.FlowDirection = FlowDirection.LeftToRight;
+            flowLayoutPanel1.WrapContents = true;
+            flowLayoutPanel1.AutoScroll = true;
 
-            int index = 0;
             foreach (MenuEntity menu in listMenu)
             {
                 Panel kartu = BuatKartuMenu(menu);
-                if (index == 0) flowLayoutPanel1.Controls.Add(kartu);
-                else if (index == 1) flowLayoutPanel2.Controls.Add(kartu);
-                else if (index == 2) flowLayoutPanel3.Controls.Add(kartu);
-                index++;
+                flowLayoutPanel1.Controls.Add(kartu);
             }
         }
 
@@ -170,6 +167,11 @@ namespace Bitebox.Views
             FormRiwayat formRiwayat = new FormRiwayat(idAkun);
             formRiwayat.Show();
             this.Hide();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

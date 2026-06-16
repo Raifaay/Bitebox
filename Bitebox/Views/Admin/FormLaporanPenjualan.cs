@@ -1,147 +1,152 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using System.Windows.Forms;
-using Bitebox.Controllers;
+﻿using Bitebox.Controllers;
 using Bitebox.Models.Entity;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Bitebox.Views.Admin
 {
     public partial class FormLaporanPenjualan : Form
     {
-        private LaporanControllersAdmin laporanController = new LaporanControllersAdmin();
+        private readonly LaporanControllersAdmin _controller = new LaporanControllersAdmin();
+        private string _periode = "bulan";
+        private string? _filterKategori = null;
+
         public FormLaporanPenjualan()
         {
             InitializeComponent();
-            IsiKategoriComboBox();
-            TampilkanSemua();
+            SiapkanSidebar();
+            SiapkanKategori();
+            SiapkanDGV();
+            SetToggleAktif(btnBulanIni);
+            MuatData();
         }
 
-        private void IsiKategoriComboBox()
+        private void SiapkanSidebar()
         {
-            comboBox1.Items.Clear();
-            comboBox1.Items.Add("Semua Kategori");
-
-            // ambil kategori dari DB lewat controller
-            List<string> kategori = laporanController.GetSemuaKategori();
-            foreach (var k in kategori)
-                comboBox1.Items.Add(k);
-
-            comboBox1.SelectedIndex = 0;
-        }
-
-        private void TampilkanSemua()
-        {
-            // tampilkan semua data tanpa filter
-            TampilkanStatistik();
-            TampilkanTabel(null);
-        }
-
-        private void TampilkanStatistik()
-        {
-            // view minta data ke controller, controller yang urus ke DB
-            int totalPenjualan = laporanController.GetTotalPenjualan();
-            int totalTransaksi = laporanController.GetTotalTransaksi();
-            int rataRata = laporanController.GetRataRata();
-
-            lbHarga.Text = $"Rp.{totalPenjualan:N0}";
-            lbHarga1.Text = totalTransaksi.ToString();
-            lbHarga2.Text = $"Rp.{rataRata:N0}";
-        }
-
-        private void TampilkanTabel(string? filterKategori)
-        {
-            // minta data laporan ke controller
-            List<LaporanItem> dataLaporan = laporanController.GetLaporan(filterKategori);
-
-            dataGridView1.Rows.Clear();
-
-            foreach (var item in dataLaporan)
+            btnBeranda.Click += (s, e) => { new FormBeranda().Show(); this.Close(); };
+            btnPengelolaMenu.Click += (s, e) => { new FormPengelolaMenu().Show(); this.Close(); };
+            btnPengelolaPesanan.Click += (s, e) => { new FormPengelolaPesanan().Show(); this.Close(); };
+            btnKelolaCustomer.Click += (s, e) => { new FormKelolaCustomer().Show(); this.Close(); };
+            btnLogout.Click += (s, e) =>
             {
-                dataGridView1.Rows.Add(
-                    item.NamaMenu,
-                    item.Kategori,
-                    item.JumlahTerjual,
-                    $"Rp.{item.TotalPendapat:N0}"
-                );
-            }
+                var r = MessageBox.Show("Yakin mau keluar?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (r == DialogResult.Yes) { new FormLogin().Show(); this.Close(); }
+            };
 
-
+            btnHariInibtnHariIni.Click += (s, e) => { _periode = "hari"; SetToggleAktif(btnHariInibtnHariIni); MuatData(); };
+            btnBulanIni.Click += (s, e) => { _periode = "bulan"; SetToggleAktif(btnBulanIni); MuatData(); };
+            btnTahunIni.Click += (s, e) => { _periode = "tahun"; SetToggleAktif(btnTahunIni); MuatData(); };
         }
 
-        private void btnDashboard_Click(object sender, EventArgs e)
+        private void SetToggleAktif(Button aktif)
         {
-            FormBeranda form = new FormBeranda();
-            form.Show();
-        }
-
-        private void btnPengelolaMenu_Click(object sender, EventArgs e)
-        {
-            FormPengelolaMenu form = new FormPengelolaMenu();
-            form.Show();
-        }
-
-        private void btnKelolaCustomer_Click(object sender, EventArgs e)
-        {
-            FormKelolaCustomer form = new FormKelolaCustomer();
-            form.Show();
-        }
-
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Apakah Anda yakin ingin keluar?", "Konfirmasi Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
+            foreach (Button btn in new[] { btnHariInibtnHariIni, btnBulanIni, btnTahunIni })
             {
-                FormLogin fromLogin = new FormLogin();
-                fromLogin.Show();
-                this.Close();
+                btn.BackColor = Color.White;
+                btn.ForeColor = Color.FromArgb(255, 165, 81);
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.FlatAppearance.BorderColor = Color.FromArgb(255, 165, 81);
+                btn.FlatAppearance.BorderSize = 1;
+            }
+            aktif.BackColor = Color.FromArgb(255, 165, 81);
+            aktif.ForeColor = Color.White;
+        }
+
+        private void SiapkanKategori()
+        {
+            cmbFilterKatgori.SelectedIndexChanged -= comboBox1_SelectedIndexChanged;
+            cmbFilterKatgori.Items.Clear();
+            cmbFilterKatgori.Items.Add("Semua Kategori");
+            foreach (var k in _controller.GetSemuaKategori())
+                cmbFilterKatgori.Items.Add(k);
+            cmbFilterKatgori.SelectedIndex = 0;
+            cmbFilterKatgori.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+        }
+
+        private void SiapkanDGV()
+        {
+            // DGV Per Menu
+            dgvPenjualanPermenu.Columns.Clear();
+            dgvPenjualanPermenu.AllowUserToAddRows = false;
+            dgvPenjualanPermenu.ReadOnly = true;
+            dgvPenjualanPermenu.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPenjualanPermenu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvPenjualanPermenu.EnableHeadersVisualStyles = false;
+            dgvPenjualanPermenu.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(230, 126, 34);
+            dgvPenjualanPermenu.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvPenjualanPermenu.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dgvPenjualanPermenu.ColumnHeadersHeight = 45;
+            dgvPenjualanPermenu.RowTemplate.Height = 40;
+            dgvPenjualanPermenu.BorderStyle = BorderStyle.None;
+            dgvPenjualanPermenu.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvPenjualanPermenu.DefaultCellStyle.Font = new Font("Segoe UI", 10F);
+            dgvPenjualanPermenu.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 220, 180);
+            dgvPenjualanPermenu.DefaultCellStyle.SelectionForeColor = Color.FromArgb(128, 66, 50);
+
+            dgvPenjualanPermenu.Columns.Add(new DataGridViewTextBoxColumn { Name = "colNama", HeaderText = "Nama Menu" });
+            dgvPenjualanPermenu.Columns.Add(new DataGridViewTextBoxColumn { Name = "colKategori", HeaderText = "Kategori" });
+            dgvPenjualanPermenu.Columns.Add(new DataGridViewTextBoxColumn { Name = "colJumlah", HeaderText = "Jumlah Terjual" });
+            dgvPenjualanPermenu.Columns.Add(new DataGridViewTextBoxColumn { Name = "colTotal", HeaderText = "Total Pendapatan" });
+
+            // DGV Per Kategori
+            dgvPenjualanPerkategori.Columns.Clear();
+            dgvPenjualanPerkategori.AllowUserToAddRows = false;
+            dgvPenjualanPerkategori.ReadOnly = true;
+            dgvPenjualanPerkategori.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPenjualanPerkategori.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvPenjualanPerkategori.EnableHeadersVisualStyles = false;
+            dgvPenjualanPerkategori.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(230, 126, 34);
+            dgvPenjualanPerkategori.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvPenjualanPerkategori.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dgvPenjualanPerkategori.ColumnHeadersHeight = 45;
+            dgvPenjualanPerkategori.RowTemplate.Height = 40;
+            dgvPenjualanPerkategori.BorderStyle = BorderStyle.None;
+            dgvPenjualanPerkategori.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvPenjualanPerkategori.DefaultCellStyle.Font = new Font("Segoe UI", 10F);
+            dgvPenjualanPerkategori.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 220, 180);
+            dgvPenjualanPerkategori.DefaultCellStyle.SelectionForeColor = Color.FromArgb(128, 66, 50);
+
+            dgvPenjualanPerkategori.Columns.Add(new DataGridViewTextBoxColumn { Name = "colKategori", HeaderText = "Kategori" });
+            dgvPenjualanPerkategori.Columns.Add(new DataGridViewTextBoxColumn { Name = "colJumlah", HeaderText = "Total Terjual" });
+            dgvPenjualanPerkategori.Columns.Add(new DataGridViewTextBoxColumn { Name = "colTotal", HeaderText = "Total Pendapatan" });
+        }
+
+        private void MuatData()
+        {
+            try
+            {
+                // stat cards
+                int totalPenjualan = _controller.GetTotalPenjualan(_periode);
+                int totalTransaksi = _controller.GetTotalTransaksi(_periode);
+                int rataRata = _controller.GetRataRata(_periode);
+
+                lblAngkaTotalPenjualan.Text = $"Rp {totalPenjualan:N0}";
+                lblAngkaTotalTransaksi.Text = totalTransaksi.ToString();
+                lblRataratatransaksi.Text = $"Rp {rataRata:N0}";
+
+                // tabel per menu
+                dgvPenjualanPermenu.Rows.Clear();
+                var listMenu = _controller.GetLaporan(_periode, _filterKategori);
+                foreach (var item in listMenu)
+                    dgvPenjualanPermenu.Rows.Add(item.NamaMenu, item.Kategori, item.JumlahTerjual, $"Rp {item.TotalPendapat:N0}");
+
+                // tabel per kategori
+                dgvPenjualanPerkategori.Rows.Clear();
+                var listKategori = _controller.GetLaporanRollup(_periode);
+                foreach (var item in listKategori)
+                    dgvPenjualanPerkategori.Rows.Add(item.Kategori, item.JumlahTerjual, $"Rp {item.TotalPendapat:N0}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal memuat data:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-      
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object? sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem != null)
-            {
-                string kategoriDipilih = comboBox1.SelectedItem.ToString()!;
-
-                if (kategoriDipilih == "Semua Kategori")
-                {
-                    // Trik Licik: Kosongkan tabel dulu, lalu paksa panggil semua kategori satu per satu!
-                    dataGridView1.Rows.Clear();
-
-                    // Panggil fungsi bawaan controller temenmu untuk masing-masing nama kategori
-                    // Pastikan huruf besar-kecilnya sama dengan di database ya!
-                    TampilkanTabelKombinasi("Burger");
-                    TampilkanTabelKombinasi("Pizza");
-                    TampilkanTabelKombinasi("Minuman");
-                }
-                else
-                {
-                    // Kalau milih satuan (Burger doang, Pizza doang) jalan normal seperti biasa
-                    dataGridView1.Rows.Clear();
-                    TampilkanTabelKombinasi(kategoriDipilih);
-                }
-            }
-        }
-
-        // Buat fungsi pembantu baru ini di bawahnya biar datanya gak saling menimpa (ke-overwrite)
-        private void TampilkanTabelKombinasi(string kategori)
-        {
-            var dataLaporan = laporanController.GetLaporan(kategori);
-            if (dataLaporan != null)
-            {
-                foreach (var item in dataLaporan)
-                {
-                    dataGridView1.Rows.Add(item.NamaMenu, item.Kategori, item.JumlahTerjual, $"Rp.{item.TotalPendapat:N0}");
-                }
-            }
+            string selected = cmbFilterKatgori.SelectedItem?.ToString() ?? "";
+            _filterKategori = selected == "Semua Kategori" ? null : selected;
+            MuatData();
         }
     }
-
 }

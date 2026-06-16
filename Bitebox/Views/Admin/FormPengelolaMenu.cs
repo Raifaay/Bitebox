@@ -53,13 +53,11 @@ namespace Bitebox.Views.Admin
 
         private void SiapkanTombol()
         {
-            // rename button8 jadi Simpan
             button8.Text = "Simpan";
             button8.Click += Simpan;
             btnBatal.Click += (s, e) => SembunyikanForm();
             btnUploadGambar.Click += PilihGambar;
 
-            // sidebar navigation
             button6.Click += (s, e) => { new FormBeranda().Show(); this.Close(); };
             button2.Click += (s, e) =>
             {
@@ -223,7 +221,7 @@ namespace Bitebox.Views.Admin
                 NamaMenu = txtNamaMenu.Text.Trim(),
                 HargaMenu = (int)harga,
                 DeskripsiMenu = textBox1.Text.Trim(),
-                GambarMenu = _gambarDipilih,
+                GambarMenu = _gambarDipilih ?? _menuYangDiedit?.GambarMenu, 
                 IdKategoriMenu = ((KategoriItem)cmbKategori.SelectedItem!).Id
             };
 
