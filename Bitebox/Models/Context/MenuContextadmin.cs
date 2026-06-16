@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Bitebox.Helpers;
+using Bitebox.IABS;
 using Npgsql;
-using Bitebox.Helpers;
-using MenuEntity = Bitebox.Models.Entity.Menu;
+using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Text;
+using MenuEntity = Bitebox.Models.Entity.Menu;
 
 namespace Bitebox.Models.Context
 {
-    internal class MenuContextadmin
+    internal class MenuContextadmin : BaseContext, ICrudMenu
     {
         public List<MenuEntity> GetAllMenu()
         {
@@ -82,5 +83,7 @@ namespace Bitebox.Models.Context
                 (int)reader["id_kategori_menu"]
             );
         }
+
+        public override string GetNamaEntitas() => "Menu Admin";
     }
 }

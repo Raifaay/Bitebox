@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Bitebox.Helpers;
+using Bitebox.IABS;
 using Npgsql;
-using Bitebox.Helpers;
+using System;
+using System.Collections.Generic;
 using MenuEntity = Bitebox.Models.Entity.Menu;
 
 namespace Bitebox.Models.Context
 {
-    internal class MenuContext
+    internal class MenuContext : BaseContext
     {
         public List<MenuEntity> GetAllMenu()
         {
@@ -67,5 +68,7 @@ namespace Bitebox.Models.Context
             }
             return listMenu;
         }
+
+        public override string GetNamaEntitas() => "Menu Customer";
     }
 }
