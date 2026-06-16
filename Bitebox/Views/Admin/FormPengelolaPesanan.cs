@@ -17,7 +17,7 @@ namespace Bitebox.Views.Admin
             SiapkanSidebar();
             SiapkanComboBox();
             SiapkanDGV();
-            _timer.Interval = 5000; 
+            _timer.Interval = 5000;
             _timer.Tick += (s, e) => RefreshData();
         }
 
@@ -163,12 +163,12 @@ namespace Bitebox.Views.Admin
                 string status = p.StatusPesanan;
                 if (status == "Diproses")
                 {
-                    _controller.UpdateStatus(p.IdPesanan, 2); 
+                    _controller.UpdateStatus(p.IdPesanan, 2);
                     RefreshData();
                 }
                 else if (status == "Siap Diambil")
                 {
-                    _controller.UpdateStatus(p.IdPesanan, 3); 
+                    _controller.UpdateStatus(p.IdPesanan, 3);
                     RefreshData();
                 }
             }
@@ -183,12 +183,12 @@ namespace Bitebox.Views.Admin
 
                 if (konfirmasi == DialogResult.Yes)
                 {
-                    _controller.UpdateStatus(p.IdPesanan, 4); 
+                    _controller.UpdateStatus(p.IdPesanan, 4);
                     RefreshData();
                 }
             }
         }
-        
+
 
         protected override void OnFormClosed(FormClosedEventArgs e)
         {

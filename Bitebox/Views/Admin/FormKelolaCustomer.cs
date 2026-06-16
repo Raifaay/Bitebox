@@ -1,5 +1,8 @@
 ﻿using Bitebox.Controllers;
 using Bitebox.Models.Entity;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Bitebox.Views.Admin
 {
@@ -62,7 +65,6 @@ namespace Bitebox.Views.Admin
                 Width = 180
             };
             dgvKelolaCustomer.Columns.Add(colAksi);
-
             dgvKelolaCustomer.CellClick += DGV_CellClick;
         }
 
@@ -72,6 +74,7 @@ namespace Bitebox.Views.Admin
             {
                 dgvKelolaCustomer.Rows.Clear();
                 var list = _controller.GetCustomerList();
+
                 foreach (var c in list)
                 {
                     int idx = dgvKelolaCustomer.Rows.Add(
@@ -81,10 +84,12 @@ namespace Bitebox.Views.Admin
                         c.IsAktif ? "Aktif" : "Nonaktif",
                         c.IsAktif ? "Nonaktifkan" : "Aktifkan"
                     );
+
                     dgvKelolaCustomer.Rows[idx].Cells["colStatus"].Style.ForeColor = c.IsAktif
                         ? Color.FromArgb(6, 95, 70) : Color.FromArgb(153, 27, 27);
                     dgvKelolaCustomer.Rows[idx].Cells["colStatus"].Style.BackColor = c.IsAktif
                         ? Color.FromArgb(209, 250, 229) : Color.FromArgb(254, 202, 202);
+
                     dgvKelolaCustomer.Rows[idx].Tag = c;
                 }
             }

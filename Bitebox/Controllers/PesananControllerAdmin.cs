@@ -1,17 +1,51 @@
-﻿using System.Collections.Generic;
-using Bitebox.Models.Context;
+﻿using Bitebox.Models.Context;
+using System;
+using System.Collections.Generic;
 
 namespace Bitebox.Controllers
 {
-    internal class PesananControllerAdmin
+    public class PesananControllerAdmin
     {
-        private PesananContext _context = new PesananContext();
+        private readonly PesananContext _pesananContext = new PesananContext();
 
-        public List<dynamic> GetPesananHariIni(string? filterStatus = null)
-            => _context.GetPesananHariIni(filterStatus);
+        public List<dynamic> GetPesananHariIni(string filterStatus)
+        {
+            return _pesananContext.GetPesananHariIni(filterStatus ?? "");
+        }
 
-        public int GetTotal() => _context.GetTotalHariIni();
-        public int GetCountByStatus(string status) => _context.GetCountByStatus(status);
-        public bool UpdateStatus(int idPesanan, int idStatus) => _context.UpdateStatusPesanan(idPesanan, idStatus);
+        public int GetCountByStatus(string status)
+        {
+            try
+            {
+                var list = _pesananContext.GetPesananHariIni("");
+                int count = 0;
+                foreach (var p in list)
+                {
+                    if (p.StatusPesanan == status) count++;
+                }
+                return count;
+            }
+            catch (Exception) { return 0; }
+        }
+
+        public decimal GetTotal()
+        {
+            try
+            {
+                var list = _pesananContext.GetPesananHariIni("");
+                decimal total = 0;
+                foreach (var p in list)
+                {
+                    total += Convert.ToDecimal(p.Total);
+                }
+                return total;
+            }
+            catch (Exception) { return 0; }
+        }
+
+        public bool UpdateStatus(int idPesanan, int idStatus)
+        {
+            return _pesananContext.UpdateStatusPesanan(idPesanan, idStatus);
+        }
     }
 }

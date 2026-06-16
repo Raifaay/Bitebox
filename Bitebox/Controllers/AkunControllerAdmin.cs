@@ -9,6 +9,6 @@ namespace Bitebox.Controllers
 {
     public class AkunControllerAdmin
     {
-       
+
     }
 }

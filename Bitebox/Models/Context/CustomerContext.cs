@@ -1,9 +1,10 @@
-﻿using Bitebox.Models.Entity;
+﻿using Bitebox.Helpers;
+using Bitebox.Models.Entity;
 using Npgsql;
 
-namespace Bitebox.Helpers
+namespace Bitebox.Models.Context
 {
-    public class CustomerHelper
+    public class CustomerContext
     {
         public List<EntityCustomerAdmin> GetAllCustomers()
         {
