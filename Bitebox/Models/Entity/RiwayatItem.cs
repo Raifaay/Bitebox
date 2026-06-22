@@ -3,7 +3,7 @@
 namespace Bitebox.Models.Entity
 {
     internal class RiwayatItem
-    {
+    { //ini juga sama
         public int IdPesanan { get; set; }
         public DateTime TanggalPesanan { get; set; }
         public string? KodePickup { get; set; }

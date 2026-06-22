@@ -46,7 +46,7 @@ namespace Bitebox.Models.Entity
 
         public Menu() { }
 
-        public Menu(int idMenu, string namaMenu, decimal hargaMenu, string deskripsiMenu, byte[]? gambarMenu, int idKategoriMenu)
+        public Menu(int idMenu, string namaMenu, decimal hargaMenu, string deskripsiMenu, byte[]? gambarMenu, int idKategoriMenu) // constrcutor ngapain
         {
             this.idMenu = idMenu;
             this.namaMenu = namaMenu;
@@ -56,7 +56,7 @@ namespace Bitebox.Models.Entity
             this.idKategoriMenu = idKategoriMenu;
         }
 
-        public string InfoMenu()
+        public string InfoMenu() // ini juga ngapain
         {
             return $"{namaMenu} - Rp {hargaMenu:N0}";
         }

@@ -49,7 +49,7 @@ namespace Bitebox.Models.Entity
             this.idStatusPembayaran = idStatusPembayaran;
         }
 
-        public virtual void Proses()
+        public virtual void Proses() // ini juga kalo misalnya ini ga ada mending override aja daripa pake abst
         {
         }
     }

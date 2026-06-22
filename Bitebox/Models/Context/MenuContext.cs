@@ -7,7 +7,7 @@ using MenuEntity = Bitebox.Models.Entity.Menu;
 
 namespace Bitebox.Models.Context
 {
-    internal class MenuContext : BaseContext
+    public class MenuContext : BaseContext
     {
         public List<MenuEntity> GetAllMenu()
         {
@@ -69,6 +69,58 @@ namespace Bitebox.Models.Context
             return listMenu;
         }
 
-        public override string GetNamaEntitas() => "Menu Customer";
+       
+        public bool TambahMenu(MenuEntity menu)
+        {
+            string query = "INSERT INTO menu (nama_menu, harga_menu, deskripsi_menu, gambar_menu, id_kategori_menu) VALUES (@nama, @harga, @deskripsi, @gambar, @idKategori)";
+            using (NpgsqlConnection conn = DatabaseConnection.GetConnection())
+            {
+                conn.Open();
+                using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@nama", menu.NamaMenu);
+                    cmd.Parameters.AddWithValue("@harga", menu.HargaMenu);
+                    cmd.Parameters.AddWithValue("@deskripsi", menu.DeskripsiMenu);
+                    cmd.Parameters.AddWithValue("@gambar", (object)menu.GambarMenu ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@idKategori", menu.IdKategoriMenu);
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+        }
+
+        public bool UpdateMenu(MenuEntity menu)
+        {
+            string query = "UPDATE menu SET nama_menu = @nama, harga_menu = @harga, deskripsi_menu = @deskripsi, gambar_menu = @gambar, id_kategori_menu = @idKategori WHERE id_menu = @id";
+            using (NpgsqlConnection conn = DatabaseConnection.GetConnection())
+            {
+                conn.Open();
+                using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", menu.IdMenu);
+                    cmd.Parameters.AddWithValue("@nama", menu.NamaMenu);
+                    cmd.Parameters.AddWithValue("@harga", menu.HargaMenu);
+                    cmd.Parameters.AddWithValue("@deskripsi", menu.DeskripsiMenu);
+                    cmd.Parameters.AddWithValue("@gambar", (object)menu.GambarMenu ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@idKategori", menu.IdKategoriMenu);
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+        }
+
+        public bool HapusMenu(int idMenu)
+        {
+            string query = "DELETE FROM menu WHERE id_menu = @id";
+            using (NpgsqlConnection conn = DatabaseConnection.GetConnection())
+            {
+                conn.Open();
+                using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", idMenu);
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+        }
+
+        public override string GetNamaEntitas() => "Menu Customer & Admin";
     }
 }

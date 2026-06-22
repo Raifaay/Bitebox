@@ -3,7 +3,7 @@
 namespace Bitebox.Models.Entity
 {
     public abstract class Akun
-    {
+    { // ini jangan semua
         public int IdAkun { get; set; }
         public string Username { get; set; }
         public string PasswordAkun { get; set; }

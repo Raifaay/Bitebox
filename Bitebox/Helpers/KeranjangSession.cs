@@ -26,7 +26,7 @@ namespace Bitebox.Helpers
             Items.Clear();
         }
 
-        public static decimal TotalHarga()
+        public static decimal TotalHarga() //ini tambahin param
         {
             decimal total = 0;
             foreach (var item in Items)

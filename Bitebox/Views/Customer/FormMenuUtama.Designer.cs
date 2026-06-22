@@ -30,7 +30,6 @@
         {
             panel1 = new Panel();
             btnkeluar = new Button();
-            btnpengaturan = new Button();
             btnriwayat = new Button();
             btnkeranjang = new Button();
             btnberanda = new Button();
@@ -60,7 +59,6 @@
             panel1.BackgroundImage = Properties.Resources.sidebarrr;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.Controls.Add(btnkeluar);
-            panel1.Controls.Add(btnpengaturan);
             panel1.Controls.Add(btnriwayat);
             panel1.Controls.Add(btnkeranjang);
             panel1.Controls.Add(btnberanda);
@@ -83,17 +81,6 @@
             btnkeluar.Text = "Keluar";
             btnkeluar.UseVisualStyleBackColor = false;
             btnkeluar.Click += btnkeluar_Click;
-            // 
-            // btnpengaturan
-            // 
-            btnpengaturan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnpengaturan.ForeColor = Color.FromArgb(128, 66, 50);
-            btnpengaturan.Location = new Point(24, 471);
-            btnpengaturan.Name = "btnpengaturan";
-            btnpengaturan.Size = new Size(232, 53);
-            btnpengaturan.TabIndex = 4;
-            btnpengaturan.Text = "Pengaturan";
-            btnpengaturan.UseVisualStyleBackColor = true;
             // 
             // btnriwayat
             // 
@@ -335,7 +322,6 @@
         private Button btnriwayat;
         private Button btnkeranjang;
         private Button btnkeluar;
-        private Button btnpengaturan;
         private Label lblHai;
         private Label lblmaumakan;
         private TextBox txtcarimenufav;

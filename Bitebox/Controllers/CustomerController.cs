@@ -1,20 +1,36 @@
 ﻿using Bitebox.Models.Context;
-using Bitebox.Models.Entity;
+using System;
+using System.Data;
 
 namespace Bitebox.Controllers
 {
-    internal class CustomerController
+    public class CustomerController
     {
-        private readonly CustomerContext _context = new CustomerContext();
+        private readonly AkunContextAdmin _context = new AkunContextAdmin();
 
-        public List<EntityCustomerAdmin> GetCustomerList()
+        public DataTable GetCustomerList()
         {
-            return _context.GetAllCustomers();
+            try
+            {
+                return _context.GetCustomerFromDatabase();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error di CustomerController: " + ex.Message);
+            }
         }
 
-        public bool ToggleCustomerStatus(int id, bool isAktifSekarang)
+        public bool ToggleCustomerStatus(int idAkun, bool statusSaatIni)
         {
-            return _context.UpdateStatus(id, !isAktifSekarang);
+            try
+            {
+                _context.ExecuteNonaktifkanCustomer(idAkun);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

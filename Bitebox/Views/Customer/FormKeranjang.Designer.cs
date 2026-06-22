@@ -30,7 +30,6 @@
         {
             pnlsidebar = new Panel();
             btnkeluar = new Button();
-            btnpengaturan = new Button();
             btnriwayat = new Button();
             btnkeranjang = new Button();
             btnberanda = new Button();
@@ -49,7 +48,6 @@
             pnlsidebar.BackgroundImage = Properties.Resources.sidebarrr;
             pnlsidebar.BackgroundImageLayout = ImageLayout.Stretch;
             pnlsidebar.Controls.Add(btnkeluar);
-            pnlsidebar.Controls.Add(btnpengaturan);
             pnlsidebar.Controls.Add(btnriwayat);
             pnlsidebar.Controls.Add(btnkeranjang);
             pnlsidebar.Controls.Add(btnberanda);
@@ -71,17 +69,6 @@
             btnkeluar.Text = "Keluar";
             btnkeluar.UseVisualStyleBackColor = false;
             btnkeluar.Click += btnkeluar_Click;
-            // 
-            // btnpengaturan
-            // 
-            btnpengaturan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnpengaturan.ForeColor = Color.FromArgb(128, 66, 50);
-            btnpengaturan.Location = new Point(24, 471);
-            btnpengaturan.Name = "btnpengaturan";
-            btnpengaturan.Size = new Size(232, 53);
-            btnpengaturan.TabIndex = 4;
-            btnpengaturan.Text = "Pengaturan";
-            btnpengaturan.UseVisualStyleBackColor = true;
             // 
             // btnriwayat
             // 
@@ -217,7 +204,6 @@
 
         private Panel pnlsidebar;
         private Button btnkeluar;
-        private Button btnpengaturan;
         private Button btnriwayat;
         private Button btnkeranjang;
         private Button btnberanda;

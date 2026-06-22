@@ -7,7 +7,7 @@ namespace Bitebox.Models.Entity
     public class MejaItem
     {
         public int IdMeja { get; set; }
-        public string NomorMeja { get; set; }
+        public string NomorMeja { get; set; } // ini setter > brpa max meja
         public string StatusMeja { get; set; }
     }
 }

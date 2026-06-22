@@ -8,11 +8,11 @@ namespace Bitebox.Models.Entity
     {
         public Customer(int idAkun, string username, string passwordAkun, string namaLengkap, string email, bool isAktif)
             : base(idAkun, username, passwordAkun, namaLengkap, email, "customer", isAktif)
-        {
+        { // apa ayang baru juga
         }
-        public override string GetHakAksesDashboard()
+        public override string GetHakAksesDashboard() // kalo bisa tambahin param biar ga return stringa aj
         {
-            return $"Selamat Datang {NamaLengkap}! Anda masuk sebagai Customer. Anda bisa memesan makanan."; //nanti tak perbaiki bahasanya biar ga kaya ai
+            return $"Selamat Datang {NamaLengkap}! Anda masuk sebagai Customer. Anda bisa memesan makanan."; 
         }
     }
 }

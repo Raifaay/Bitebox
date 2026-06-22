@@ -1,6 +1,6 @@
 ﻿using Bitebox.Controllers;
-using Bitebox.Models.Entity;
 using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -50,6 +50,8 @@ namespace Bitebox.Views.Admin
             dgvKelolaCustomer.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 220, 180);
             dgvKelolaCustomer.DefaultCellStyle.SelectionForeColor = Color.FromArgb(128, 66, 50);
 
+            // Tambahkan kolom ID tersembunyi untuk menyimpan ID Akun saat diklik aksi
+            dgvKelolaCustomer.Columns.Add(new DataGridViewTextBoxColumn { Name = "colIdAkun", Visible = false });
             dgvKelolaCustomer.Columns.Add(new DataGridViewTextBoxColumn { Name = "colUsername", HeaderText = "Username" });
             dgvKelolaCustomer.Columns.Add(new DataGridViewTextBoxColumn { Name = "colNama", HeaderText = "Nama Lengkap" });
             dgvKelolaCustomer.Columns.Add(new DataGridViewTextBoxColumn { Name = "colEmail", HeaderText = "Email" });
@@ -73,24 +75,37 @@ namespace Bitebox.Views.Admin
             try
             {
                 dgvKelolaCustomer.Rows.Clear();
-                var list = _controller.GetCustomerList();
 
-                foreach (var c in list)
+                // 1. Mengambil data dalam bentuk DataTable dari controller
+                DataTable dt = _controller.GetCustomerList();
+
+                // 2. Iterasi Baris DataTable dengan DataRow (Bukan foreach biasa)
+                foreach (DataRow row in dt.Rows)
                 {
+                    // Menyesuaikan nama kolom sesuai dengan get_semua_customer() di database PostgreSQL
+                    int idAkun = Convert.ToInt32(row["id_akun"]);
+                    string username = row["username"]?.ToString() ?? "";
+                    string namaLengkap = row["nama_lengkap"]?.ToString() ?? "";
+                    string email = row["email"]?.ToString() ?? "";
+                    bool isAktif = Convert.ToBoolean(row["is_aktif"]);
+
                     int idx = dgvKelolaCustomer.Rows.Add(
-                        c.Username,
-                        c.NamaLengkap,
-                        c.Email,
-                        c.IsAktif ? "Aktif" : "Nonaktif",
-                        c.IsAktif ? "Nonaktifkan" : "Aktifkan"
+                        idAkun,
+                        username,
+                        namaLengkap,
+                        email,
+                        isAktif ? "Aktif" : "Nonaktif",
+                        isAktif ? "Nonaktifkan" : "Aktifkan"
                     );
 
-                    dgvKelolaCustomer.Rows[idx].Cells["colStatus"].Style.ForeColor = c.IsAktif
+                    // Mengatur warna status label biar cantik
+                    dgvKelolaCustomer.Rows[idx].Cells["colStatus"].Style.ForeColor = isAktif
                         ? Color.FromArgb(6, 95, 70) : Color.FromArgb(153, 27, 27);
-                    dgvKelolaCustomer.Rows[idx].Cells["colStatus"].Style.BackColor = c.IsAktif
+                    dgvKelolaCustomer.Rows[idx].Cells["colStatus"].Style.BackColor = isAktif
                         ? Color.FromArgb(209, 250, 229) : Color.FromArgb(254, 202, 202);
 
-                    dgvKelolaCustomer.Rows[idx].Tag = c;
+                    // Menyimpan status aktif saat ini ke dalam Tag baris grid agar mudah dibaca saat tombol Aksi diklik
+                    dgvKelolaCustomer.Rows[idx].Tag = isAktif;
                 }
             }
             catch (Exception ex)
@@ -99,18 +114,30 @@ namespace Bitebox.Views.Admin
             }
         }
 
-        private void DGV_CellClick(object? sender, DataGridViewCellEventArgs e)
+        private void DGV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // Validasi baris dan kolom klik aksi
             if (e.RowIndex < 0 || e.ColumnIndex != dgvKelolaCustomer.Columns["colAksi"].Index) return;
-            if (dgvKelolaCustomer.Rows[e.RowIndex].Tag is not EntityCustomerAdmin customer) return;
 
-            string aksi = customer.IsAktif ? "nonaktifkan" : "aktifkan";
-            var jawab = MessageBox.Show($"Yakin mau {aksi} akun {customer.Username}?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var row = dgvKelolaCustomer.Rows[e.RowIndex];
+            int idAkun = Convert.ToInt32(row.Cells["colIdAkun"].Value);
+            string username = row.Cells["colUsername"].Value?.ToString() ?? "";
+            bool isAktif = (bool)(row.Tag ?? true); // Mengambil status dari Tag baris
+
+            string aksi = isAktif ? "nonaktifkan" : "aktifkan";
+            var jawab = MessageBox.Show($"Yakin mau {aksi} akun {username}?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (jawab != DialogResult.Yes) return;
 
-            bool berhasil = _controller.ToggleCustomerStatus(customer.Id, customer.IsAktif);
-            if (berhasil) TampilkanCustomer();
-            else MessageBox.Show("Gagal update status customer.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            // Memanggil controller dengan 2 argumen sesuai request form aslimu (Error CS1501 solved!)
+            bool berhasil = _controller.ToggleCustomerStatus(idAkun, isAktif);
+            if (berhasil)
+            {
+                TampilkanCustomer();
+            }
+            else
+            {
+                MessageBox.Show("Gagal update status customer.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

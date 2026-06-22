@@ -8,7 +8,7 @@ namespace Bitebox.IABS
 {
     public abstract class BaseContext
     {
-        protected NpgsqlConnection GetConnection()
+        protected NpgsqlConnection GetConnection() // ini ngapain woi
         {
             return DatabaseConnection.GetConnection();
         }

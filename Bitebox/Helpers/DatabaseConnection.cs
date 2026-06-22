@@ -17,3 +17,5 @@ namespace Bitebox.Helpers
         }
     }
 }
+
+// tambahin select, exsekusi, scalar
